@@ -8,6 +8,7 @@
 
 #import "NotificareEngine.h"
 #import "MKNetworkKit.h"
+#import "NSData+Hex.h"
 
 @interface NotificarePushLib : NSObject
 
@@ -46,7 +47,7 @@
  *	Returns the operation's method type
  *
  */
-+ (id)shared;
++(NotificarePushLib*)shared;
 
 /*!
  *  @abstract The internal request object's method type

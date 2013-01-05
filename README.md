@@ -33,32 +33,32 @@ In you AppDelegate.m start by importing the library by using:
 
 Then in didFinishLaunchingWithOptions add the following:
 
-[[NotificarePushLib shared] launch];
+	[[NotificarePushLib shared] launch];
 
-[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
-if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]){
-	[[NotificarePushLib shared] openNotification:[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]];
-}
+	if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]){
+		[[NotificarePushLib shared] openNotification:[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]];
+	}
 
 
 And finally add the following delegate methods:
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    [[NotificarePushLib shared] registerDevice:deviceToken];
-}
+	    [[NotificarePushLib shared] registerDevice:deviceToken];
+	}
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+	- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     
-    NSLog(@"%@",error);
-}
+	    NSLog(@"%@",error);
+	}
 
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
    
-    [[NotificarePushLib shared] openNotification:userInfo];
-}
+	    [[NotificarePushLib shared] openNotification:userInfo];
+	}
 
 
 

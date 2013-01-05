@@ -7,10 +7,12 @@
 //
 
 #import "NotificareEngine.h"
-#import "MKNetworkKit.h"
 #import "NSData+Hex.h"
+#import "Notificare.h"
+
 
 @interface NotificarePushLib : NSObject
+
 
 /*!
  *  @abstract The Noticare engine
@@ -20,25 +22,41 @@
  *	Returns the operation's method type
  *
  */
-@property (strong, nonatomic) NotificareEngine *notificareEngine;
+@property (strong, nonatomic) NotificareEngine * notificareEngine;
+
+@property (strong, nonatomic) Notificare * notificare;
+
+//@property (strong, nonatomic) id<NotificarePushLibDelegate> delegate;
+//@property (nonatomic, assign) SEL didFailSelector;
+//@property (nonatomic, assign) SEL didFinishSelector;
+
 /*!
- *  @abstract The Noticare engine
- *  @property NotificareEngine
+ *  @abstract the apiID key
+ *  @property apiID
  *
  *  @discussion
- *	Returns the operation's method type
+ *	Returns the apiID
  *
  */
 @property (strong, nonatomic) NSString * apiID;
 /*!
-  *  @abstract The Noticare engine
-  *  @property NotificareEngine
+  *  @abstract The apiSecret key
+  *  @property apiSecret
   *
   *  @discussion
-  *	Returns the operation's method type
+  *  Return the apiSecret
   *
   */
 @property (strong, nonatomic) NSString * apiSecret;
+
+/*!
+ *  @abstract The device Token
+ *
+ *  @discussion
+ *	Returns the device Token 
+ *
+ */
+@property (strong, nonatomic) NSString * deviceToken;
 
 /*!
  *  @abstract The shared singleton implementation
@@ -58,18 +76,18 @@
 - (void)launch;
 
 //Register device
-- (void)registerDevice:(NSData *)token withAlias:(NSString *)alias;
+- (void)registerDevice:(NSData *)token;
+- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID;
+- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
 
 //Handle Badges & Tray
 - (void)updateBadge:(NSNumber *)badge;
 - (void)cleanTray;
 
 //Handle incoming push notifications
-- (void)handleNotification:(NSDictionary *)notification;
+- (void)openNotification:(NSDictionary *)notification;
 
-//Handle Action
-- (void)handleAction:(NSDictionary *)notification;
-
-
+//Handle actions
+- (void)openAction:(NSDictionary *)notification;
 @end
 

@@ -300,7 +300,7 @@
  *  The default implementation freezes the queued operations and stops network activity
  *  You normally don't have to implement this unless you need to show a HUD notifying the user of connectivity loss
  */
-@property (copy, nonatomic) void (^reachabilityChangedHandler)(NetworkStatus ns);
+@property (copy, nonatomic) void (^reachabilityChangedHandler)(NotificareNetworkStatus ns);
 
 /*!
  *  @abstract Registers an associated operation subclass

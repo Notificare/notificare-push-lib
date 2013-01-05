@@ -7,14 +7,22 @@
 //
 #import "MKNetworkKit.h"
 
-@interface NotificareEngine : MKNetworkEngine{
-    
-}
+typedef void (^NotificationResponseBlock)(NSDictionary*info);
+
+
+@interface NotificareEngine : MKNetworkEngine
+
 
 @property (strong, nonatomic) NSString * apiID;
 @property (strong, nonatomic) NSString * apiSecret;
 
--(MKNetworkOperation*)registerDevice:(NSString*)device withAlias:(NSString*)alias;
+-(MKNetworkOperation*)registerDevice:(NSString*)device;
+-(MKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID;
+-(MKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
+
+-(MKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(MKNKErrorBlock) errorBlock;;
+//-(MKNetworkOperation*)archiveNotification:(NSDictionary*)notification;
+//-(MKNetworkOperation*)removeNotification:(NSDictionary*)notification;
 
 
 @end

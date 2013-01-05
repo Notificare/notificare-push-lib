@@ -29,7 +29,7 @@ After these steps you can start implementing the Notificare Library.
 
 In you AppDelegate.m start by importing the library by using:
 
-#import "NotificarePushLib.h"
+	#import "NotificarePushLib.h"
 
 Then in didFinishLaunchingWithOptions add the following:
 

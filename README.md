@@ -30,7 +30,7 @@ After these steps you can start implementing the Notificare Library.
 
 In your AppDelegate.h start by importing the library by using:
 
-.. code-block:: objective-c
+``` objective-c
 
 	#import "NotificarePushLib.h"
 
@@ -38,7 +38,7 @@ And then in your interface include the delegate NotificarePushLibDelegate.
 
 Then in your AppDelegate.m in the method didFinishLaunchingWithOptions add the following:
 
-.. code-block:: objective-c
+``` objective-c
 
 	[[NotificarePushLib shared] launch];
 
@@ -52,7 +52,7 @@ Then in your AppDelegate.m in the method didFinishLaunchingWithOptions add the f
 
 And finally add the following delegate methods:
 
-.. code-block:: objective-c
+``` objective-c
 
 	- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
@@ -73,14 +73,14 @@ And finally add the following delegate methods:
 If you wish to use web sockets instead of APN's in your AppDelegate.m at the code block (or anywhere you mind find convenient) include the following:
 
 
-.. code-block:: objective-c
+``` objective-c
 
 	[[NotificarePushLib shared] registerForWebsockets];
 	[[NotificarePushLib shared] setDelegate:self];
 
 This will open a connection with the web sockets server and generate an UUID for your device. In order to actually register this device implement the following delegates:
 
-.. code-block:: objective-c
+``` objective-c
 
 	-(void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSString *)token{
 
@@ -94,7 +94,7 @@ This will open a connection with the web sockets server and generate an UUID for
 
 Finally just implement the delegate that actually receives the web sockets message, by doing the following:
 
-.. code-block:: objective-c
+``` objective-c
 
 	-(void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info{
     

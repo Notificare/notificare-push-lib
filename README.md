@@ -20,7 +20,7 @@ Drag the files in this project to your Xcode project. Go to your targets and cli
 - PassKit.framework
 - SystemConfiguration.framework
 - Security.framework
-- §CFNetwork.framework
+- CFNetwork.framework
 
 Then access the Build Settings tab and search for Other Linker Flags, add the following:
 
@@ -32,7 +32,7 @@ In your AppDelegate.h start by importing the library by using:
 
 ``` objective-c
 
-	#import "NotificarePushLib.h"
+#import "NotificarePushLib.h"
 ```
 
 And then in your interface include the delegate NotificarePushLibDelegate.
@@ -41,14 +41,14 @@ Then in your AppDelegate.m in the method didFinishLaunchingWithOptions add the f
 
 ``` objective-c
 
-	[[NotificarePushLib shared] launch];
+[[NotificarePushLib shared] launch];
 
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
-	if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]){
+if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]){
 
-		[[NotificarePushLib shared] openNotification:[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]];
-	}
+	[[NotificarePushLib shared] openNotification:[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]];
+}
 ```
 
 
@@ -56,21 +56,21 @@ And finally add the following delegate methods:
 
 ``` objective-c
 
-	- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-	    [[NotificarePushLib shared] registerDevice:deviceToken];
-	}
+	[[NotificarePushLib shared] registerDevice:deviceToken];
+}
 
-	- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     
-	    NSLog(@"%@",error);
-	}
+	NSLog(@"%@",error);
+}
 
 
-	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-   
-	    [[NotificarePushLib shared] openNotification:userInfo];
-	}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+	[[NotificarePushLib shared] openNotification:userInfo];
+}
 ```
 
 If you wish to use web sockets instead of APN's in your AppDelegate.m at the code block (or anywhere you mind find convenient) include the following:
@@ -78,33 +78,33 @@ If you wish to use web sockets instead of APN's in your AppDelegate.m at the cod
 
 ``` objective-c
 
-	[[NotificarePushLib shared] registerForWebsockets];
-	[[NotificarePushLib shared] setDelegate:self];
+[[NotificarePushLib shared] registerForWebsockets];
+[[NotificarePushLib shared] setDelegate:self];
 ```
 
 This will open a connection with the web sockets server and generate an UUID for your device. In order to actually register this device implement the following delegates:
 
 ``` objective-c
 
-	-(void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSString *)token{
+-(void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSString *)token{
 
-		[[NotificarePushLib shared] registerDeviceForWebsockets:token];
-	}
+	[[NotificarePushLib shared] registerDeviceForWebsockets:token];
+}
 
-	-(void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error{
+-(void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error{
 
-		NSLog(@"%@",error);
-	}
+	NSLog(@"%@",error);
+}
 ```
 
 Finally just implement the delegate that actually receives the web sockets message, by doing the following:
 
 ``` objective-c
 
-	-(void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info{
+-(void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info{
     
-    		[[NotificarePushLib shared] openNotification:info];
-	}
+	[[NotificarePushLib shared] openNotification:info];
+}
 ```
 
 

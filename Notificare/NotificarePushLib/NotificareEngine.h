@@ -20,6 +20,12 @@ typedef void (^NotificationResponseBlock)(NSDictionary*info);
 -(MKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID;
 -(MKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
 
+
+-(MKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device;
+-(MKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID;
+-(MKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
+
+
 -(MKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(MKNKErrorBlock) errorBlock;;
 //-(MKNetworkOperation*)archiveNotification:(NSDictionary*)notification;
 //-(MKNetworkOperation*)removeNotification:(NSDictionary*)notification;

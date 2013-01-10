@@ -9,9 +9,29 @@
 #import "NotificareEngine.h"
 #import "NSData+Hex.h"
 #import "Notificare.h"
+#import "SRWebSocket.h"
 
+@class NotificarePushLib;
 
-@interface NotificarePushLib : NSObject
+@protocol NotificarePushLibDelegate
+
+@optional
+
+- (void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSData *)token;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error;
+
+@end
+
+@interface NotificarePushLib : NSObject <SRWebSocketDelegate>
+
+/*!
+ The delegate to call on results
+ */
+@property (nonatomic, assign) id<NotificarePushLibDelegate> delegate;
+@property (nonatomic, assign) SEL didFailSelector;
+@property (nonatomic, assign) SEL didFinishSelector;
+
 
 
 /*!
@@ -25,6 +45,8 @@
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
 
 @property (strong, nonatomic) Notificare * notificare;
+
+//@property (strong, nonatomic) SRWebSocket *_webSocket;
 
 //@property (strong, nonatomic) id<NotificarePushLibDelegate> delegate;
 //@property (nonatomic, assign) SEL didFailSelector;
@@ -59,6 +81,15 @@
 @property (strong, nonatomic) NSString * deviceToken;
 
 /*!
+ *  @abstract The device UUID
+ *
+ *  @discussion
+ *	Returns the device UUID
+ *
+ */
+@property (strong, nonatomic) NSString * deviceUUID;
+
+/*!
  *  @abstract The shared singleton implementation
  *
  *  @discussion
@@ -75,10 +106,20 @@
  */
 - (void)launch;
 
-//Register device
+//Register device for apns
 - (void)registerDevice:(NSData *)token;
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID;
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
+
+//Register Device for websockets
+- (void)registerDeviceForWebsockets:(NSString *)token;
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID;
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
+
+//Register Channel
+-(void)registerForWebsockets;
+-(void)unregisterForWebsockets;
+
 
 //Handle Badges & Tray
 - (void)updateBadge:(NSNumber *)badge;

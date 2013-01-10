@@ -13,36 +13,46 @@ After validating your account, please sign in and click the applications tab. Cr
 
 Drag the files in this project to your Xcode project. Go to your targets and click the Build Phases separator. In the Link Binaries with Libraries area add the following frameworks:
 
-UIKit.framework
-Foundation.framework
-CoreGraphics.framework
-PassKit.framework
-SystemConfiguration.framework
-Security.framework
-CFNetwork.framework
+- libicucore.dylib
+- UIKit.framework
+- Foundation.framework
+- CoreGraphics.framework
+- PassKit.framework
+- SystemConfiguration.framework
+- Security.framework
+- §CFNetwork.framework
 
 Then access the Build Settings tab and search for Other Linker Flags, add the following:
 
--all_load
+	-all_load
 
 After these steps you can start implementing the Notificare Library.
 
-In you AppDelegate.m start by importing the library by using:
+In your AppDelegate.h start by importing the library by using:
+
+.. code-block:: objective-c
 
 	#import "NotificarePushLib.h"
 
-Then in didFinishLaunchingWithOptions add the following:
+And then in your interface include the delegate NotificarePushLibDelegate.
+
+Then in your AppDelegate.m in the method didFinishLaunchingWithOptions add the following:
+
+.. code-block:: objective-c
 
 	[[NotificarePushLib shared] launch];
 
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
 	if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]){
+
 		[[NotificarePushLib shared] openNotification:[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]];
 	}
 
 
 And finally add the following delegate methods:
+
+.. code-block:: objective-c
 
 	- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
@@ -59,6 +69,39 @@ And finally add the following delegate methods:
    
 	    [[NotificarePushLib shared] openNotification:userInfo];
 	}
+
+If you wish to use web sockets instead of APN's in your AppDelegate.m at the code block (or anywhere you mind find convenient) include the following:
+
+
+.. code-block:: objective-c
+
+	[[NotificarePushLib shared] registerForWebsockets];
+	[[NotificarePushLib shared] setDelegate:self];
+
+This will open a connection with the web sockets server and generate an UUID for your device. In order to actually register this device implement the following delegates:
+
+.. code-block:: objective-c
+
+	-(void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSString *)token{
+
+		[[NotificarePushLib shared] registerDeviceForWebsockets:token];
+	}
+
+	-(void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error{
+
+		NSLog(@"%@",error);
+	}
+
+Finally just implement the delegate that actually receives the web sockets message, by doing the following:
+
+.. code-block:: objective-c
+
+	-(void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info{
+    
+    		[[NotificarePushLib shared] openNotification:info];
+	}
+
+
 
 
 

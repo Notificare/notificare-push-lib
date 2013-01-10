@@ -33,6 +33,7 @@ In your AppDelegate.h start by importing the library by using:
 ``` objective-c
 
 	#import "NotificarePushLib.h"
+```
 
 And then in your interface include the delegate NotificarePushLibDelegate.
 
@@ -48,6 +49,7 @@ Then in your AppDelegate.m in the method didFinishLaunchingWithOptions add the f
 
 		[[NotificarePushLib shared] openNotification:[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"]];
 	}
+```
 
 
 And finally add the following delegate methods:
@@ -69,6 +71,7 @@ And finally add the following delegate methods:
    
 	    [[NotificarePushLib shared] openNotification:userInfo];
 	}
+```
 
 If you wish to use web sockets instead of APN's in your AppDelegate.m at the code block (or anywhere you mind find convenient) include the following:
 
@@ -77,6 +80,7 @@ If you wish to use web sockets instead of APN's in your AppDelegate.m at the cod
 
 	[[NotificarePushLib shared] registerForWebsockets];
 	[[NotificarePushLib shared] setDelegate:self];
+```
 
 This will open a connection with the web sockets server and generate an UUID for your device. In order to actually register this device implement the following delegates:
 
@@ -91,6 +95,7 @@ This will open a connection with the web sockets server and generate an UUID for
 
 		NSLog(@"%@",error);
 	}
+```
 
 Finally just implement the delegate that actually receives the web sockets message, by doing the following:
 
@@ -100,6 +105,7 @@ Finally just implement the delegate that actually receives the web sockets messa
     
     		[[NotificarePushLib shared] openNotification:info];
 	}
+```
 
 
 

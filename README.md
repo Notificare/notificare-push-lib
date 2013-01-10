@@ -73,7 +73,7 @@ And finally add the following delegate methods:
 }
 ```
 
-If you wish to use web sockets instead of APN's in your AppDelegate.m at the code block (or anywhere you mind find convenient) include the following:
+If you wish to use web sockets instead of APN's in your AppDelegate.m, anywhere you might find convenient, include the following:
 
 
 ``` objective-c

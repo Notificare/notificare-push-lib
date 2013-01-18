@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <PassKit/PassKit.h>
+#import <MapKit/MapKit.h>
 
 @interface Notificare : NSObject <UIAlertViewDelegate>
 

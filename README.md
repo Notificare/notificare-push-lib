@@ -18,6 +18,7 @@ Drag the files in this project to your Xcode project. Go to your targets and cli
 - Foundation.framework
 - CoreGraphics.framework
 - PassKit.framework
+- MapKit.framework
 - SystemConfiguration.framework
 - Security.framework
 - CFNetwork.framework

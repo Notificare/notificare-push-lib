@@ -8,6 +8,7 @@
 #import "MKNetworkKit.h"
 
 typedef void (^NotificationResponseBlock)(NSDictionary*info);
+typedef void (^BackgroundCallResponseBlock)(NSDictionary*response);
 
 
 @interface NotificareEngine : MKNetworkEngine
@@ -26,9 +27,9 @@ typedef void (^NotificationResponseBlock)(NSDictionary*info);
 -(MKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
 
 
--(MKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(MKNKErrorBlock) errorBlock;;
-//-(MKNetworkOperation*)archiveNotification:(NSDictionary*)notification;
-//-(MKNetworkOperation*)removeNotification:(NSDictionary*)notification;
+-(MKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(MKNKErrorBlock) errorBlock;
+
+-(MKNetworkOperation*)executeBackgroundCall:(NSString *)path withMethod:(NSString *)method isSSL:(BOOL)ssl completionHandler:(BackgroundCallResponseBlock)response errorHandler:(MKNKErrorBlock) error;
 
 
 @end

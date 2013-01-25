@@ -7,45 +7,26 @@
 //
 
 #import "MKNetworkKit.h"
+#import "NotificareEngine.h"
 
 @class NotificareActions;
 
-/*!
- NotificareActionsDelegate
- */
 @protocol NotificareActionsDelegate
 
 @optional
 
-- (void)notificareActions:(NotificareActions *)connector willOpenAction:(NSDictionary *)info;
-
-- (void)notificareActions:(NotificareActions *)connector didOpenAction:(NSDictionary *)info;
-
-- (void)notificareActions:(NotificareActions *)connector willExecuteAction:(NSDictionary *)info;
-
-- (void)notificareActions:(NotificareActions *)connector didExecuteAction:(NSDictionary *)info;
-
-
-@required
-
-- (void)notificareActions:(NotificareActions *)connector didFailWithError:(NSError *)error;
+- (void)notificareActions:(NotificareActions *)library willExecuteAction:(NSDictionary *)info;
+- (void)notificareActions:(NotificareActions *)library didExecuteAction:(NSDictionary *)info;
+- (void)notificareActions:(NotificareActions *)library didFailToExecuteAction:(NSDictionary *)info;
 
 @end
 
-/*!
-  
- */
-@interface NotificareActions : NSObject {
-	SEL didFailSelector;
-	SEL didFinishSelector;
-}
 
-/*!
- The delegate to call on results
- */
-@property (strong, nonatomic) id<NotificareActionsDelegate> delegate;
-@property (nonatomic, assign) SEL didFailSelector;
-@property (nonatomic, assign) SEL didFinishSelector;
+@interface NotificareActions : NSObject
+
+
+@property (strong, nonatomic) id<NotificareActionsDelegate> actionsDelegate;
+@property (strong, nonatomic) NotificareEngine * notificareEngine;
 
 
 

@@ -9,12 +9,14 @@
 #import "NotificareEngine.h"
 #import "NSData+Hex.h"
 #import "Notificare.h"
+#import "NotificareActions.h"
 #import "SRWebSocket.h"
+#import "Notification.h"
 
 
 @class NotificarePushLib;
 
-@protocol NotificarePushLibDelegate
+@protocol NotificarePushLibDelegate <NSObject>
 
 @optional
 
@@ -22,17 +24,26 @@
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error;
 
+- (BOOL)notificarePushLib:(NotificarePushLib *)library shouldHandleNotification:(NSDictionary *)info;
+
+- (void)notificarePushLib:(NotificarePushLib *)library willOpenNotification:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didOpenNotification:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didCloseNotification:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToOpenNotification:(NSDictionary *)info;
+
+- (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSDictionary *)info;
+
+
 @end
 
-@interface NotificarePushLib : NSObject <SRWebSocketDelegate>
+@interface NotificarePushLib : NSObject <SRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate>
 
 /*!
  The delegate to call on results
  */
-@property (nonatomic, assign) id<NotificarePushLibDelegate> delegate;
-@property (nonatomic, assign) SEL didFailSelector;
-@property (nonatomic, assign) SEL didFinishSelector;
-
+@property (nonatomic, assign) id <NotificarePushLibDelegate> delegate;
 
 
 /*!
@@ -46,12 +57,6 @@
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
 
 @property (strong, nonatomic) Notificare * notificare;
-
-//@property (strong, nonatomic) SRWebSocket *_webSocket;
-
-//@property (strong, nonatomic) id<NotificarePushLibDelegate> delegate;
-//@property (nonatomic, assign) SEL didFailSelector;
-//@property (nonatomic, assign) SEL didFinishSelector;
 
 /*!
  *  @abstract the apiID key
@@ -129,7 +134,5 @@
 //Handle incoming push notifications
 - (void)openNotification:(NSDictionary *)notification;
 
-//Handle actions
-- (void)openAction:(NSDictionary *)notification;
 @end
 

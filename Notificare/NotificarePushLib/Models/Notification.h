@@ -1,0 +1,25 @@
+//
+//  Notification.h
+//  NotificarePushLib
+//
+//  Created by Joel Oliveira on 1/23/13.
+//  Copyright (c) 2013 Notificare. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+
+@interface Notification : NSObject
+
+
+@property (strong, nonatomic) NSDictionary * application;
+@property (strong, nonatomic) NSString * notificationType;
+@property (strong, nonatomic) NSString * notificationTime;
+@property (strong, nonatomic) NSString * notificationMessage;
+@property (strong, nonatomic) NSString * notificationLatitude;
+@property (strong, nonatomic) NSString * notificationLongitude;
+@property (strong, nonatomic) NSArray * notificationContent;
+@property (strong, nonatomic) NSArray * notificationActions;
+@property (strong, nonatomic) NSArray * notificationAttachments;
+
+@end

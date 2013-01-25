@@ -10,14 +10,27 @@
 #import <UIKit/UIKit.h>
 #import <PassKit/PassKit.h>
 #import <MapKit/MapKit.h>
+#import "NotificationType.h"
 
-@interface Notificare : NSObject <UIAlertViewDelegate>
+@class Notificare;
 
-@property (strong, nonatomic) NSString * bundleName;
-@property (strong, nonatomic) NSString * appStoreID;
-@property (strong, nonatomic) UIViewController *rootViewController;
-@property (strong, nonatomic) UIButton *button;
-@property (strong, nonatomic) PKPassLibrary *passLib;
+@protocol NotificareDelegate
+
+@optional
+
+- (void)notificare:(Notificare *)library willOpenNotification:(NSDictionary *)info;
+- (void)notificare:(Notificare *)library didOpenNotification:(NSDictionary *)info;
+- (void)notificare:(Notificare *)library didCloseNotification:(NSDictionary *)info;
+- (void)notificare:(Notificare *)library didFailToOpenNotification:(NSDictionary *)info;
+
+@end
+
+
+@interface Notificare : NSObject <NotificationDelegate>
+
+@property (nonatomic, assign) id<NotificareDelegate> notificareDelegate;
+@property (strong, nonatomic) NSDictionary * theNotification;
+@property (strong, nonatomic) id <NotificationType> type;
 
 -(void)handleNotification:(NSDictionary*)notification;
 

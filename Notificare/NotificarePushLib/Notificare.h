@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <PassKit/PassKit.h>
-#import <MapKit/MapKit.h>
 #import "NotificationType.h"
+#import "Notification.h"
+#import "Attachment.h"
+#import "Content.h"
+#import "Action.h"
 
 @class Notificare;
 
@@ -18,10 +19,10 @@
 
 @optional
 
-- (void)notificare:(Notificare *)library willOpenNotification:(NSDictionary *)info;
-- (void)notificare:(Notificare *)library didOpenNotification:(NSDictionary *)info;
-- (void)notificare:(Notificare *)library didCloseNotification:(NSDictionary *)info;
-- (void)notificare:(Notificare *)library didFailToOpenNotification:(NSDictionary *)info;
+- (void)notificare:(Notificare *)library willOpenNotification:(Notification *)info;
+- (void)notificare:(Notificare *)library didOpenNotification:(Notification *)info;
+- (void)notificare:(Notificare *)library didCloseNotification:(Notification *)info;
+- (void)notificare:(Notificare *)library didFailToOpenNotification:(Notification *)info;
 
 @end
 

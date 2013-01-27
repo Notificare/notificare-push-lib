@@ -26,14 +26,14 @@
 
 - (BOOL)notificarePushLib:(NotificarePushLib *)library shouldHandleNotification:(NSDictionary *)info;
 
-- (void)notificarePushLib:(NotificarePushLib *)library willOpenNotification:(NSDictionary *)info;
-- (void)notificarePushLib:(NotificarePushLib *)library didOpenNotification:(NSDictionary *)info;
-- (void)notificarePushLib:(NotificarePushLib *)library didCloseNotification:(NSDictionary *)info;
-- (void)notificarePushLib:(NotificarePushLib *)library didFailToOpenNotification:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library willOpenNotification:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didOpenNotification:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didCloseNotification:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToOpenNotification:(Notification *)notification;
 
-- (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(NSDictionary *)info;
-- (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(NSDictionary *)info;
-- (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(Notification *)notification;
 
 
 @end

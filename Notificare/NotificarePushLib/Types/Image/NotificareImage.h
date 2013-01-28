@@ -13,11 +13,13 @@
 #import "Attachment.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
+#import "NotificareActions.h"
 
 @interface NotificareImage : NSObject <NotificationType,UIScrollViewDelegate,UIPageViewControllerDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
+@property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIButton * button;
 

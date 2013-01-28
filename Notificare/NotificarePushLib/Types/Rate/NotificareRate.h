@@ -10,11 +10,13 @@
 #import "Notification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
+#import "NotificareActions.h"
 
 @interface NotificareRate : NSObject <NotificationType,UIAlertViewDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
+@property (nonatomic, strong) NotificareActions * notificareActions;
 
 
 -(void)openNotification;

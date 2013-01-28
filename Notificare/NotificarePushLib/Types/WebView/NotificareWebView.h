@@ -13,13 +13,16 @@
 #import "Attachment.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
+#import "NotificareActions.h"
 
 @interface NotificareWebView : NSObject <NotificationType>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
+@property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIButton * button;
+
 
 
 -(void)openNotification;

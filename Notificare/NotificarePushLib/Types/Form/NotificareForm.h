@@ -10,12 +10,13 @@
 #import "Notification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
+#import "NotificareActions.h"
 
 @interface NotificareForm : NSObject <NotificationType, MKMapViewDelegate,MKAnnotation>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
-
+@property (nonatomic, strong) NotificareActions * notificareActions;
 
 -(void)openNotification;
 

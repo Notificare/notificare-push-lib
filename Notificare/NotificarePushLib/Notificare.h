@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NotificareActions.h"
 #import "NotificationType.h"
 #import "Notification.h"
 #import "Attachment.h"
@@ -32,6 +33,7 @@
 @property (nonatomic, assign) id<NotificareDelegate> notificareDelegate;
 @property (strong, nonatomic) NSDictionary * theNotification;
 @property (strong, nonatomic) id <NotificationType> type;
+@property (strong, nonatomic) NotificareActions * notificareActions;
 
 -(void)handleNotification:(NSDictionary*)notification;
 

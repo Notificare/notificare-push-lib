@@ -32,8 +32,8 @@
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToOpenNotification:(Notification *)notification;
 
 - (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(Notification *)notification;
-- (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(Notification *)notification;
-- (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSError *)error;
 
 
 @end
@@ -57,6 +57,8 @@
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
 
 @property (strong, nonatomic) Notificare * notificare;
+
+@property (strong, nonatomic) NotificareActions * notificareActions;
 
 /*!
  *  @abstract the apiID key

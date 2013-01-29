@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Notificare. All rights reserved.
 //
 #import "NotificareMKNetworkKit.h"
+#import "NotificareMKNetworkEngine.h"
 
 typedef void (^NotificationResponseBlock)(NSDictionary*info);
 typedef void (^BackgroundCallResponseBlock)(NSDictionary*response);

@@ -27,9 +27,9 @@ typedef void (^BackgroundCallResponseBlock)(NSDictionary*response);
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
 
 
--(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(MKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 
--(NotificareMKNetworkOperation*)executeBackgroundCall:(NSString *)path withMethod:(NSString *)method isSSL:(BOOL)ssl completionHandler:(BackgroundCallResponseBlock)response errorHandler:(MKNKErrorBlock) error;
+-(NotificareMKNetworkOperation*)executeBackgroundCall:(NSString *)path withMethod:(NSString *)method isSSL:(BOOL)ssl completionHandler:(BackgroundCallResponseBlock)response errorHandler:(nMKNKErrorBlock) error;
 
 
 @end

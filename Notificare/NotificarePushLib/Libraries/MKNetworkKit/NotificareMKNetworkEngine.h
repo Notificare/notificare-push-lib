@@ -201,7 +201,7 @@
  *  @seealso
  *  imageAtUrl:onCompletion:
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size onCompletion:(MKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size onCompletion:(nMKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
 
 /*!
  *  @abstract Handy helper method for fetching images
@@ -211,7 +211,7 @@
  *  The hostname of the engine is *NOT* prefixed.
  *  The image is returned to the caller via MKNKImageBlock callback block.
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url onCompletion:(MKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url onCompletion:(nMKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
 
 /*!
  *  @abstract Handy helper method for fetching images in the background
@@ -223,7 +223,7 @@
  *  @seealso
  *  imageAtUrl:onCompletion:
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url completionHandler:(MKNKImageBlock) imageFetchedBlock errorHandler:(MKNKResponseErrorBlock) errorBlock;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url completionHandler:(nMKNKImageBlock) imageFetchedBlock errorHandler:(nMKNKResponseErrorBlock) errorBlock;
 
 /*!
  *  @abstract Handy helper method for fetching images asynchronously in the background
@@ -235,7 +235,7 @@
  *  @seealso
  *  imageAtUrl:onCompletion:
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size completionHandler:(MKNKImageBlock) imageFetchedBlock errorHandler:(MKNKResponseErrorBlock) errorBlock;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size completionHandler:(nMKNKImageBlock) imageFetchedBlock errorHandler:(nMKNKResponseErrorBlock) errorBlock;
 #endif
 
 /*!

@@ -26,34 +26,34 @@
 @class NotificareMKNetworkOperation;
 
 typedef enum {
-  MKNetworkOperationStateReady = 1,
-  MKNetworkOperationStateExecuting = 2,
-  MKNetworkOperationStateFinished = 3
-} MKNetworkOperationState;
+  nMKNetworkOperationStateReady = 1,
+  nMKNetworkOperationStateExecuting = 2,
+  nMKNetworkOperationStateFinished = 3
+} nMKNetworkOperationState;
 
-typedef void (^MKNKVoidBlock)(void);
-typedef void (^MKNKIDBlock)(void);
-typedef void (^MKNKProgressBlock)(double progress);
-typedef void (^MKNKResponseBlock)(NotificareMKNetworkOperation* completedOperation);
+typedef void (^nMKNKVoidBlock)(void);
+typedef void (^nMKNKIDBlock)(void);
+typedef void (^nMKNKProgressBlock)(double progress);
+typedef void (^nMKNKResponseBlock)(NotificareMKNetworkOperation* completedOperation);
 #if TARGET_OS_IPHONE
-typedef void (^MKNKImageBlock) (UIImage* fetchedImage, NSURL* url, BOOL isInCache);
+typedef void (^nMKNKImageBlock) (UIImage* fetchedImage, NSURL* url, BOOL isInCache);
 #elif TARGET_OS_MAC
-typedef void (^MKNKImageBlock) (NSImage* fetchedImage, NSURL* url, BOOL isInCache);
+typedef void (^nMKNKImageBlock) (NSImage* fetchedImage, NSURL* url, BOOL isInCache);
 #endif
-typedef void (^MKNKResponseErrorBlock)(NotificareMKNetworkOperation* completedOperation, NSError* error);
-typedef void (^MKNKErrorBlock)(NSError* error);
+typedef void (^nMKNKResponseErrorBlock)(NotificareMKNetworkOperation* completedOperation, NSError* error);
+typedef void (^nMKNKErrorBlock)(NSError* error);
 
-typedef void (^MKNKAuthBlock)(NSURLAuthenticationChallenge* challenge);
+typedef void (^nMKNKAuthBlock)(NSURLAuthenticationChallenge* challenge);
 
-typedef NSString* (^MKNKEncodingBlock) (NSDictionary* postDataDict);
+typedef NSString* (^nMKNKEncodingBlock) (NSDictionary* postDataDict);
 
 typedef enum {
   
-  MKNKPostDataEncodingTypeURL = 0, // default
-  MKNKPostDataEncodingTypeJSON,
-  MKNKPostDataEncodingTypePlist,
-  MKNKPostDataEncodingTypeCustom
-} MKNKPostDataEncodingType;
+  nMKNKPostDataEncodingTypeURL = 0, // default
+  nMKNKPostDataEncodingTypeJSON,
+  nMKNKPostDataEncodingTypePlist,
+  nMKNKPostDataEncodingTypeCustom
+} nMKNKPostDataEncodingType;
 /*!
  @header MKNetworkOperation.h
  @abstract   Represents a single unique network operation.
@@ -75,7 +75,7 @@ typedef enum {
 @private
   int _state;
   BOOL _freezable;
-  MKNKPostDataEncodingType _postDataEncoding;
+  nMKNKPostDataEncodingType _postDataEncoding;
 }
 
 /*!
@@ -164,7 +164,7 @@ typedef enum {
  *  setCustomPostDataEncodingHandler:forType:
  *
  */
-@property (nonatomic, assign) MKNKPostDataEncodingType postDataEncoding;
+@property (nonatomic, assign) nMKNKPostDataEncodingType postDataEncoding;
 
 /*!
  *  @abstract Set a customized Post Data Encoding Handler for a given HTTP Content Type
@@ -178,7 +178,7 @@ typedef enum {
  *  @seealso
  *  postDataEncoding
  */
--(void) setCustomPostDataEncodingHandler:(MKNKEncodingBlock) postDataEncodingHandler forType:(NSString*) contentType;
+-(void) setCustomPostDataEncodingHandler:(nMKNKEncodingBlock) postDataEncodingHandler forType:(NSString*) contentType;
 
 /*!
  *  @abstract String Encoding Property
@@ -257,7 +257,7 @@ typedef enum {
  *	If your request needs to be authenticated using a custom method (like a Web page/HTML Form), add a block method here
  *  and process the NSURLAuthenticationChallenge
  */
-@property (nonatomic, copy) MKNKAuthBlock authHandler;
+@property (nonatomic, copy) nMKNKAuthBlock authHandler;
 
 /*!
  *  @abstract Handler that you implement to monitor reachability changes
@@ -266,7 +266,7 @@ typedef enum {
  *  @discussion
  *	The framework calls this handler whenever the operation state changes
  */
-@property (copy, nonatomic) void (^operationStateChangedHandler)(MKNetworkOperationState newState);
+@property (copy, nonatomic) void (^operationStateChangedHandler)(nMKNetworkOperationState newState);
 
 /*!
  *  @abstract controls persistence of authentication credentials
@@ -389,7 +389,7 @@ typedef enum {
  *  isCachedResponse
  *  addCompletionHandler:errorHandler:
  */
--(void) onCompletion:(MKNKResponseBlock) response onError:(MKNKErrorBlock) error DEPRECATED_ATTRIBUTE;
+-(void) onCompletion:(nMKNKResponseBlock) response onError:(nMKNKErrorBlock) error DEPRECATED_ATTRIBUTE;
 
 /*!
  *  @abstract adds a block Handler for completion and error
@@ -402,7 +402,7 @@ typedef enum {
  *  @seealso
  *  onCompletion:onError:
  */
--(void) addCompletionHandler:(MKNKResponseBlock) response errorHandler:(MKNKResponseErrorBlock) error;
+-(void) addCompletionHandler:(nMKNKResponseBlock) response errorHandler:(nMKNKResponseErrorBlock) error;
 
 /*!
  *  @abstract Block Handler for tracking 304 not modified state
@@ -411,7 +411,7 @@ typedef enum {
  *	This method will be called if the server sends a 304 HTTP status for your request.
  *
  */
--(void) onNotModified:(MKNKVoidBlock) notModifiedBlock;
+-(void) onNotModified:(nMKNKVoidBlock) notModifiedBlock;
 
 /*!
  *  @abstract Block Handler for tracking upload progress
@@ -421,7 +421,7 @@ typedef enum {
  *  The value range of the progress is 0 to 1.
  *
  */
--(void) onUploadProgressChanged:(MKNKProgressBlock) uploadProgressBlock;
+-(void) onUploadProgressChanged:(nMKNKProgressBlock) uploadProgressBlock;
 
 /*!
  *  @abstract Block Handler for tracking download progress
@@ -431,7 +431,7 @@ typedef enum {
  *  The value range of the progress is 0 to 1.
  *
  */
--(void) onDownloadProgressChanged:(MKNKProgressBlock) downloadProgressBlock;
+-(void) onDownloadProgressChanged:(nMKNKProgressBlock) downloadProgressBlock;
 
 /*!
  *  @abstract Uploads a resource from a stream
@@ -578,7 +578,7 @@ typedef enum {
 // Don't touch
 -(BOOL) isCacheable;
 -(void) setCachedData:(NSData*) cachedData;
--(void) setCacheHandler:(MKNKResponseBlock) cacheHandler;
+-(void) setCacheHandler:(nMKNKResponseBlock) cacheHandler;
 -(void) updateHandlersFromOperation:(NotificareMKNetworkOperation*) operation;
 -(void) updateOperationBasedOnPreviousHeaders:(NSMutableDictionary*) headers;
 -(NSString*) uniqueIdentifier;

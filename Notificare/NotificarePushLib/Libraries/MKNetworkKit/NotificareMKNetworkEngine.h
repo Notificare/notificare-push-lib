@@ -23,7 +23,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "NotificareMKNetworkKit.h"
+#import "NotificareMKNetworkOperation.h"
+#import "NotificareReachability.h"
+
 /*!
  @header MKNetworkEngine.h
  @abstract   Represents a subclassable Network Engine for your app

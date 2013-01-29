@@ -73,13 +73,13 @@ typedef enum
 
 @class NotificareReachability;
 
-typedef void (^NetworkReachable)(NotificareReachability * reachability);
-typedef void (^NetworkUnreachable)(NotificareReachability * reachability);
+typedef void (^nNetworkReachable)(NotificareReachability * reachability);
+typedef void (^nNetworkUnreachable)(NotificareReachability * reachability);
 
 @interface NotificareReachability : NSObject
 
-@property (nonatomic, copy) NetworkReachable    reachableBlock;
-@property (nonatomic, copy) NetworkUnreachable  unreachableBlock;
+@property (nonatomic, copy) nNetworkReachable    reachableBlock;
+@property (nonatomic, copy) nNetworkUnreachable  unreachableBlock;
 
 
 @property (nonatomic, assign) BOOL reachableOnWWAN;

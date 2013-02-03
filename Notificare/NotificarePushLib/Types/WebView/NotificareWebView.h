@@ -21,7 +21,9 @@
 @property (nonatomic, strong) Notification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
-@property (strong, nonatomic) UIButton * button;
+@property (strong, nonatomic) UIView * topBar;
+@property (strong, nonatomic) UIButton * closeButton;
+@property (strong, nonatomic) UIButton * actionsButton;
 
 
 

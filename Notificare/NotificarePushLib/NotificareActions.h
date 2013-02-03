@@ -8,6 +8,8 @@
 
 #import "NotificareEngine.h"
 #import "Notification.h"
+#import "ActionType.h"
+#import "Action.h"
 
 @class NotificareActions;
 
@@ -22,14 +24,14 @@
 @end
 
 
-@interface NotificareActions : NSObject
-
+@interface NotificareActions : NSObject <ActionDelegate>
 
 @property (strong, nonatomic) id<NotificareActionsDelegate> actionsDelegate;
-@property (strong, nonatomic) NotificareEngine * notificareEngine;
+@property (strong, nonatomic) id <ActionType> type;
 @property (strong, nonatomic) Notification * notification;
 
-- (void)executeBackgroundCall:(NSString *)url;
+
+- (void)handleAction:(Action *)action;
 
 
 @end

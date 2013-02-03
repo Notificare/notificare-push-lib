@@ -15,15 +15,14 @@
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
 
-@interface NotificareWebView : NSObject <NotificationType>
+@interface NotificareWebView : NSObject <NotificationType,UIWebViewDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
-@property (strong, nonatomic) UIView * topBar;
-@property (strong, nonatomic) UIButton * closeButton;
-@property (strong, nonatomic) UIButton * actionsButton;
+@property (strong, nonatomic) UIBarButtonItem * closeButton;
+@property (strong, nonatomic) UIBarButtonItem * actionsButton;
 
 
 

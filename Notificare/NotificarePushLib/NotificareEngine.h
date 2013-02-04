@@ -32,5 +32,7 @@ typedef void (^BackgroundCallResponseBlock)(NSDictionary*response);
 
 -(NotificareMKNetworkOperation*)executeBackgroundCall:(NSString *)path withMethod:(NSString *)method isSSL:(BOOL)ssl completionHandler:(BackgroundCallResponseBlock)response errorHandler:(nMKNKErrorBlock) error;
 
+-(NotificareMKNetworkOperation*)fileUpload:(NSString *)path withParams:(NSDictionary *)params withMethod:(NSString *)method isSSL:(BOOL)ssl;
+
 
 @end

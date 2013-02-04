@@ -14,8 +14,8 @@
 @property (strong, nonatomic) NSString * actionType;
 @property (strong, nonatomic) NSString * actionLabel;
 @property (strong, nonatomic) NSString * actionTarget;
-@property (nonatomic, readonly) BOOL * actionKeyboard;
-
+@property (nonatomic, assign) BOOL actionKeyboard;
+@property (nonatomic, assign) BOOL actionCamera;
 
 
 @end

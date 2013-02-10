@@ -13,6 +13,8 @@ After validating your account, please sign in and click the applications tab. Cr
 
 Drag the files in this project to your Xcode project. Go to your targets and click the Build Phases separator. In the Link Binaries with Libraries area add the following frameworks:
 
+- MobileCoreService.framework
+- MessageUI.framework
 - libicucore.dylib
 - UIKit.framework
 - Foundation.framework
@@ -43,6 +45,7 @@ Then in your AppDelegate.m in the method didFinishLaunchingWithOptions add the f
 ``` objective-c
 
 [[NotificarePushLib shared] launch];
+[[NotificarePushLib shared] setDelegate:self];
 
 [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     

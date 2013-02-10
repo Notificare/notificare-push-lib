@@ -19,6 +19,7 @@
 
 - (void)notificareActions:(NotificareActions *)library willExecuteAction:(Notification *)notification;
 - (void)notificareActions:(NotificareActions *)library didExecuteAction:(NSDictionary *)info;
+- (void)notificareActions:(NotificareActions *)library didNotExecuteAction:(NSDictionary *)info;
 - (void)notificareActions:(NotificareActions *)library didFailToExecuteAction:(NSError *)error;
 
 @end

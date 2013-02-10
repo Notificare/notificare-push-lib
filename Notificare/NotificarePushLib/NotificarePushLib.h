@@ -33,6 +33,7 @@
 
 - (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(Notification *)notification;
 - (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didNotExecuteAction:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSError *)error;
 
 

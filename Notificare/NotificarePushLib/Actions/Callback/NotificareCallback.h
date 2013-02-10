@@ -13,7 +13,7 @@
 #import "NotificareEngine.h"
 #import "Action.h"
 
-@interface NotificareCallback : NSObject <ActionType,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITabBarDelegate>
+@interface NotificareCallback : NSObject <ActionType,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITabBarDelegate,UITextViewDelegate>
 
 @property (nonatomic, assign) id<ActionDelegate> delegate;
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
@@ -21,11 +21,13 @@
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 @property (strong, nonatomic) UIToolbar * toolBar;
-@property (strong, nonatomic) UIBarButtonItem * uploadButton;
+@property (strong, nonatomic) UIBarButtonItem * sendButton;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) NSString * message;
 @property (strong, nonatomic) NSData * media;
 @property (strong, nonatomic) UIProgressView * progressBar;
+@property (strong, nonatomic) UITextView * messageView;
+@property (nonatomic, assign) BOOL withMessage;
 
 
 -(void)executeAction;

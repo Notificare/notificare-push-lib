@@ -13,7 +13,7 @@
 #import "NotificareActions.h"
 
 
-@interface NotificareVideo : NSObject <NotificationType, UIAlertViewDelegate>
+@interface NotificareVideo : NSObject <NotificationType, UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
+@property (strong, nonatomic) UIActionSheet *actionSheet;
 
 -(void)openNotification;
 

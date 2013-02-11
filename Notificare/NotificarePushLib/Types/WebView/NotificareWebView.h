@@ -15,7 +15,7 @@
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
 
-@interface NotificareWebView : NSObject <NotificationType,UIWebViewDelegate>
+@interface NotificareWebView : NSObject <NotificationType,UIWebViewDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
@@ -23,6 +23,7 @@
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
+@property (strong, nonatomic) UIActionSheet *actionSheet;
 
 
 

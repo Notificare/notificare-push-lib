@@ -12,12 +12,14 @@
 #import "ActionDelegate.h"
 #import "NotificareEngine.h"
 #import "Action.h"
+#import "Notification.h"
 
 @interface NotificareCallback : NSObject <ActionType,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITabBarDelegate,UITextViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic, assign) id<ActionDelegate> delegate;
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (strong, nonatomic) Action * action;
+@property (strong, nonatomic) Notification * notification;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 @property (strong, nonatomic) UIToolbar * toolBar;

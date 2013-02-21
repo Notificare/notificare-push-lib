@@ -14,6 +14,7 @@
 
 -(void)setDelegate:(id<ActionDelegate>)delegate;
 -(void)setAction:(Action *)action;
+-(void)setNotification:(Notification *)notification;
 -(void)executeAction;
 
 @end

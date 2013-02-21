@@ -9,7 +9,6 @@
 #import "NotificareMKNetworkEngine.h"
 
 typedef void (^NotificationResponseBlock)(NSDictionary*info);
-//typedef void (^BackgroundCallResponseBlock)(NSDictionary*response);
 
 
 @interface NotificareEngine : NotificareMKNetworkEngine
@@ -30,9 +29,9 @@ typedef void (^NotificationResponseBlock)(NSDictionary*info);
 
 -(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 
-//-(NotificareMKNetworkOperation*)executeBackgroundCall:(NSString *)path withMethod:(NSString *)method isSSL:(BOOL)ssl completionHandler:(BackgroundCallResponseBlock)response errorHandler:(nMKNKErrorBlock) error;
 
 -(NotificareMKNetworkOperation*)executeAction:(NSString *)path withParams:(NSDictionary *)params withMethod:(NSString *)method isSSL:(BOOL)ssl;
 
+-(NotificareMKNetworkOperation*)actionLog:(NSString*)notification withLabel:(NSString *)label withData:(NSDictionary *)data;
 
 @end

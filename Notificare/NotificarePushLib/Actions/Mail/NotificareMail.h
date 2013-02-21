@@ -12,12 +12,14 @@
 #import "ActionDelegate.h"
 #import "NotificareEngine.h"
 #import "Action.h"
+#import "Notification.h"
 
 @interface NotificareMail : NSObject <ActionType,MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, assign) id<ActionDelegate> delegate;
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (strong, nonatomic) Action * action;
+@property (strong, nonatomic) Notification * notification;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) MFMailComposeViewController *mailComposer;
 

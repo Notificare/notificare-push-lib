@@ -12,6 +12,7 @@
 @interface Notification : NSObject
 
 
+@property (strong, nonatomic) NSString * notificationID;
 @property (strong, nonatomic) NSDictionary * application;
 @property (strong, nonatomic) NSString * notificationType;
 @property (strong, nonatomic) NSString * notificationTime;

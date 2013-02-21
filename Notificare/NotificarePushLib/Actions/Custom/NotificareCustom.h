@@ -10,11 +10,13 @@
 #import "ActionType.h"
 #import "ActionDelegate.h"
 #import "Action.h"
+#import "Notification.h"
 
 @interface NotificareCustom : NSObject <ActionType>
 
 @property (nonatomic, assign) id<ActionDelegate> delegate;
 @property (strong, nonatomic) Action * action;
+@property (strong, nonatomic) Notification * notification;
 
 -(void)executeAction;
 

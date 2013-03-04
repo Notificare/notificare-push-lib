@@ -98,6 +98,31 @@
  */
 @property (strong, nonatomic) NSString * deviceUUID;
 
+
+/*!
+ *  @abstract Boolean for checking if notification is open
+ *
+ */
+@property (assign) BOOL isOpen;
+
+/*!
+ *  @abstract TAn array with notifications
+ *
+ *  @discussion
+ *	Returns all queued notifications
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * notificationQueue;
+
+/*!
+ *  @abstract Active notification
+ *
+ *  @discussion
+ *	Returns the active notification
+ *
+ */
+@property (strong, nonatomic) NSDictionary * activeNotification;
+
 /*!
  *  @abstract The shared singleton implementation
  *

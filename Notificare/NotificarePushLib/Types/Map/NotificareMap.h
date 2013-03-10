@@ -12,6 +12,7 @@
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
 #import <MapKit/MapKit.h>
+#import "NotificareLocation.h"
 
 @interface NotificareMap : NSObject <NotificationType, MKMapViewDelegate,MKAnnotation,UIActionSheetDelegate>
 

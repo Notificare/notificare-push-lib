@@ -18,7 +18,6 @@
 @property (nonatomic, strong) Notification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 
-
 -(void)openNotification;
 
 @end

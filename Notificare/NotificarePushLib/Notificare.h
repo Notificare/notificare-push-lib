@@ -36,5 +36,6 @@
 @property (strong, nonatomic) NotificareActions * notificareActions;
 
 -(void)handleNotification:(NSDictionary*)notification;
+-(void)handleNotificationObject:(Notification *)notification;
 
 @end

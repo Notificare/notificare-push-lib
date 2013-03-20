@@ -16,6 +16,9 @@ typedef void (^NotificationResponseBlock)(NSDictionary*info);
 
 @property (strong, nonatomic) NSString * apiID;
 @property (strong, nonatomic) NSString * apiSecret;
+@property (strong, nonatomic) NSString * deviceLatitude;
+@property (strong, nonatomic) NSString * deviceLongitude;
+
 
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device;
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID;
@@ -26,6 +29,7 @@ typedef void (^NotificationResponseBlock)(NSDictionary*info);
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID;
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
 
+-(NotificareMKNetworkOperation*)updateDeviceLocation:(NSString*)device;
 
 -(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 

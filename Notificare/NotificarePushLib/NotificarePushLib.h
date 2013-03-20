@@ -12,6 +12,7 @@
 #import "NotificareActions.h"
 #import "SRWebSocket.h"
 #import "Notification.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 @class NotificarePushLib;
@@ -39,7 +40,7 @@
 
 @end
 
-@interface NotificarePushLib : NSObject <SRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate>
+@interface NotificarePushLib : NSObject <SRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate>
 
 /*!
  The delegate to call on results
@@ -124,6 +125,15 @@
 @property (strong, nonatomic) NSDictionary * activeNotification;
 
 /*!
+ *  @abstract Location Manager
+ *
+ *  @discussion
+ *	Handles the Core location updates
+ *
+ */
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
+/*!
  *  @abstract The shared singleton implementation
  *
  *  @discussion
@@ -157,7 +167,7 @@
 
 //Handle Badges & Tray
 - (void)updateBadge:(NSNumber *)badge;
-- (void)cleanTray;
+- (void)clearNotifications;
 
 //Handle incoming push notifications
 - (void)openNotification:(NSDictionary *)notification;

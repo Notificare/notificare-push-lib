@@ -7,10 +7,12 @@
 	<key>DEVELOPMENT_APP_SECRET</key>
 	<string>1d39ad0c971411ccf87874d3ee0cd4bdcd1754721488548f70c2a35ee69f5d05</string>
 	<key>PRODUCTION_APP_KEY</key>
-	<string>2354234523452345</string>
+	<string>9fd647431c4dc3798f2a5ae147411a787e8d52447e365d7972ec4d853b4cdd65</string>
 	<key>DEVELOPMENT</key>
 	<true/>
 	<key>PRODUCTION_APP_SECRET</key>
-	<string>234623456 r dgdefgsdf</string>
+	<string>6540b4a9a0c82c16be18da73e074e271f9cf4313312c8b1751f662eac55e74e6</string>
+	<key>USE_CORE_LOCATION</key>
+	<true/>
 </dict>
 </plist>

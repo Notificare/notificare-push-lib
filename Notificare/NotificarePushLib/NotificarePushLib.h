@@ -14,6 +14,14 @@
 #import "Notification.h"
 #import <CoreLocation/CoreLocation.h>
 
+#define Suppressor(Selector) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Selector; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
 
 @class NotificarePushLib;
 
@@ -34,6 +42,7 @@
 
 - (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(Notification *)notification;
 - (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelector:(NSString *)selector;
 - (void)notificarePushLib:(NotificarePushLib *)library didNotExecuteAction:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSError *)error;
 
@@ -149,6 +158,7 @@
  *  This method sets the notificare singleton  
  */
 - (void)launch;
+- (void)terminate;
 
 //Register device for apns
 - (void)registerDevice:(NSData *)token;

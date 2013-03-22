@@ -177,7 +177,6 @@ _Pragma("clang diagnostic pop") \
 
 //Handle Badges & Tray
 - (void)updateBadge:(NSNumber *)badge;
-- (void)clearNotifications;
 
 //Handle incoming push notifications
 - (void)openNotification:(NSDictionary *)notification;

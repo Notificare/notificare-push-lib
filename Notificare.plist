@@ -14,5 +14,7 @@
 	<string>6540b4a9a0c82c16be18da73e074e271f9cf4313312c8b1751f662eac55e74e6</string>
 	<key>USE_CORE_LOCATION</key>
 	<true/>
+	<key>APP_RUNS_ON_BACKGROUND</key>
+	<false/>
 </dict>
 </plist>

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Notification.h"
 #import "Action.h"
 #import "Content.h"
@@ -21,9 +22,15 @@
 @property (nonatomic, strong) Notification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
+@property (strong, nonatomic) UINavigationController * navController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIScrollView *scrollView;
+@property (strong, nonatomic) UIPageControl *pageControl;
+@property (strong, nonatomic) NSMutableArray *imagesArray;
+@property (assign, nonatomic) BOOL pageControlUsed;
+//@property (strong, nonatomic) NotificareEngine * notificareEngine;
 
 -(void)openNotification;
 

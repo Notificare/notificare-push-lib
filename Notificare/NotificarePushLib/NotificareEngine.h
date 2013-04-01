@@ -9,7 +9,7 @@
 #import "NotificareMKNetworkEngine.h"
 
 typedef void (^NotificationResponseBlock)(NSDictionary*info);
-
+typedef void (^ImagesResponseBlock)(NSMutableArray* imageURLs);
 
 @interface NotificareEngine : NotificareMKNetworkEngine
 
@@ -18,6 +18,9 @@ typedef void (^NotificationResponseBlock)(NSDictionary*info);
 @property (strong, nonatomic) NSString * apiSecret;
 @property (strong, nonatomic) NSString * deviceLatitude;
 @property (strong, nonatomic) NSString * deviceLongitude;
+
+
+
 
 
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device;
@@ -37,5 +40,7 @@ typedef void (^NotificationResponseBlock)(NSDictionary*info);
 -(NotificareMKNetworkOperation*)executeAction:(NSString *)path withParams:(NSDictionary *)params withMethod:(NSString *)method isSSL:(BOOL)ssl;
 
 -(NotificareMKNetworkOperation*)actionLog:(NSString*)notification withLabel:(NSString *)label withData:(NSDictionary *)data;
+
+-(void)downloadImage:(NSString*)image completionHandler:(ImagesResponseBlock) imageURLBlock errorHandler:(nMKNKErrorBlock) errorBlock;
 
 @end

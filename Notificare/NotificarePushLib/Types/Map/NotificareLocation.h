@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "NSString+FromBundle.h"
+#import "UIImage+FromBundle.h"
 
 @interface NotificareLocation : NSObject <MKAnnotation>
 

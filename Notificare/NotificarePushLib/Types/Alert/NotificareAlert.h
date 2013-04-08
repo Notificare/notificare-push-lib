@@ -12,6 +12,8 @@
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
+#import "NSString+FromBundle.h"
+#import "UIImage+FromBundle.h"
 
 @interface NotificareAlert : NSObject <NotificationType,UIAlertViewDelegate>
 

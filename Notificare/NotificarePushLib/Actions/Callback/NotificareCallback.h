@@ -13,6 +13,8 @@
 #import "NotificareEngine.h"
 #import "Action.h"
 #import "Notification.h"
+#import "NSString+FromBundle.h"
+#import "UIImage+FromBundle.h"
 
 @interface NotificareCallback : NSObject <ActionType,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITabBarDelegate,UITextViewDelegate,UITextFieldDelegate>
 

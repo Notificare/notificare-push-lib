@@ -11,6 +11,8 @@
 #import "ActionDelegate.h"
 #import "Action.h"
 #import "Notification.h"
+#import "NSString+FromBundle.h"
+#import "UIImage+FromBundle.h"
 
 @interface NotificareTelephone : NSObject <ActionType>
 

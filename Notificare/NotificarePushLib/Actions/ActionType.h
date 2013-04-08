@@ -10,6 +10,7 @@
 #import "Action.h"
 #import "ActionDelegate.h"
 
+
 @protocol ActionType <NSObject>
 
 -(void)setDelegate:(id<ActionDelegate>)delegate;

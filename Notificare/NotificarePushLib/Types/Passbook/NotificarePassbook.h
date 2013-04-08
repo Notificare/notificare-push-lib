@@ -12,13 +12,17 @@
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
 #import <PassKit/PassKit.h>
+#import "NSString+FromBundle.h"
+#import "UIImage+FromBundle.h"
 
-@interface NotificarePassbook : NSObject <NotificationType,MKMapViewDelegate,MKAnnotation>
+@interface NotificarePassbook : NSObject <NotificationType>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
+@property (strong, nonatomic) UIViewController * viewController;
+@property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
 @property (strong, nonatomic) PKPassLibrary * passLib;

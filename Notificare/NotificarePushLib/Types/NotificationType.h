@@ -10,6 +10,7 @@
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
 
+
 @protocol NotificationType <NSObject>
 
 -(void)setDelegate:(id<NotificationDelegate>)delegate;

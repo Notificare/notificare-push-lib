@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Action.h"
+#import "Content.h"
+#import "Attachment.h"
 #import "Notification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"

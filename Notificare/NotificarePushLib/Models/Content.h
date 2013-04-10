@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString * type;
 @property (strong, nonatomic) NSString * data;
+@property (strong, nonatomic) NSDictionary * dataDictionary;
 
 @end

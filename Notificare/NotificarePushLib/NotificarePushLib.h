@@ -13,6 +13,8 @@
 #import "SRWebSocket.h"
 #import "Notification.h"
 #import <CoreLocation/CoreLocation.h>
+#import <sys/utsname.h>
+
 
 #define Suppressor(Selector) \
 do { \
@@ -107,6 +109,15 @@ _Pragma("clang diagnostic pop") \
  *
  */
 @property (strong, nonatomic) NSString * deviceUUID;
+
+/*!
+ *  @abstract The device
+ *
+ *  @discussion
+ *	Returns the device 
+ *
+ */
+@property (strong, nonatomic) NSString * device;
 
 
 /*!

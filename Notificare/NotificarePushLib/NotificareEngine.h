@@ -18,8 +18,7 @@ typedef void (^ImagesResponseBlock)(NSMutableArray* imageURLs);
 @property (strong, nonatomic) NSString * apiSecret;
 @property (strong, nonatomic) NSString * deviceLatitude;
 @property (strong, nonatomic) NSString * deviceLongitude;
-
-
+@property (strong, nonatomic) NSString * device;
 
 
 

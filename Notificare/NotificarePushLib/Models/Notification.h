@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString * notificationMessage;
 @property (strong, nonatomic) NSString * notificationLatitude;
 @property (strong, nonatomic) NSString * notificationLongitude;
+@property (strong, nonatomic) NSString * notificationDistance;
 @property (strong, nonatomic) NSArray * notificationContent;
 @property (strong, nonatomic) NSArray * notificationActions;
 @property (strong, nonatomic) NSArray * notificationAttachments;

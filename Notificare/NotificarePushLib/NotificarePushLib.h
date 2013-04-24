@@ -192,5 +192,8 @@ _Pragma("clang diagnostic pop") \
 //Handle incoming push notifications
 - (void)openNotification:(NSDictionary *)notification;
 
+//Start CLManager to track last significant location change
+-(void)startLocationUpdates;
+
 @end
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <QuartzCore/QuartzCore.h>
+//#import <QuartzCore/QuartzCore.h>
 #import "Notification.h"
 #import "Action.h"
 #import "Content.h"
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) NSMutableArray *imagesArray;
 @property (assign, nonatomic) BOOL pageControlUsed;
-//@property (strong, nonatomic) NotificareEngine * notificareEngine;
+
 
 -(void)openNotification;
 

@@ -13,7 +13,7 @@
 #import "SRWebSocket.h"
 #import "Notification.h"
 #import <CoreLocation/CoreLocation.h>
-#import <sys/utsname.h>
+#import "NSString+Utils.h"
 
 
 #define Suppressor(Selector) \
@@ -119,6 +119,33 @@ _Pragma("clang diagnostic pop") \
  */
 @property (strong, nonatomic) NSString * device;
 
+/*!
+ *  @abstract The userID
+ *
+ *  @discussion
+ *	Returns the userID
+ *
+ */
+@property (strong, nonatomic) NSString * userID;
+
+
+/*!
+ *  @abstract The username
+ *
+ *  @discussion
+ *	Returns the username
+ *
+ */
+@property (strong, nonatomic) NSString * username;
+
+/*!
+ *  @abstract The notificationTypes
+ *
+ *  @discussion
+ *	Returns the notificationTypes
+ *
+ */
+@property (nonatomic, assign) UIRemoteNotificationType notificationTypes;
 
 /*!
  *  @abstract Boolean for checking if notification is open
@@ -169,7 +196,9 @@ _Pragma("clang diagnostic pop") \
  *  This method sets the notificare singleton  
  */
 - (void)launch;
-- (void)terminate;
+
+//Register device for apns with types
+- (void)registerForRemoteNotificationsTypes:(UIRemoteNotificationType)types;
 
 //Register device for apns
 - (void)registerDevice:(NSData *)token;

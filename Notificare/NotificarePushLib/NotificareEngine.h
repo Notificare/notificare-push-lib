@@ -9,7 +9,7 @@
 #import "NotificareMKNetworkEngine.h"
 
 typedef void (^NotificationResponseBlock)(NSDictionary*info);
-typedef void (^ImagesResponseBlock)(NSMutableArray* imageURLs);
+typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 @interface NotificareEngine : NotificareMKNetworkEngine
 
@@ -35,11 +35,13 @@ typedef void (^ImagesResponseBlock)(NSMutableArray* imageURLs);
 
 -(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 
+-(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params;
+
+-(NotificareMKNetworkOperation*)uploadFile:(NSData*)file completionHandler:(FileUploadResponseBlock)response errorHandler:(nMKNKErrorBlock) errorBlock;
 
 -(NotificareMKNetworkOperation*)executeAction:(NSString *)path withParams:(NSDictionary *)params withMethod:(NSString *)method isSSL:(BOOL)ssl;
 
--(NotificareMKNetworkOperation*)actionLog:(NSString*)notification withLabel:(NSString *)label withData:(NSDictionary *)data;
+-(NotificareMKNetworkOperation*)actionLog:(NSDictionary *)data;
 
--(void)downloadImage:(NSString*)image completionHandler:(ImagesResponseBlock) imageURLBlock errorHandler:(nMKNKErrorBlock) errorBlock;
 
 @end

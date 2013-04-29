@@ -21,6 +21,7 @@
 @interface NotificareImage : NSObject <NotificationType,UIScrollViewDelegate,UIPageViewControllerDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
+@property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (nonatomic, strong) Notification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;

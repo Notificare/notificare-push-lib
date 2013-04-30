@@ -214,12 +214,14 @@ _Pragma("clang diagnostic pop") \
 -(void)registerForWebsockets;
 -(void)unregisterForWebsockets;
 
-
 //Handle Badges & Tray
 - (void)updateBadge:(NSNumber *)badge;
 
 //Handle incoming push notifications
 - (void)openNotification:(NSDictionary *)notification;
+
+//Delete notification
+- (void)clearNotification:(NSString *)notification;
 
 //Start CLManager to track last significant location change
 -(void)startLocationUpdates;

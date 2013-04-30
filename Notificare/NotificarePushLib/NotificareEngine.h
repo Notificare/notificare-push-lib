@@ -21,7 +21,6 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 @property (strong, nonatomic) NSString * device;
 
 
-
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device;
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID;
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
@@ -34,6 +33,8 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 -(NotificareMKNetworkOperation*)updateDeviceLocation:(NSString*)device;
 
 -(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
+
+-(NotificareMKNetworkOperation*)clearNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 
 -(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params;
 

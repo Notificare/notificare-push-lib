@@ -34,6 +34,7 @@ _Pragma("clang diagnostic pop") \
 - (void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSData *)token;
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didCloseWebsocketConnection:(NSString *)reason;
 
 - (BOOL)notificarePushLib:(NotificarePushLib *)library shouldHandleNotification:(NSDictionary *)info;
 

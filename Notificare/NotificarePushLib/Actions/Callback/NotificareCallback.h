@@ -15,6 +15,7 @@
 #import "Notification.h"
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
+#import "NSDictionary+FromPlist.h"
 
 @interface NotificareCallback : NSObject <ActionType,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITabBarDelegate,UITextViewDelegate,UITextFieldDelegate>
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) NSString * message;
 @property (strong, nonatomic) NSData * media;
+@property (strong, nonatomic) NSString * filePath;
 @property (strong, nonatomic) UIActivityIndicatorView * activityIndicator;
 @property (strong, nonatomic) UITextView * messageView;
 @property (strong, nonatomic) UITextField * messageField;

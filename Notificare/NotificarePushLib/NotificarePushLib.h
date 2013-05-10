@@ -227,5 +227,8 @@ _Pragma("clang diagnostic pop") \
 //Start CLManager to track last significant location change
 -(void)startLocationUpdates;
 
+//Force a location update for a device
+- (void)updateLocation:(NSString*)device withLatitude:(float)latitude andLongitude:(float)longitude;
+
 @end
 

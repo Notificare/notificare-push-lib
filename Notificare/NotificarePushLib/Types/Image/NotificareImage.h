@@ -34,7 +34,7 @@
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) NSMutableArray *imagesArray;
 @property (assign, nonatomic) BOOL pageControlUsed;
-
+@property (strong, nonatomic) UIActivityIndicatorView * activityIndicator;
 
 -(void)openNotification;
 

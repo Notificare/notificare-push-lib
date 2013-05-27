@@ -18,5 +18,6 @@
 - (void)notificationType:(id<NotificationType>)type didOpenNotification:(Notification *)notification;
 - (void)notificationType:(id<NotificationType>)type didCloseNotification:(Notification *)notification;
 - (void)notificationType:(id<NotificationType>)type didFailToOpenNotification:(Notification *)notification;
+- (void)notificationType:(id<NotificationType>)type log:(NSDictionary *)info;
 
 @end

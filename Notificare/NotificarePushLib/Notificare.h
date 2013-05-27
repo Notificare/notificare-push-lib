@@ -24,6 +24,7 @@
 - (void)notificare:(Notificare *)library didOpenNotification:(Notification *)info;
 - (void)notificare:(Notificare *)library didCloseNotification:(Notification *)info;
 - (void)notificare:(Notificare *)library didFailToOpenNotification:(Notification *)info;
+- (void)notificare:(Notificare *)library log:(NSDictionary *)info;
 
 @end
 

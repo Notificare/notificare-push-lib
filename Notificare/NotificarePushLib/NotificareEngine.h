@@ -36,6 +36,10 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 -(NotificareMKNetworkOperation*)clearNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 
+-(NotificareMKNetworkOperation*)addTags:(NSArray *)tags forDevice:(NSString *)device completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
+
+-(NotificareMKNetworkOperation*)removeTag:(NSString *)tag forDevice:(NSString *)device completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
+
 -(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params;
 
 -(NotificareMKNetworkOperation*)uploadFile:(NSData*)file completionHandler:(FileUploadResponseBlock)response errorHandler:(nMKNKErrorBlock) errorBlock;

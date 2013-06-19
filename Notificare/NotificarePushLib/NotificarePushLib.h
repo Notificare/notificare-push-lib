@@ -24,6 +24,8 @@ Selector; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
+typedef void (^SuccessBlock)(NSDictionary * info);
+typedef void (^ErrorBlock)(NSError * error);
 
 @class NotificarePushLib;
 
@@ -221,14 +223,26 @@ _Pragma("clang diagnostic pop") \
 //Handle incoming push notifications
 - (void)openNotification:(NSDictionary *)notification;
 
+//Get Notifications
+- (void)getNotification:(NSString *)notificationID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+
 //Delete notification
 - (void)clearNotification:(NSString *)notification;
 
 //Start CLManager to track last significant location change
 -(void)startLocationUpdates;
 
-//Force a location update for a device
+//Register a location update for a device
 - (void)updateLocation:(NSString*)device withLatitude:(float)latitude andLongitude:(float)longitude;
+
+//Register a reply from an action
+- (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
+
+//Add Tags to a device
+- (void)addTags:(NSArray *)tags;
+
+//Remove Tag from a device
+- (void)removeTag:(NSString *)tag;
 
 @end
 

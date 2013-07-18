@@ -33,7 +33,7 @@ typedef void (^ErrorBlock)(NSError * error);
 
 @optional
 
-- (void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSData *)token;
+- (void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSString *)token;
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error;
 - (void)notificarePushLib:(NotificarePushLib *)library didCloseWebsocketConnection:(NSString *)reason;
@@ -240,9 +240,11 @@ typedef void (^ErrorBlock)(NSError * error);
 
 //Add Tags to a device
 - (void)addTags:(NSArray *)tags;
+- (void)addTags:(NSArray *)tags completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 //Remove Tag from a device
 - (void)removeTag:(NSString *)tag;
+- (void)removeTag:(NSString *)tag completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 @end
 

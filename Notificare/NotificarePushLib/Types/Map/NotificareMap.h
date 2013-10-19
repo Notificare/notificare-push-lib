@@ -19,7 +19,7 @@
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 
-@interface NotificareMap : NSObject <NotificationType, MKMapViewDelegate,MKAnnotation,UIActionSheetDelegate>
+@interface NotificareMap : NSObject <NotificationType,MKMapViewDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;

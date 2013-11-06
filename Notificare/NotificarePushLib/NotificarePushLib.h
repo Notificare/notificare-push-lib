@@ -5,6 +5,8 @@
 //  Created by Joel Oliveira on 11/25/12.
 //  Copyright (c) 2012 Notificare. All rights reserved.
 //
+//
+//
 
 #import "NotificareEngine.h"
 #import "NSData+Hex.h"
@@ -57,13 +59,18 @@ typedef void (^ErrorBlock)(NSError * error);
 @interface NotificarePushLib : NSObject <SRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate>
 
 /*!
- The delegate to call on results
+ *  @abstract Public delegate to handle Notificare events
+ *  @property NotificarePushLibDelegate
+ *
+ *  @discussion
+ *	Returns the operation's method type
+ *
  */
 @property (nonatomic, assign) id <NotificarePushLibDelegate> delegate;
 
 
 /*!
- *  @abstract The Noticare engine
+ *  @abstract The Noticare network requests class
  *  @property NotificareEngine
  *
  *  @discussion
@@ -178,7 +185,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @abstract Location Manager
  *
  *  @discussion
- *	Handles the Core location updates
+ *	Core Location Manager that handles significant change updates
  *
  */
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -193,58 +200,187 @@ typedef void (^ErrorBlock)(NSError * error);
 +(NotificarePushLib*)shared;
 
 /*!
- *  @abstract The internal request object's method type
+ *  @abstract Initial setup
  *
  *  @discussion
- *  This method sets the notificare singleton  
+ *  Initializes, checks and retrieves memory data
  */
 - (void)launch;
 
-//Register device for apns with types
+/*!
+ *  @abstract Register for APNS
+ *
+ *  @discussion
+ *  Registers for APNS
+ */
 - (void)registerForRemoteNotificationsTypes:(UIRemoteNotificationType)types;
 
-//Register device for apns
+/*!
+ *  @abstract Handle didFinishLaunchingWithOptions notifications
+ *
+ *  @discussion
+ *  Handles notifications opened from the background
+ */
+- (void)handleOptions:(NSDictionary *)options;
+
+/*!
+ *  @abstract Register Device Anonymously
+ *
+ *  @discussion
+ *  Registers the APNS token from Apple anonymously
+ *  @seealso
+ *  registerDevice:withUserID:
+ */
 - (void)registerDevice:(NSData *)token;
+/*!
+ *  @abstract Register Device with ID
+ *
+ *  @discussion
+ *  Registers the APNS token from Apple by creating a user profile with any string
+ *  This allows the registrations of more than one device in one user profile
+ *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  @seealso
+ *  registerDevice:withUserID:withUsername:
+ */
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID;
+/*!
+ *  @abstract Register Device with ID and name
+ *
+ *  @discussion
+ *  Registers the APNS token from Apple by creating a user profile with any string
+ *  This allows the registrations of more than one device in one user profile
+ *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  Adds another string that can be used to display name
+ */
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
 
-//Register Device for websockets
-- (void)registerDeviceForWebsockets:(NSString *)token;
-- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID;
-- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
 
-//Register Channel
+/*!
+ *  @abstract Register for WebSockets Notifications
+ *
+ *  @discussion
+ *  Registers with the WebSockets server that will assign this device a token.
+ *  It will trigger the didRegisterForWebsocketsNotifications with that token.
+ *  @seealso
+ *  unregisterForWebsockets:
+ */
 -(void)registerForWebsockets;
+/*!
+ *  @abstract Unregister for WebSockets Notifications
+ *
+ *  @discussion
+ *  Closes the WebSockets channel
+ */
 -(void)unregisterForWebsockets;
 
-//Handle Badges & Tray
+/*!
+ *  @abstract Register Device Anonymously for WebSockets
+ *
+ *  @discussion
+ *  Registers the WebSockets token from Notificare anonymously
+ *  @seealso
+ *  registerDeviceForWebsockets:withUserID
+ */
+- (void)registerDeviceForWebsockets:(NSString *)token;
+/*!
+ *  @abstract Register Device with ID for WebSockets
+ *
+ *  @discussion
+ *  Registers the APNS token from Apple by creating a user profile with any string
+ *  This allows the registrations of more than one device in one user profile
+ *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  @seealso
+ *  registerDevice:withUserID:withUsername:
+ */
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID;
+/*!
+ *  @abstract Register Device with ID
+ *
+ *  @discussion
+ *  Registers the APNS token from Apple by creating a user profile with any string
+ *  This allows the registrations of more than one device in one user profile
+ *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  @seealso
+ *  registerDevice:withUserID:withUsername:
+ */
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
+
+/*!
+ *  @abstract Unregister Device
+ *
+ *  @discussion
+ *  This method allows you to prevent a device from receive notifications without having to remove it from the provider
+ */
+- (void)unregisterDevice;
+
+
+/*!
+ *  @abstract Update Badge
+ *
+ *  @discussion
+ *  Update app badge, accepts a NSNumber
+ */
 - (void)updateBadge:(NSNumber *)badge;
 
-//Handle incoming push notifications
+/*!
+ *  @abstract Open notification
+ *
+ *  @discussion
+ *  Displays text or rich content notifications. Usually used in the delegate didReceiveRemoteNotification
+ *  @seealso
+ *  getNotification:completionHandler:errorHandler:
+ */
 - (void)openNotification:(NSDictionary *)notification;
 
-//Get Notifications
+/*!
+ *  @abstract Get Notification
+ *
+ *  @discussion
+ *  Fetches a notification's full payload. Usually used if you gonna handle the notifications yourself.
+ */
 - (void)getNotification:(NSString *)notificationID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
-//Delete notification
+/*!
+ *  @abstract Delete Notification
+ *
+ *  @discussion
+ *  Deletes a notification. Should be used if you want to remove a notification from our system
+ */
 - (void)clearNotification:(NSString *)notification;
 
-//Start CLManager to track last significant location change
+/*!
+ *  @abstract Start Location Updates
+ *
+ *  @discussion
+ *  Starts a CLManager using significant changes updates
+ */
 -(void)startLocationUpdates;
 
-//Register a location update for a device
+/*!
+ *  @abstract Update Device's Location
+ *
+ *  @discussion
+ *  Fetches a notification's full payload. Usually used if you gonna handle the notifications yourself.
+ */
 - (void)updateLocation:(NSString*)device withLatitude:(float)latitude andLongitude:(float)longitude;
 
-//Register a reply from an action
+/*!
+ *  @abstract Reply action
+ *
+ *  @discussion
+ *  Register an action event manually. Usually needed when you handling notifications yourself and want to use the actions to register a certain user choice.
+ */
 - (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
 
 //Add Tags to a device
+- (void)getTags:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)addTags:(NSArray *)tags;
 - (void)addTags:(NSArray *)tags completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 //Remove Tag from a device
 - (void)removeTag:(NSString *)tag;
 - (void)removeTag:(NSString *)tag completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)clearTags:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 @end
 

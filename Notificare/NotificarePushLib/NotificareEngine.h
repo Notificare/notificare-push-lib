@@ -30,13 +30,19 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID;
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
 
+-(NotificareMKNetworkOperation*)unregisterDevice:(NSString*)device;
+
 -(NotificareMKNetworkOperation*)updateDeviceLocation:(NSString*)device;
 
 -(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 
 -(NotificareMKNetworkOperation*)clearNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 
+-(NotificareMKNetworkOperation*)getTags:(NSString *)deviceID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) error;
+
 -(NotificareMKNetworkOperation*)addTags:(NSArray *)tags forDevice:(NSString *)device completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
+
+-(NotificareMKNetworkOperation*)clearTags:(NSString *)deviceID completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) error;
 
 -(NotificareMKNetworkOperation*)removeTag:(NSString *)tag forDevice:(NSString *)device completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
 

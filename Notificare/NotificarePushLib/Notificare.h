@@ -35,6 +35,7 @@
 @property (strong, nonatomic) NSDictionary * theNotification;
 @property (strong, nonatomic) id <NotificationType> type;
 @property (strong, nonatomic) NotificareActions * notificareActions;
+@property (assign) BOOL displayMessage;
 
 -(void)handleNotification:(NSDictionary*)notification;
 -(void)handleNotificationObject:(Notification *)notification;

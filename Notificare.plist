@@ -18,6 +18,16 @@
 	<dict>
 		<key>APP_RUNS_ON_BACKGROUND</key>
 		<false/>
+		<key>IMAGES_SHARING</key>
+		<true/>
+		<key>BACKGROUND_COLOR</key>
+		<string>FF0000</string>
+		<key>TITLE_COLOR</key>
+		<string>0x000000</string>
+		<key>BUTTONS_TEXT_COLOR</key>
+		<string>0x000000</string>
+		<key>TEXTFIELD_BACKGROUND_COLOR</key>
+		<string>0xCCCCCC</string>
 	</dict>
 </dict>
 </plist>

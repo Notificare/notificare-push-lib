@@ -23,5 +23,7 @@
 @property (strong, nonatomic) NSArray * notificationContent;
 @property (strong, nonatomic) NSArray * notificationActions;
 @property (strong, nonatomic) NSArray * notificationAttachments;
+@property (strong, nonatomic) NSNumber * displayMessage;
+
 
 @end

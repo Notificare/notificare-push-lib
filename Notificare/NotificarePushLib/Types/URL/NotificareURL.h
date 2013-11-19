@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 
 

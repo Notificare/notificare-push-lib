@@ -164,6 +164,12 @@ typedef void (^ErrorBlock)(NSError * error);
 @property (assign) BOOL isOpen;
 
 /*!
+ *  @abstract Boolean for checking if notification is open
+ *
+ */
+@property (assign) BOOL displayMessage;
+
+/*!
  *  @abstract TAn array with notifications
  *
  *  @discussion

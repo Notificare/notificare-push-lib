@@ -26,6 +26,8 @@
 		<string>0x000000</string>
 		<key>BUTTONS_TEXT_COLOR</key>
 		<string>0x000000</string>
+		<key>TEXTFIELD_TEXT_COLOR</key>
+		<string>0x000000</string>
 		<key>TEXTFIELD_BACKGROUND_COLOR</key>
 		<string>0xCCCCCC</string>
 	</dict>

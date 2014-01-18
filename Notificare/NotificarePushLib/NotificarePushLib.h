@@ -53,6 +53,16 @@ typedef void (^ErrorBlock)(NSError * error);
 - (void)notificarePushLib:(NotificarePushLib *)library didNotExecuteAction:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSError *)error;
 
+- (void)notificarePushLib:(NotificarePushLib *)library didUpdateLocations:(NSArray *)locations;
+- (void)notificarePushLib:(NotificarePushLib *)library monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didStartMonitoringForRegion:(CLRegion *)region;
+- (void)notificarePushLib:(NotificarePushLib *)library didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region;
+- (void)notificarePushLib:(NotificarePushLib *)library didEnterRegion:(CLRegion *)region;
+- (void)notificarePushLib:(NotificarePushLib *)library didExitRegion:(CLRegion *)region;
+- (void)notificarePushLib:(NotificarePushLib *)library rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
+
+
 
 @end
 
@@ -195,6 +205,70 @@ typedef void (^ErrorBlock)(NSError * error);
  *
  */
 @property (strong, nonatomic) CLLocationManager *locationManager;
+
+/*!
+ *  @abstract Beacon Region
+ *
+ *  @discussion
+ *	A iBeacon region with UUID loaded from plist
+ *
+ */
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+
+/*!
+ *  @abstract Ranging flag
+ *  @discussion
+ *	A BOOL to flag when iBeacon is in range
+ */
+ 
+@property (nonatomic, assign) BOOL ranging;
+
+/*!
+ *  @abstract Application info
+ *
+ *  @discussion
+ *	Returns application's public
+ *
+ */
+@property (strong, nonatomic) NSDictionary * applicationInfo;
+
+/*!
+ *  @abstract Geo-fences
+ *
+ *  @discussion
+ *	Returns Regions being monitored
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * geofences;
+
+
+/*!
+ *  @abstract Beacons
+ *
+ *  @discussion
+ *	Returns Beacons being monitored
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * beacons;
+
+/*!
+ *  @abstract Log of entries in a region
+ *
+ *  @discussion
+ *	Returns an array of regions that were triggered by entry
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * stateEntries;
+
+/*!
+ *  @abstract Beacons
+ *
+ *  @discussion
+ *	Returns an array of beacons that were triggered by entry
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * stateBeacons;
+
 
 /*!
  *  @abstract The shared singleton implementation
@@ -387,6 +461,11 @@ typedef void (^ErrorBlock)(NSError * error);
 - (void)removeTag:(NSString *)tag;
 - (void)removeTag:(NSString *)tag completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)clearTags:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+
+//Manually start Beacons without a geofence
+- (void)startMonitoringBeaconRegion:(NSUUID *)uuid;
+- (void)startMonitoringBeaconRegion:(NSUUID *)uuid andMajor:(NSNumber *)major;
+- (void)startMonitoringBeaconRegion:(NSUUID *)uuid andMajor:(NSNumber *)major andMinor:(NSNumber *)minor;
 
 @end
 

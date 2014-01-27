@@ -21,10 +21,18 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 @property (strong, nonatomic) NSString * device;
 
 
+-(NotificareMKNetworkOperation*)registerDevice:(NSString*)device completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
+
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device;
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID;
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
 
+
+-(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
 
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device;
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID;

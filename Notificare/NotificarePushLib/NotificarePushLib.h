@@ -53,6 +53,8 @@ typedef void (^ErrorBlock)(NSError * error);
 - (void)notificarePushLib:(NotificarePushLib *)library didNotExecuteAction:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSError *)error;
 
+- (void)notificarePushLib:(NotificarePushLib *)library didFailWithError:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAuthorizationStatus:(NSDictionary *)status;
 - (void)notificarePushLib:(NotificarePushLib *)library didUpdateLocations:(NSArray *)locations;
 - (void)notificarePushLib:(NotificarePushLib *)library monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error;
 - (void)notificarePushLib:(NotificarePushLib *)library didStartMonitoringForRegion:(CLRegion *)region;
@@ -180,7 +182,7 @@ typedef void (^ErrorBlock)(NSError * error);
 @property (assign) BOOL displayMessage;
 
 /*!
- *  @abstract TAn array with notifications
+ *  @abstract An array with notifications to be displayed
  *
  *  @discussion
  *	Returns all queued notifications
@@ -308,10 +310,15 @@ typedef void (^ErrorBlock)(NSError * error);
  *
  *  @discussion
  *  Registers the APNS token from Apple anonymously
+ *  Consider using the method with the completion and error blocks if you want to make sure that you create tags or start location updates
+ *  only after successfully register a device token.
  *  @seealso
  *  registerDevice:withUserID:
  */
+
+
 - (void)registerDevice:(NSData *)token;
+- (void)registerDevice:(NSData *)token completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID
  *
@@ -319,10 +326,13 @@ typedef void (^ErrorBlock)(NSError * error);
  *  Registers the APNS token from Apple by creating a user profile with any string
  *  This allows the registrations of more than one device in one user profile
  *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  Consider using the method with the completion and error blocks if you want to make sure that you create tags or start location updates
+ *  only after successfully register a device token.
  *  @seealso
  *  registerDevice:withUserID:withUsername:
  */
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID;
+- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID and name
  *
@@ -330,10 +340,12 @@ typedef void (^ErrorBlock)(NSError * error);
  *  Registers the APNS token from Apple by creating a user profile with any string
  *  This allows the registrations of more than one device in one user profile
  *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  Consider using the method with the completion and error blocks if you want to make sure that you create tags or start location updates
+ *  only after successfully register a device token.
  *  Adds another string that can be used to display name
  */
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
-
+- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 /*!
  *  @abstract Register for WebSockets Notifications
@@ -358,10 +370,13 @@ typedef void (^ErrorBlock)(NSError * error);
  *
  *  @discussion
  *  Registers the WebSockets token from Notificare anonymously
+ *  Consider using the method with the completion and error blocks if you want to make sure that you create tags or start location updates
+ *  only after successfully register a device token.
  *  @seealso
  *  registerDeviceForWebsockets:withUserID
  */
 - (void)registerDeviceForWebsockets:(NSString *)token;
+- (void)registerDeviceForWebsockets:(NSString *)token completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID for WebSockets
  *
@@ -369,10 +384,13 @@ typedef void (^ErrorBlock)(NSError * error);
  *  Registers the APNS token from Apple by creating a user profile with any string
  *  This allows the registrations of more than one device in one user profile
  *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  Consider using the method with the completion and error blocks if you want to make sure that you create tags or start location updates
+ *  only after successfully register a device token.
  *  @seealso
  *  registerDevice:withUserID:withUsername:
  */
 - (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID;
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID
  *
@@ -380,10 +398,13 @@ typedef void (^ErrorBlock)(NSError * error);
  *  Registers the APNS token from Apple by creating a user profile with any string
  *  This allows the registrations of more than one device in one user profile
  *  You can also map this ID to your existing user ID if you eventually using any means of authentication
+ *  Consider using the method with the completion and error blocks if you want to make sure that you create tags or start location updates
+ *  only after successfully register a device token.
  *  @seealso
  *  registerDevice:withUserID:withUsername:
  */
 - (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 /*!
  *  @abstract Unregister Device
@@ -466,6 +487,16 @@ typedef void (^ErrorBlock)(NSError * error);
 - (void)startMonitoringBeaconRegion:(NSUUID *)uuid;
 - (void)startMonitoringBeaconRegion:(NSUUID *)uuid andMajor:(NSNumber *)major;
 - (void)startMonitoringBeaconRegion:(NSUUID *)uuid andMajor:(NSNumber *)major andMinor:(NSNumber *)minor;
+
+/*!
+ *  @abstract Open beacon content
+ *
+ *  @discussion
+ *  Displays text or rich content attached to that beacon. Usually used in the delegate didRangeBeacons
+ *  @seealso
+ *  getNotification:completionHandler:errorHandler:
+ */
+- (void)openBeacon:(NSDictionary *)beacon;
 
 @end
 

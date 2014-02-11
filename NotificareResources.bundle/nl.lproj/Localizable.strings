@@ -1,4 +1,10 @@
-"back" = "terug";
+"cancel" = "Cancel";
+
+"actions" = "Actions";
+
+"close" = "Close";
+
+"why_location_updates_text" = "We would like to use your location to easily provide you maps, directions, updates and alerts based on your location.";
 
 
 

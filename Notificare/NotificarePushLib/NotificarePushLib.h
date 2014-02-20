@@ -53,7 +53,7 @@ typedef void (^ErrorBlock)(NSError * error);
 - (void)notificarePushLib:(NotificarePushLib *)library didNotExecuteAction:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToExecuteAction:(NSError *)error;
 
-- (void)notificarePushLib:(NotificarePushLib *)library didFailWithError:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToStartLocationServiceWithError:(NSError *)error;
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAuthorizationStatus:(NSDictionary *)status;
 - (void)notificarePushLib:(NotificarePushLib *)library didUpdateLocations:(NSArray *)locations;
 - (void)notificarePushLib:(NotificarePushLib *)library monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error;
@@ -207,6 +207,34 @@ typedef void (^ErrorBlock)(NSError * error);
  *
  */
 @property (strong, nonatomic) CLLocationManager *locationManager;
+
+/*!
+ *  @abstract Last Locations
+ *
+ *  @discussion
+ *	A mutable array that holds lasts readings from Core Location
+ *
+ */
+@property (strong, nonatomic) NSMutableArray *lastLocations;
+
+/*!
+ *  @abstract Region Session Data
+ *
+ *  @discussion
+ *	A mutable dictionary that holds hold the enter/exit time and location updates
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * regionSession;
+
+
+/*!
+ *  @abstract Beacon Session Data
+ *
+ *  @discussion
+ *	A mutable dictionary that holds hold the range time in each of the beacons in range
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * beaconSession;
 
 /*!
  *  @abstract Beacon Region

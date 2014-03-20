@@ -18,4 +18,5 @@
 -(void)setNotificareActions:(NotificareActions *)notificareActions;
 -(void)openNotification;
 
+
 @end

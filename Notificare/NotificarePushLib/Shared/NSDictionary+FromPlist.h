@@ -12,4 +12,6 @@
 
 +(NSDictionary *)getConfiguration;
 
++(NSDictionary *)getTags;
+
 @end

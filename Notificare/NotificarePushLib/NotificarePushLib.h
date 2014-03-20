@@ -438,7 +438,8 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @abstract Unregister Device
  *
  *  @discussion
- *  This method allows you to prevent a device from receive notifications without having to remove it from the provider
+ *  This method allows you to prevent Notificare from sending notifications
+ *  If you also wish to remove the device from APNS also call [[UIApplication sharedApplication] unregisterForRemoteNotifications]
  */
 - (void)unregisterDevice;
 
@@ -481,7 +482,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @abstract Start Location Updates
  *
  *  @discussion
- *  Starts a CLManager using significant changes updates
+ *  Starts the location manager for geo-targeting, geo-fencing and beacons
  */
 -(void)startLocationUpdates;
 
@@ -489,19 +490,23 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @abstract Update Device's Location
  *
  *  @discussion
- *  Fetches a notification's full payload. Usually used if you gonna handle the notifications yourself.
+ *  Update the device's location manually
  */
 - (void)updateLocation:(NSString*)device withLatitude:(float)latitude andLongitude:(float)longitude;
-
 /*!
- *  @abstract Reply action
+ *  @abstract Stop Location Updates
  *
  *  @discussion
- *  Register an action event manually. Usually needed when you handling notifications yourself and want to use the actions to register a certain user choice.
+ *  Stops the location manager from collecting location updates
  */
-- (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
+-(void)stopLocationUpdates;
 
-//Add Tags to a device
+/*!
+ *  @abstract Tags
+ *
+ *  @discussion
+ *  Tags are used to easily categorize devices according to any kpi, point or area of 
+ */
 - (void)getTags:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)addTags:(NSArray *)tags;
 - (void)addTags:(NSArray *)tags completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
@@ -525,6 +530,23 @@ typedef void (^ErrorBlock)(NSError * error);
  *  getNotification:completionHandler:errorHandler:
  */
 - (void)openBeacon:(NSDictionary *)beacon;
+
+/*!
+ *  @abstract Open User Preferences
+ *
+ *  @discussion
+ *  Displays a view with for user control of notifications, location updates and key-value pairs inserted in NotificareTags.plist
+ */
+- (void)openUserPreferences;
+
+/*!
+ *  @abstract Reply action
+ *
+ *  @discussion
+ *  Register an action event manually. Usually needed when you handling notifications yourself and want to use the actions to register a certain user choice.
+ */
+- (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
+
 
 @end
 

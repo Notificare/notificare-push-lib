@@ -4,8 +4,14 @@
 
 "close" = "Close";
 
+"send" = "Send";
+
 "why_location_updates_text" = "We would like to use your location to easily provide you maps, directions, updates and alerts based on your location.";
 
+"pref_header_notifications" = "Notifications";
 
+"tag_something" = "Receive updates from category X";
+"tag_something2" = "Receive udpates from category Y";
 
-
+"pref_header_location_services" = "Location Services";
+"pref_location_services" = "Allow us to collect your location and enhance certains areas of this app like search, maps and relevant notifications";

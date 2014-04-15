@@ -22,5 +22,6 @@
 @property (nonatomic, strong) NotificareActions * notificareActions;
 
 -(void)openNotification;
+-(void)sendData:(NSArray *)data;
 
 @end

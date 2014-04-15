@@ -93,6 +93,8 @@ typedef void (^ErrorBlock)(NSError * error);
 
 @property (strong, nonatomic) Notificare * notificare;
 
+@property (strong, nonatomic) Notificare * currentNotificare;
+
 @property (strong, nonatomic) NotificareActions * notificareActions;
 
 /*!
@@ -180,6 +182,12 @@ typedef void (^ErrorBlock)(NSError * error);
  *
  */
 @property (assign) BOOL displayMessage;
+
+/*!
+ *  @abstract CLRegion Object for the current Fence
+ *
+ */
+@property (strong, nonatomic) CLRegion * currentFence;
 
 /*!
  *  @abstract An array with notifications to be displayed
@@ -530,7 +538,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  getNotification:completionHandler:errorHandler:
  */
 - (void)openBeacon:(NSDictionary *)beacon;
-
+- (void)openBeacons;
 /*!
  *  @abstract Open User Preferences
  *

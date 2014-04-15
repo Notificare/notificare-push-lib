@@ -30,5 +30,6 @@
 
 
 -(void)openNotification;
+-(void)sendData:(NSArray *)data;
 
 @end

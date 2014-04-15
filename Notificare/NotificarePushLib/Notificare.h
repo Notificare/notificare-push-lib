@@ -40,5 +40,6 @@
 
 -(void)handleNotification:(NSDictionary*)notification;
 -(void)handleNotificationObject:(Notification *)notification;
+-(void)sendData:(NSArray *)data;
 
 @end

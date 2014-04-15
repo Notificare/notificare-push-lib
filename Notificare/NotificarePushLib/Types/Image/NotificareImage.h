@@ -37,6 +37,6 @@
 @property (strong, nonatomic) UIActivityIndicatorView * activityIndicator;
 
 -(void)openNotification;
-
+-(void)sendData:(NSArray *)data;
 
 @end

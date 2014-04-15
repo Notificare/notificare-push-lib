@@ -27,5 +27,6 @@
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 
 -(void)openNotification;
+-(void)sendData:(NSArray *)data;
 
 @end

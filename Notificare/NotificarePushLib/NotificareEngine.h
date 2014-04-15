@@ -60,6 +60,8 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 -(NotificareMKNetworkOperation*)trigger:(NSString*)device forDevice:(NSString *)device andRegion:(NSString *)region;
 
+-(NotificareMKNetworkOperation*)trigger:(NSString*)device forDevice:(NSString *)device andBeacon:(NSString *)beacon;
+
 -(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params;
 
 -(NotificareMKNetworkOperation*)uploadFile:(NSData*)file completionHandler:(FileUploadResponseBlock)response errorHandler:(nMKNKErrorBlock) errorBlock;

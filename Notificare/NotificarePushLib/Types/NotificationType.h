@@ -17,6 +17,7 @@
 -(void)setNotification:(Notification *)notification;
 -(void)setNotificareActions:(NotificareActions *)notificareActions;
 -(void)openNotification;
+-(void)sendData:(NSArray *)data;
 
 
 @end

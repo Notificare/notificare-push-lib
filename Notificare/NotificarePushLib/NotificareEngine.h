@@ -70,7 +70,7 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 -(NotificareMKNetworkOperation*)actionLog:(NSDictionary *)data;
 
--(NotificareMKNetworkOperation*)getBeacons:(NSNumber *)major completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)getBeacons:(NSString *)region completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
 
 -(NotificareMKNetworkOperation*)getApplicationInfo:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
 

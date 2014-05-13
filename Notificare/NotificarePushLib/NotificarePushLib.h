@@ -178,6 +178,12 @@ typedef void (^ErrorBlock)(NSError * error);
 @property (assign) BOOL isOpen;
 
 /*!
+ *  @abstract Boolean for checking if position is being fixed
+ *
+ */
+@property (assign) BOOL isFixingGPS;
+
+/*!
  *  @abstract Boolean for checking if notification is open
  *
  */

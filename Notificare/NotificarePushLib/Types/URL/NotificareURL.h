@@ -24,9 +24,14 @@
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;
+@property (strong, nonatomic) UIWebView * webView;
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
+@property (strong, nonatomic) UIBarButtonItem * backButton;
+@property (strong, nonatomic) UIBarButtonItem * forwardButton;
+@property (strong, nonatomic) UIBarButtonItem * refreshButton;
+@property (strong, nonatomic) UIToolbar * toolbar;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 

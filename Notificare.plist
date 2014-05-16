@@ -13,7 +13,7 @@
 	<key>DEVELOPMENT</key>
 	<true/>
 	<key>RESOURCE_BUNDLE</key>
-	<string>NotificareResources.bundle</string>
+	<string>DefaultTheme.bundle</string>
 	<key>OPTIONS</key>
 	<dict>
 		<key>APP_RUNS_ON_BACKGROUND</key>
@@ -21,15 +21,21 @@
 		<key>IMAGES_SHARING</key>
 		<true/>
 		<key>BACKGROUND_COLOR</key>
-		<string>FF0000</string>
+		<string>FFFFFF</string>
+		<key>TOOLBAR_COLOR</key>
+		<string>FFFFFF</string>
+		<key>NAVBAR_COLOR</key>
+		<string>FFFFFF</string>
+		<key>ACTIVITY_INDICATOR_COLOR</key>
+		<string>000000</string>
 		<key>TITLE_COLOR</key>
-		<string>0x000000</string>
+		<string>000000</string>
 		<key>BUTTONS_TEXT_COLOR</key>
-		<string>0x000000</string>
+		<string>000000</string>
 		<key>TEXTFIELD_TEXT_COLOR</key>
-		<string>0x000000</string>
+		<string>000000</string>
 		<key>TEXTFIELD_BACKGROUND_COLOR</key>
-		<string>0xCCCCCC</string>
+		<string>E5E5EA</string>
 	</dict>
 </dict>
 </plist>

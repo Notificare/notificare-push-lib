@@ -1,0 +1,21 @@
+/* Navigation Bar Items and general UI */
+"cancel" = "Annuleer";
+"actions" = "Acties";
+"close" = "Bericht Sluiten";
+
+/* Location Services purpose text (after iOS6 this has to be included in the app's .plist with the key NSLocationUsageDescription and translated in InfoPlist.strings) */
+"why_location_updates_text" = "We willen je locatie gebruiken om je kaarten en richtingaanwijzingen te geven en je updates en waarschuwingen te sturen gebaseerd op jouw locatie.";
+
+/* Predefined tags in User Preferences, insert more for any key you add to NotificareTags.plist  */
+"tag_something" = "Tekst die wordt weergegeven in de gebruikersinstellingen";
+"tag_something2" = "Tekst die wordt weergegeven in de gebruikersinstellingen";
+
+/* User Prefences headers & text */
+"pref_header_notifications" = "Notificaties";
+"pref_header_location_services" = "Locatie Diensten";
+"pref_location_services" = "Houdt mijn locatie bij om locatiegebonden richtingaanwijzingen, updates en waarschuwingen te ontvangen.";
+
+/* Rate Dialog text */
+"not_now_rate_later" = "Niet nu, herinner mij later";
+"yes_rate_now" = "Ja, ik geef nu een review";
+"no_thanks" = "Nee, bedankt";

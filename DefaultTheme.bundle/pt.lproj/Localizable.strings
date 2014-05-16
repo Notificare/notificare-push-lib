@@ -1,0 +1,21 @@
+/* Navigation Bar Items and general UI */
+"cancel" = "Cancelar";
+"actions" = "Acções";
+"close" = "Fechar Mensagem";
+
+/* Location Services purpose text (after iOS6 this has to be included in the app's .plist with the key NSLocationUsageDescription and translated in InfoPlist.strings) */
+"why_location_updates_text" = "Gostariamos de usar a sua localização para facilmente lhe apresentar mapas, direcções, alterações ou simplesmente enviar-lhe avisos com base na sua localização.";
+
+/* Predefined tags in User Preferences, insert more for any key you add to NotificareTags.plist  */
+"tag_something" = "Texto usado pelas Tags em User Prefences";
+"tag_something2" = "Texto usado pelas Tags em User Prefences";
+
+/* User Prefences headers & text */
+"pref_header_notifications" = "Notificações";
+"pref_header_location_services" = "Serviços de Localização";
+"pref_location_services" = "Use a minha localização para poder receber direcções e/ou receber alertas baseados na minha posição geográfica";
+
+/* Rate Dialog text */
+"not_now_rate_later" = "Agora não, lembre-me mais tarde";
+"yes_rate_now" = "Sim, gostaria de faze-lo agora";
+"no_thanks" = "Não, Obrigado";

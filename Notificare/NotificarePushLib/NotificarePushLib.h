@@ -16,7 +16,7 @@
 #import "Notification.h"
 #import <CoreLocation/CoreLocation.h>
 #import "NSString+Utils.h"
-
+#import "NotificareNXOAuth2.h"
 
 #define Suppressor(Selector) \
 do { \
@@ -64,6 +64,10 @@ typedef void (^ErrorBlock)(NSError * error);
 - (void)notificarePushLib:(NotificarePushLib *)library rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error;
 - (void)notificarePushLib:(NotificarePushLib *)library didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
 
+- (void)notificarePushLib:(NotificarePushLib *)library didChangeAccountNotification:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToRequestAccessNotification:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveActivationToken:(NSString *)token;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveResetPasswordToken:(NSString *)token;
 
 
 @end
@@ -126,6 +130,15 @@ typedef void (^ErrorBlock)(NSError * error);
 @property (strong, nonatomic) NSString * deviceToken;
 
 /*!
+ *  @abstract The raw device Token
+ *
+ *  @discussion
+ *	Returns the raw device Token
+ *
+ */
+@property (strong, nonatomic) NSData * deviceTokenData;
+
+/*!
  *  @abstract The device UUID
  *
  *  @discussion
@@ -151,6 +164,15 @@ typedef void (^ErrorBlock)(NSError * error);
  *
  */
 @property (strong, nonatomic) NSString * userID;
+
+/*!
+ *  @abstract The oAuth account
+ *
+ *  @discussion
+ *	Returns the account object
+ *
+ */
+@property (strong, nonatomic) NotificareNXOAuth2Account * account;
 
 
 /*!
@@ -359,7 +381,7 @@ typedef void (^ErrorBlock)(NSError * error);
  */
 
 
-- (void)registerDevice:(NSData *)token;
+- (void)registerDevice:(NSData *)token __attribute__((deprecated("use registerDevice:completionHandler:errorHandler: instead.")));
 - (void)registerDevice:(NSData *)token completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID
@@ -373,7 +395,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @seealso
  *  registerDevice:withUserID:withUsername:
  */
-- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID;
+- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID __attribute__((deprecated("use registerDevice:withUserID:completionHandler:errorHandler: instead.")));
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID and name
@@ -386,7 +408,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  only after successfully register a device token.
  *  Adds another string that can be used to display name
  */
-- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
+- (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username __attribute__((deprecated("use registerDevice:withUserID:withUsername:completionHandler:errorHandler: instead.")));
 - (void)registerDevice:(NSData *)token withUserID:(NSString *)userID withUsername:(NSString *)username completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 /*!
@@ -417,7 +439,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @seealso
  *  registerDeviceForWebsockets:withUserID
  */
-- (void)registerDeviceForWebsockets:(NSString *)token;
+- (void)registerDeviceForWebsockets:(NSString *)token __attribute__((deprecated("use registerDeviceForWebsockets:completionHandler:errorHandler: instead.")));
 - (void)registerDeviceForWebsockets:(NSString *)token completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID for WebSockets
@@ -431,7 +453,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @seealso
  *  registerDevice:withUserID:withUsername:
  */
-- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID;
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID __attribute__((deprecated("use registerDeviceForWebsockets:withUserID:completionHandler:errorHandler: instead.")));
 - (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Register Device with ID
@@ -445,7 +467,7 @@ typedef void (^ErrorBlock)(NSError * error);
  *  @seealso
  *  registerDevice:withUserID:withUsername:
  */
-- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username;
+- (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username __attribute__((deprecated("use registerDeviceForWebsockets:withUserID:withUsername:completionHandler:errorHandler: instead.")));
 - (void)registerDeviceForWebsockets:(NSString *)token withUserID:(NSString *)userID withUsername:(NSString *)username completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
 /*!
@@ -561,6 +583,23 @@ typedef void (^ErrorBlock)(NSError * error);
  */
 - (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
 
+/*!
+ *  @abstract OAuth2 Methods
+ *
+ *  @discussion
+ *  When enabled in the dashboard (this feature is an add-on, activation done in your dashboard) you can allow your users to create, authenticate and manage their own user profiles.
+ */
+
+- (void)createAccount:(NSDictionary *)params completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+- (void)resetPassword:(NSDictionary *)params withToken:(NSString *)token completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+- (void)sendPassword:(NSDictionary *)params completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+- (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)fetchAccountDetails:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)generateEmailToken:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)changePassword:(NSDictionary *)params completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)handleOpenURL:(NSURL *)url;
+- (void)logoutAccount;
+- (BOOL)isSignedIn;
 
 @end
 

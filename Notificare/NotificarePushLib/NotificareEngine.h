@@ -76,5 +76,9 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 -(NotificareMKNetworkOperation*)getApplicationInfo:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
 
+-(NotificareMKNetworkOperation*)createAccount:(NSDictionary *)params completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)resetPassword:(NSDictionary *)params withToken:(NSString *)token completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)sendPassword:(NSDictionary *)params completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
+
 
 @end

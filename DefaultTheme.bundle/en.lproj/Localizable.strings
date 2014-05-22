@@ -19,3 +19,5 @@
 "not_now_rate_later" = "Not now, remember me later";
 "yes_rate_now" = "Yes, I'll rate now";
 "no_thanks" = "No, Thanks";
+
+"pass_already_in_passbook" = "This pass is already in your Passbook.";

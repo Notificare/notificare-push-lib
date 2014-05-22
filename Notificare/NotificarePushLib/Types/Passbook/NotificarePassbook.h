@@ -7,15 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <PassKit/PassKit.h>
 #import "Notification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
-#import <PassKit/PassKit.h>
+
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 
-@interface NotificarePassbook : NSObject <NotificationType>
+#import "Notification.h"
+#import "Action.h"
+#import "Content.h"
+#import "Attachment.h"
+
+
+@interface NotificarePassbook : NSObject <NotificationType,PKAddPassesViewControllerDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) Notification * notification;
@@ -26,6 +33,7 @@
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
 @property (strong, nonatomic) PKPassLibrary * passLib;
+@property (strong, nonatomic) PKPass * pass;
 @property (strong, nonatomic) UIButton * button;
 
 

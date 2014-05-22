@@ -19,3 +19,5 @@
 "not_now_rate_later" = "Agora não, lembre-me mais tarde";
 "yes_rate_now" = "Sim, gostaria de faze-lo agora";
 "no_thanks" = "Não, Obrigado";
+
+"pass_already_in_passbook" = "Este coupon já se encontra no seu Passbook";

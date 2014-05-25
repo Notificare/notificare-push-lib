@@ -29,6 +29,17 @@ _Pragma("clang diagnostic pop") \
 typedef void (^SuccessBlock)(NSDictionary * info);
 typedef void (^ErrorBlock)(NSError * error);
 
+typedef enum  {
+    kNotificareErrorCodeBadRequest = 400,
+    kNotificareErrorCodeUnauthorized = 401,
+    kNotificareErrorCodeForbidden = 403,
+    kNotificareErrorCodeNotFound = 404,
+    kNotificareErrorCodeConflict = 409,
+    kNotificareErrorCodeUnprocessableEntity = 422,
+    kNotificareErrorCodeInternalServerError = 500,
+    kNotificareErrorCodeGatewayTimeout = 504
+} kNotificareErrorCode;
+
 @class NotificarePushLib;
 
 @protocol NotificarePushLibDelegate <NSObject>

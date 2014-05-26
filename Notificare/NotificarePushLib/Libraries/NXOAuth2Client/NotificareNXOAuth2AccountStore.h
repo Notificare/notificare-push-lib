@@ -52,9 +52,9 @@ extern NSString * const nkNXOAuth2AccountStoreAccountType;
 
 #pragma mark Handler
 
-typedef nNXOAuth2TrustMode(^NXOAuth2TrustModeHandler)(NotificareNXOAuth2Connection *connection, NSString *hostname);
-typedef NSArray *(^NXOAuth2TrustedCertificatesHandler)(NSString *hostname);
-typedef void(^NXOAuth2PreparedAuthorizationURLHandler)(NSURL *preparedURL);
+typedef nNXOAuth2TrustMode(^nNXOAuth2TrustModeHandler)(NotificareNXOAuth2Connection *connection, NSString *hostname);
+typedef NSArray *(^nNXOAuth2TrustedCertificatesHandler)(NSString *hostname);
+typedef void(^nNXOAuth2PreparedAuthorizationURLHandler)(NSURL *preparedURL);
 
 
 #pragma mark -
@@ -110,17 +110,17 @@ typedef void(^NXOAuth2PreparedAuthorizationURLHandler)(NSURL *preparedURL);
 
 #pragma Trust Mode Handler
 
-- (void)setTrustModeHandlerForAccountType:(NSString *)accountType block:(NXOAuth2TrustModeHandler)handler;
-- (NXOAuth2TrustModeHandler)trustModeHandlerForAccountType:(NSString *)accountType;
+- (void)setTrustModeHandlerForAccountType:(NSString *)accountType block:(nNXOAuth2TrustModeHandler)handler;
+- (nNXOAuth2TrustModeHandler)trustModeHandlerForAccountType:(NSString *)accountType;
 
-- (void)setTrustedCertificatesHandlerForAccountType:(NSString *)accountType block:(NXOAuth2TrustedCertificatesHandler)handler;
-- (NXOAuth2TrustedCertificatesHandler)trustedCertificatesHandlerForAccountType:(NSString *)accountType;
+- (void)setTrustedCertificatesHandlerForAccountType:(NSString *)accountType block:(nNXOAuth2TrustedCertificatesHandler)handler;
+- (nNXOAuth2TrustedCertificatesHandler)trustedCertificatesHandlerForAccountType:(NSString *)accountType;
 
 
 #pragma mark Manage Accounts
 
 - (void)requestAccessToAccountWithType:(NSString *)accountType;
-- (void)requestAccessToAccountWithType:(NSString *)accountType withPreparedAuthorizationURLHandler:(NXOAuth2PreparedAuthorizationURLHandler)aPreparedAuthorizationURLHandler;
+- (void)requestAccessToAccountWithType:(NSString *)accountType withPreparedAuthorizationURLHandler:(nNXOAuth2PreparedAuthorizationURLHandler)aPreparedAuthorizationURLHandler;
 - (void)requestAccessToAccountWithType:(NSString *)accountType username:(NSString *)username password:(NSString *)password;
 - (void)requestAccessToAccountWithType:(NSString *)accountType assertionType:(NSURL *)assertionType assertion:(NSString *)assertion;
 - (void)requestClientCredentialsAccessWithType:(NSString *)accountType;

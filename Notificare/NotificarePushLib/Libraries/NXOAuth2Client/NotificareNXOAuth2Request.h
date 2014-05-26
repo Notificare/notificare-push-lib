@@ -34,8 +34,8 @@
            onResource:(NSURL *)resource
       usingParameters:(NSDictionary *)parameters
           withAccount:(NotificareNXOAuth2Account *)account
-  sendProgressHandler:(NXOAuth2ConnectionSendingProgressHandler)progressHandler
-      responseHandler:(NXOAuth2ConnectionResponseHandler)responseHandler;
+  sendProgressHandler:(nNXOAuth2ConnectionSendingProgressHandler)progressHandler
+      responseHandler:(nNXOAuth2ConnectionResponseHandler)responseHandler;
 
 
 #pragma mark Lifecycle
@@ -59,8 +59,8 @@
 
 #pragma mark Perform Request
 
-- (void)performRequestWithSendingProgressHandler:(NXOAuth2ConnectionSendingProgressHandler)progressHandler
-                                 responseHandler:(NXOAuth2ConnectionResponseHandler)responseHandler;
+- (void)performRequestWithSendingProgressHandler:(nNXOAuth2ConnectionSendingProgressHandler)progressHandler
+                                 responseHandler:(nNXOAuth2ConnectionResponseHandler)responseHandler;
 
 
 #pragma mark Cancel

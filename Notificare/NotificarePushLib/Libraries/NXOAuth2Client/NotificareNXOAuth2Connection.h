@@ -42,12 +42,12 @@
 
 
 
-extern NSString * const NXOAuth2ConnectionDidStartNotification;
-extern NSString * const NXOAuth2ConnectionDidEndNotification;
+extern NSString * const nNXOAuth2ConnectionDidStartNotification;
+extern NSString * const nNXOAuth2ConnectionDidEndNotification;
 
 
-typedef void(^NXOAuth2ConnectionResponseHandler)(NSURLResponse *response, NSData *responseData, NSError *error);
-typedef void(^NXOAuth2ConnectionSendingProgressHandler)(unsigned long long bytesSend, unsigned long long bytesTotal);
+typedef void(^nNXOAuth2ConnectionResponseHandler)(NSURLResponse *response, NSData *responseData, NSError *error);
+typedef void(^nNXOAuth2ConnectionSendingProgressHandler)(unsigned long long bytesSend, unsigned long long bytesTotal);
 
 
 @interface NotificareNXOAuth2Connection : NSObject {
@@ -67,8 +67,8 @@ typedef void(^NXOAuth2ConnectionSendingProgressHandler)(unsigned long long bytes
     
     NSObject<NotificareNXOAuth2ConnectionDelegate>    *__unsafe_unretained delegate;    // assigned
     
-    NXOAuth2ConnectionResponseHandler responseHandler;
-    NXOAuth2ConnectionSendingProgressHandler sendingProgressHandler;
+    nNXOAuth2ConnectionResponseHandler responseHandler;
+    nNXOAuth2ConnectionSendingProgressHandler sendingProgressHandler;
     
     BOOL                sendConnectionDidEndNotification;
     
@@ -90,8 +90,8 @@ typedef void(^NXOAuth2ConnectionSendingProgressHandler)(unsigned long long bytes
 - (id) initWithRequest:(NSMutableURLRequest *)request
      requestParameters:(NSDictionary *)requestParameters
            oauthClient:(NotificareNXOAuth2Client *)client
-sendingProgressHandler:(NXOAuth2ConnectionSendingProgressHandler)sendingProgressHandler
-       responseHandler:(NXOAuth2ConnectionResponseHandler)responseHandler;
+sendingProgressHandler:(nNXOAuth2ConnectionSendingProgressHandler)sendingProgressHandler
+       responseHandler:(nNXOAuth2ConnectionResponseHandler)responseHandler;
 
 - (id)initWithRequest:(NSMutableURLRequest *)request
     requestParameters:(NSDictionary *)requestParameters

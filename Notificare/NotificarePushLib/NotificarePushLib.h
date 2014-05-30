@@ -216,6 +216,7 @@ typedef enum  {
  */
 @property (assign) BOOL isFixingGPS;
 
+
 /*!
  *  @abstract Boolean for checking if notification is open
  *
@@ -291,6 +292,16 @@ typedef enum  {
  *
  */
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+
+/*!
+ *  @abstract shouldAllwaysLogBeacons flag
+ *  @discussion
+ *	A BOOL to flag the library to log all the beacons changes in range and location
+ *  This will result in an increase on storage since it will save the location and proximity when beacons are ranging
+ *  Leaving this option out will just log each beacon once if found in range.
+ */
+
+@property (nonatomic, assign) BOOL shouldAllwaysLogBeacons;
 
 /*!
  *  @abstract Ranging flag
@@ -610,7 +621,7 @@ typedef enum  {
 - (void)changePassword:(NSDictionary *)params completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)handleOpenURL:(NSURL *)url;
 - (void)logoutAccount;
-- (BOOL)isSignedIn;
+- (BOOL)isLoggedIn;
 
 @end
 

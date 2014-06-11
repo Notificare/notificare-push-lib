@@ -301,7 +301,7 @@ typedef enum  {
  *  Leaving this option out will just log each beacon once if found in range.
  */
 
-@property (nonatomic, assign) BOOL shouldAllwaysLogBeacons;
+@property (nonatomic, assign) BOOL shouldAlwaysLogBeacons;
 
 /*!
  *  @abstract Ranging flag
@@ -617,8 +617,10 @@ typedef enum  {
 - (void)sendPassword:(NSDictionary *)params completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
 - (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)fetchAccountDetails:(SuccessBlock)info errorHandler:(ErrorBlock)error;
-- (void)generateEmailToken:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)generateEmailToken:(SuccessBlock)info errorHandler:(ErrorBlock)error __attribute__((deprecated("use generateAccessToken:completionHandler:errorHandler: instead.")));
+- (void)generateAccessToken:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)changePassword:(NSDictionary *)params completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)checkAccount:(NSString *)user completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)handleOpenURL:(NSURL *)url;
 - (void)logoutAccount;
 - (BOOL)isLoggedIn;

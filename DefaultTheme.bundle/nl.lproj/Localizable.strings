@@ -21,3 +21,23 @@
 "no_thanks" = "Nee, bedankt";
 
 "pass_already_in_passbook" = "Je hebt deze kaart al in je Passbook.";
+
+"inbox_title" = "Inbox";
+"inbox_empty_text" = "geen berichten ontvangen";
+
+
+/* Date text */
+"days_ago" = "%d dagen geleden";
+"hour_ago" = "een uur geleden";
+"hours_ago" = "%d uren geleden";
+"just_now" = "nu";
+"last_month" = "vorige maand";
+"last_week" = "vorige week";
+"last_year" = "vorig jaar";
+"minute_ago" = "een minuut geleden";
+"minutes_ago" = "%d minuten geleden";
+"months_ago" = "%d maanden geleden";
+"seconds_ago" = "%d seconden geleden";
+"weeks_ago" = "%d weken geleden";
+"years_ago" = "%d yaren geleden";
+"yesterday" = "gisteren";

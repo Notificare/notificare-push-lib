@@ -21,3 +21,22 @@
 "no_thanks" = "Não, Obrigado";
 
 "pass_already_in_passbook" = "Este coupon já se encontra no seu Passbook";
+
+"inbox_title" = "Inbox";
+"inbox_empty_text" = "0 mensagens encontradas";
+
+/* Date text */
+"days_ago" = "%d dias atrás";
+"hour_ago" = "uma hora atrás";
+"hours_ago" = "%d horas atrás";
+"just_now" = "agora mesmo";
+"last_month" = "mês passado";
+"last_week" = "semana passada";
+"last_year" = "ano passado";
+"minute_ago" = "um minuto atrás";
+"minutes_ago" = "%d minutos atrás";
+"months_ago" = "%d meses atrás";
+"seconds_ago" = "%d segundos atrás";
+"weeks_ago" = "%d semanas atrás";
+"years_ago" = "%d anos atrás";
+"yesterday" = "ontem";

@@ -53,6 +53,7 @@ typedef enum  {
 
 - (BOOL)notificarePushLib:(NotificarePushLib *)library shouldHandleNotification:(NSDictionary *)info;
 
+- (void)notificarePushLib:(NotificarePushLib *)library didUpdateBadge:(int)badge;
 - (void)notificarePushLib:(NotificarePushLib *)library willOpenNotification:(Notification *)notification;
 - (void)notificarePushLib:(NotificarePushLib *)library didOpenNotification:(Notification *)notification;
 - (void)notificarePushLib:(NotificarePushLib *)library didCloseNotification:(Notification *)notification;
@@ -111,6 +112,7 @@ typedef enum  {
 @property (strong, nonatomic) Notificare * currentNotificare;
 
 @property (strong, nonatomic) NotificareActions * notificareActions;
+
 
 /*!
  *  @abstract the apiID key
@@ -604,6 +606,45 @@ typedef enum  {
  *  Register an action event manually. Usually needed when you handling notifications yourself and want to use the actions to register a certain user choice.
  */
 - (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
+/*!
+ *  @abstract Save Notification to Inbox
+ *
+ *  @discussion
+ *  Save the incoming notifications to the Notificare Inbox. To be use in -application didReceiveRemoteNotification:fetchCompletionHandler:
+ */
+- (void)saveToInbox:(NSDictionary *)notification forApplication:(UIApplication *)application completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+/*!
+ *  @abstract Remove Notification from Inbox
+ *
+ *  @discussion
+ *  Remove a notification from the Inbox
+ */
+- (void)removeFromInbox:(NSDictionary *)notification;
+
+/*!
+ *  @abstract Open Inbox
+ *
+ *  @discussion
+ *  Opens the UI to present an Inbox with all the items received in the device. This window allows to also remove these records from the inbox.
+ *
+ */
+-(void)openInbox;
+/*!
+ *  @abstract Inbox
+ *
+ *  @discussion
+ *  At any point in your app you can access [[NotificarePushLib shared] myInbox] to retrieve the device's inbox.
+ *  The returned value is a NSArray containing NSDictionary objects of you notifications.
+ */
+-(NSArray *)myInbox;
+
+/*!
+ *  @abstract Badge
+ *
+ *  @discussion
+ *  At any point in your app you can access [[NotificarePushLib shared] myBadge] to retrieve the device's badge number.
+ */
+-(int)myBadge;
 
 /*!
  *  @abstract OAuth2 Methods

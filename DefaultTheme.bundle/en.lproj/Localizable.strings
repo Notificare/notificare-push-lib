@@ -21,3 +21,22 @@
 "no_thanks" = "No, Thanks";
 
 "pass_already_in_passbook" = "This pass is already in your Passbook.";
+
+"inbox_title" = "Inbox";
+"inbox_empty_text" = "No messages found";
+
+/* Date text */
+"days_ago" = "%d days ago";
+"hour_ago" = "one hour ago";
+"hours_ago" = "%d hours ago";
+"just_now" = "just now";
+"last_month" = "last month";
+"last_week" = "last week";
+"last_year" = "last year";
+"minute_ago" = "one minute ago";
+"minutes_ago" = "%d minutes ago";
+"months_ago" = "%d months ago";
+"seconds_ago" = "%d seconds ago";
+"weeks_ago" = "%d weeks ago";
+"years_ago" = "%d years ago";
+"yesterday" = "yesterday";

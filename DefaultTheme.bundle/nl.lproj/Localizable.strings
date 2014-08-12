@@ -26,6 +26,9 @@
 "inbox_title" = "Inbox";
 "inbox_empty_text" = "geen berichten ontvangen";
 
+"beacons_empty_text" = "Geen iBeacons gevonden. Zorg ervoor dat Bluetooth ingeschakeld is.";
+"beacons_not_supported" = "iBeacons worden niet ondersteund door dit apparaat. BTLE ondersteuning is niet beschikbaar of een recentere versie van iOS is vereist.";
+
 
 /* Date text */
 "days_ago" = "%d dagen geleden";

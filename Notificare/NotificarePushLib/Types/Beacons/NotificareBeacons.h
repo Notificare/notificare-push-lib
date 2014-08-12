@@ -34,7 +34,7 @@
 @property (strong, nonatomic) NSMutableArray *beacons;
 @property (strong, nonatomic) NSMutableArray *types;
 @property (strong, nonatomic) UITableView * beaconsTableView;
-
+@property (strong, nonatomic) UILabel * emptyLabel;
 
 
 -(void)openNotification;

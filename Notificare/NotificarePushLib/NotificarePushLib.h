@@ -46,6 +46,8 @@ typedef enum  {
 
 @optional
 
+- (void)notificarePushLib:(NotificarePushLib *)library onReady:(NSDictionary *)info;
+
 - (void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSString *)token;
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error;
@@ -547,6 +549,14 @@ typedef enum  {
 -(void)startLocationUpdates;
 
 /*!
+ *  @abstract Check if Location Updates are ON
+ *
+ *  @discussion
+ *  Returns boolean for Location Service status
+ */
+-(BOOL)checkLocationUpdates;
+
+/*!
  *  @abstract Update Device's Location
  *
  *  @discussion
@@ -606,6 +616,13 @@ typedef enum  {
  *  Register an action event manually. Usually needed when you handling notifications yourself and want to use the actions to register a certain user choice.
  */
 - (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
+/*!
+ *  @abstract Log a Custom Event
+ *
+ *  @discussion
+ *  This method allows your app to store key metrics you might find useful. You can then visualize time based agreggations of this data.
+ */
+- (void)logCustomEvent:(NSString *)name withData:(NSDictionary *)data completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Save Notification to Inbox
  *

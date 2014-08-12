@@ -41,6 +41,7 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 -(NotificareMKNetworkOperation*)unregisterDevice:(NSString*)device;
 
 -(NotificareMKNetworkOperation*)updateDeviceLocation:(NSString*)device;
+-(NotificareMKNetworkOperation*)clearDeviceLocation:(NSString*)device;
 
 -(NotificareMKNetworkOperation*)updateDeviceTimezone:(NSString*)device;
 

@@ -13,7 +13,7 @@
 #import "Notificare.h"
 #import "NotificareActions.h"
 #import "SRWebSocket.h"
-#import "Notification.h"
+#import "NotificareNotification.h"
 #import <CoreLocation/CoreLocation.h>
 #import "NSString+Utils.h"
 #import "NotificareNXOAuth2.h"
@@ -56,12 +56,12 @@ typedef enum  {
 - (BOOL)notificarePushLib:(NotificarePushLib *)library shouldHandleNotification:(NSDictionary *)info;
 
 - (void)notificarePushLib:(NotificarePushLib *)library didUpdateBadge:(int)badge;
-- (void)notificarePushLib:(NotificarePushLib *)library willOpenNotification:(Notification *)notification;
-- (void)notificarePushLib:(NotificarePushLib *)library didOpenNotification:(Notification *)notification;
-- (void)notificarePushLib:(NotificarePushLib *)library didCloseNotification:(Notification *)notification;
-- (void)notificarePushLib:(NotificarePushLib *)library didFailToOpenNotification:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library willOpenNotification:(NotificareNotification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didOpenNotification:(NotificareNotification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didCloseNotification:(NotificareNotification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToOpenNotification:(NotificareNotification *)notification;
 
-- (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(Notification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library willExecuteAction:(NotificareNotification *)notification;
 - (void)notificarePushLib:(NotificarePushLib *)library didExecuteAction:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelector:(NSString *)selector;
 - (void)notificarePushLib:(NotificarePushLib *)library didNotExecuteAction:(NSDictionary *)info;
@@ -385,7 +385,15 @@ typedef enum  {
  *  @discussion
  *  Registers for APNS
  */
-- (void)registerForRemoteNotificationsTypes:(UIRemoteNotificationType)types;
+- (void)registerForRemoteNotificationsTypes:(UIRemoteNotificationType)types __attribute__((deprecated("use registerForNotifications instead.")));;
+
+/*!
+ *  @abstract Register for APNS
+ *
+ *  @discussion
+ *  Registers for User Notifications and Remote Notifications (since iOS8)
+ */
+- (void)registerForNotifications;
 
 /*!
  *  @abstract Handle didFinishLaunchingWithOptions notifications
@@ -617,6 +625,14 @@ typedef enum  {
  */
 - (void)reply:(NSString *)notification withLabel:(NSString *)label andData:(NSDictionary *)data;
 /*!
+ *  @abstract Handle action from iOS8 notifications
+ *
+ *  @discussion
+ *  Handles the action clicked from a notificaition in iOS 8
+ */
+- (void)handleAction:(NSString *)action forNotification:(NSDictionary *)notification withData:(NSDictionary *)data completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
+
+/*!
  *  @abstract Log a Custom Event
  *
  *  @discussion
@@ -672,6 +688,7 @@ typedef enum  {
 
 - (void)createAccount:(NSDictionary *)params completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
 - (void)resetPassword:(NSDictionary *)params withToken:(NSString *)token completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+- (void)validateAccount:(NSString *)token completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
 - (void)sendPassword:(NSDictionary *)params completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
 - (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)fetchAccountDetails:(SuccessBlock)info errorHandler:(ErrorBlock)error;

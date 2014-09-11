@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Action.h"
+#import "NotificareAction.h"
 #import "ActionDelegate.h"
 
 
 @protocol ActionType <NSObject>
 
 -(void)setDelegate:(id<ActionDelegate>)delegate;
--(void)setAction:(Action *)action;
--(void)setNotification:(Notification *)notification;
+-(void)setAction:(NotificareAction *)action;
+-(void)setNotification:(NotificareNotification *)notification;
 -(void)executeAction;
 
 @end

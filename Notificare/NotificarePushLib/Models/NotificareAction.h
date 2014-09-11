@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Action : NSObject
+@interface NotificareAction : NSObject
 
 
 @property (strong, nonatomic) NSString * actionType;

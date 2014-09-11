@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Content : NSObject
+@interface NotificareContent : NSObject
 
 @property (strong, nonatomic) NSString * type;
 @property (strong, nonatomic) NSString * data;

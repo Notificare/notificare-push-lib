@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Notification.h"
-#import "Action.h"
+#import "NotificareNotification.h"
+#import "NotificareAction.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
@@ -18,7 +18,7 @@
 @interface NotificareAlert : NSObject <NotificationType,UIAlertViewDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
-@property (nonatomic, strong) Notification * notification;
+@property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 
 -(void)openNotification;

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface Notification : NSObject <NSCoding>
+@interface NotificareNotification : NSObject <NSCoding>
 
 
 @property (strong, nonatomic) NSString * notificationID;

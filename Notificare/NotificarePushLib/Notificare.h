@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "NotificareActions.h"
 #import "NotificationType.h"
-#import "Notification.h"
-#import "Attachment.h"
-#import "Content.h"
-#import "Action.h"
+#import "NotificareNotification.h"
+#import "NotificareAttachment.h"
+#import "NotificareContent.h"
+#import "NotificareAction.h"
 
 @class Notificare;
 
@@ -20,10 +20,10 @@
 
 @optional
 
-- (void)notificare:(Notificare *)library willOpenNotification:(Notification *)info;
-- (void)notificare:(Notificare *)library didOpenNotification:(Notification *)info;
-- (void)notificare:(Notificare *)library didCloseNotification:(Notification *)info;
-- (void)notificare:(Notificare *)library didFailToOpenNotification:(Notification *)info;
+- (void)notificare:(Notificare *)library willOpenNotification:(NotificareNotification *)info;
+- (void)notificare:(Notificare *)library didOpenNotification:(NotificareNotification *)info;
+- (void)notificare:(Notificare *)library didCloseNotification:(NotificareNotification *)info;
+- (void)notificare:(Notificare *)library didFailToOpenNotification:(NotificareNotification *)info;
 - (void)notificare:(Notificare *)library log:(NSDictionary *)info;
 - (void)notificare:(Notificare *)library onPreferencesChanged:(NSDictionary *)info;
 - (void)notificare:(Notificare *)library didUpdateBadge:(int)badge;
@@ -40,7 +40,7 @@
 @property (assign) BOOL displayMessage;
 
 -(void)handleNotification:(NSDictionary*)notification;
--(void)handleNotificationObject:(Notification *)notification;
+-(void)handleNotificationObject:(NotificareNotification *)notification;
 -(void)sendData:(NSArray *)data;
 
 @end

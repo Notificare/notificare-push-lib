@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "ActionType.h"
 #import "ActionDelegate.h"
-#import "Action.h"
-#import "Notification.h"
+#import "NotificareAction.h"
+#import "NotificareNotification.h"
 
 @interface NotificareBrowser : NSObject <ActionType>
 
 @property (nonatomic, assign) id<ActionDelegate> delegate;
-@property (strong, nonatomic) Action * action;
-@property (strong, nonatomic) Notification * notification;
+@property (strong, nonatomic) NotificareAction * action;
+@property (strong, nonatomic) NotificareNotification * notification;
 
 -(void)executeAction;
 

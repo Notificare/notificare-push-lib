@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Notification.h"
+#import "NotificareNotification.h"
 #import "ActionType.h"
 
 @protocol ActionType;
@@ -15,7 +15,7 @@
 
 @optional
 
-- (void)actionType:(id<ActionType>)type willExecuteAction:(Notification *)notification;
+- (void)actionType:(id<ActionType>)type willExecuteAction:(NotificareNotification *)notification;
 - (void)actionType:(id<ActionType>)type didExecuteAction:(NSDictionary *)info;
 - (void)actionType:(id<ActionType>)type didNotExecuteAction:(NSDictionary *)info;
 - (void)actionType:(id<ActionType>)type shouldPerformSelector:(NSString *)selector;

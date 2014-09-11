@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Notification.h"
+#import "NotificareNotification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
@@ -17,7 +17,7 @@
 @interface NotificareForm : NSObject <NotificationType>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
-@property (nonatomic, strong) Notification * notification;
+@property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;

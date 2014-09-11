@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Attachment : NSObject
+@interface NotificareAttachment : NSObject
 
 
 @property (strong, nonatomic) NSString * attachmentURI;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <PassKit/PassKit.h>
-#import "Notification.h"
+#import "NotificareNotification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
@@ -16,16 +16,16 @@
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 
-#import "Notification.h"
-#import "Action.h"
-#import "Content.h"
-#import "Attachment.h"
+#import "NotificareNotification.h"
+#import "NotificareAction.h"
+#import "NotificareContent.h"
+#import "NotificareAttachment.h"
 
 
 @interface NotificarePassbook : NSObject <NotificationType,PKAddPassesViewControllerDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
-@property (nonatomic, strong) Notification * notification;
+@property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;

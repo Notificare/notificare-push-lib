@@ -14,7 +14,7 @@
 @protocol NotificationType <NSObject>
 
 -(void)setDelegate:(id<NotificationDelegate>)delegate;
--(void)setNotification:(Notification *)notification;
+-(void)setNotification:(NotificareNotification *)notification;
 -(void)setNotificareActions:(NotificareActions *)notificareActions;
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

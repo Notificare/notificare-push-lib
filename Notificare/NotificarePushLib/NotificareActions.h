@@ -7,9 +7,9 @@
 //
 
 #import "NotificareEngine.h"
-#import "Notification.h"
+#import "NotificareNotification.h"
 #import "ActionType.h"
-#import "Action.h"
+#import "NotificareAction.h"
 
 @class NotificareActions;
 
@@ -17,7 +17,7 @@
 
 @optional
 
-- (void)notificareActions:(NotificareActions *)library willExecuteAction:(Notification *)notification;
+- (void)notificareActions:(NotificareActions *)library willExecuteAction:(NotificareNotification *)notification;
 - (void)notificareActions:(NotificareActions *)library didExecuteAction:(NSDictionary *)info;
 - (void)notificareActions:(NotificareActions *)library shouldPerformSelector:(NSString *)selector;
 - (void)notificareActions:(NotificareActions *)library didNotExecuteAction:(NSDictionary *)info;
@@ -30,10 +30,10 @@
 
 @property (strong, nonatomic) id<NotificareActionsDelegate> actionsDelegate;
 @property (strong, nonatomic) id <ActionType> type;
-@property (strong, nonatomic) Notification * notification;
+@property (strong, nonatomic) NotificareNotification * notification;
 
 
-- (void)handleAction:(Action *)action;
+- (void)handleAction:(NotificareAction *)action;
 
 
 @end

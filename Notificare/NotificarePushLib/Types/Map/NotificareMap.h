@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Action.h"
-#import "Content.h"
-#import "Attachment.h"
-#import "Notification.h"
+#import "NotificareAction.h"
+#import "NotificareContent.h"
+#import "NotificareAttachment.h"
+#import "NotificareNotification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
@@ -22,7 +22,7 @@
 @interface NotificareMap : NSObject <NotificationType,MKMapViewDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
-@property (nonatomic, strong) Notification * notification;
+@property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;

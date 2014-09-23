@@ -12,7 +12,7 @@
 #import "NSData+Hex.h"
 #import "Notificare.h"
 #import "NotificareActions.h"
-#import "SRWebSocket.h"
+#import "NotificareSRWebSocket.h"
 #import "NotificareNotification.h"
 #import <CoreLocation/CoreLocation.h>
 #import "NSString+Utils.h"
@@ -86,7 +86,7 @@ typedef enum  {
 
 @end
 
-@interface NotificarePushLib : NSObject <SRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate>
+@interface NotificarePushLib : NSObject <NotificareSRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate>
 
 /*!
  *  @abstract Public delegate to handle Notificare events

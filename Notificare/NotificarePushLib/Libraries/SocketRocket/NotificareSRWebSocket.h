@@ -25,15 +25,15 @@ typedef enum {
     
 } SRReadyState;
 
-@class SRWebSocket;
+@class NotificareSRWebSocket;
 
-extern NSString *const SRWebSocketErrorDomain;
+extern NSString *const nSRWebSocketErrorDomain;
 
-@protocol SRWebSocketDelegate;
+@protocol NotificareSRWebSocketDelegate;
 
-@interface SRWebSocket : NSObject <NSStreamDelegate>
+@interface NotificareSRWebSocket : NSObject <NSStreamDelegate>
 
-@property (nonatomic, assign) id <SRWebSocketDelegate> delegate;
+@property (nonatomic, assign) id <NotificareSRWebSocketDelegate> delegate;
 
 @property (nonatomic, readonly) SRReadyState readyState;
 @property (nonatomic, readonly, retain) NSURL *url;
@@ -70,17 +70,17 @@ extern NSString *const SRWebSocketErrorDomain;
 
 @end
 
-@protocol SRWebSocketDelegate <NSObject>
+@protocol NotificareSRWebSocketDelegate <NSObject>
 
 // message will either be an NSString if the server is using text 
 // or NSData if the server is using binary
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
+- (void)webSocket:(NotificareSRWebSocket *)webSocket didReceiveMessage:(id)message;
 
 @optional
 
-- (void)webSocketDidOpen:(SRWebSocket *)webSocket;
-- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
-- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
+- (void)webSocketDidOpen:(NotificareSRWebSocket *)webSocket;
+- (void)webSocket:(NotificareSRWebSocket *)webSocket didFailWithError:(NSError *)error;
+- (void)webSocket:(NotificareSRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
 
 @end
 

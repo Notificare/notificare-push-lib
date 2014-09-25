@@ -11,8 +11,13 @@
 @interface NSData (Hex)
 
 /*!
-     @abstract Creates a string of hexadecimal octets
+    @abstract Creates a string of hexadecimal octets
  */
 - (NSString *)hexadecimalString;
+
+/*!
+    @abstract Creates NSData from a hexadecimal NSString
+ */
++ (NSData *)dataFromHexadecimalString:(NSString *)string;
 
 @end

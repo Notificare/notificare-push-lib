@@ -36,8 +36,8 @@
  */
 
 
-#ifndef NXOAuth2ConnectionDebug
-#define NXOAuth2ConnectionDebug 0
+#ifndef nNXOAuth2ConnectionDebug
+#define nNXOAuth2ConnectionDebug 0
 #endif
 
 
@@ -72,7 +72,7 @@ typedef void(^nNXOAuth2ConnectionSendingProgressHandler)(unsigned long long byte
     
     BOOL                sendConnectionDidEndNotification;
     
-#if (NXOAuth2ConnectionDebug)
+#if (nNXOAuth2ConnectionDebug)
     NSDate *startDate;
 #endif
 }

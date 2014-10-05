@@ -34,7 +34,7 @@ extern NSString * const nkNXOAuth2AccountStoreConfigurationTokenURL;
 extern NSString * const nkNXOAuth2AccountStoreConfigurationRedirectURL;
 extern NSString * const nkNXOAuth2AccountStoreConfigurationScope;
 extern NSString * const nkNXOAuth2AccountStoreConfigurationTokenType;
-
+extern NSString * const nkNXOAuth2AccountStoreConfigurationTokenRequestHTTPMethod;
 
 /* 
  * Requires a NSDictionary as a value.
@@ -43,6 +43,13 @@ extern NSString * const nkNXOAuth2AccountStoreConfigurationTokenType;
  * "username", "password", "redirect_uri", "code", "assertion_type" and "assertion" are not allowed.
  */
 extern NSString * const nkNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters;
+
+/*
+ * Requires a NSDictionary as a value.
+ * They are passed onto the HTTP Header Fields request as additional parameters.
+ * Example of a valid setup: @{ @"Content-type" : @"application/x-www-form-urlencoded" }
+ */
+extern NSString * const nkNXOAuth2AccountStoreConfigurationCustomHeaderFields;
 
 
 #pragma mark Account Type
@@ -92,6 +99,7 @@ typedef void(^nNXOAuth2PreparedAuthorizationURLHandler)(NSURL *preparedURL);
    authorizationURL:(NSURL *)anAuthorizationURL
            tokenURL:(NSURL *)aTokenURL
         redirectURL:(NSURL *)aRedirectURL
+      keyChainGroup:(NSString *)aKeyChainGroup
      forAccountType:(NSString *)anAccountType;
 
 - (void)setClientID:(NSString *)aClientID
@@ -100,6 +108,7 @@ typedef void(^nNXOAuth2PreparedAuthorizationURLHandler)(NSURL *preparedURL);
    authorizationURL:(NSURL *)anAuthorizationURL
            tokenURL:(NSURL *)aTokenURL
         redirectURL:(NSURL *)aRedirectURL
+      keyChainGroup:(NSString *)aKeyChainGroup
           tokenType:(NSString *)aTokenType
      forAccountType:(NSString *)anAccountType;
 

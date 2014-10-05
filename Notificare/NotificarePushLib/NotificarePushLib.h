@@ -75,8 +75,12 @@ typedef enum  {
 - (void)notificarePushLib:(NotificarePushLib *)library didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region;
 - (void)notificarePushLib:(NotificarePushLib *)library didEnterRegion:(CLRegion *)region;
 - (void)notificarePushLib:(NotificarePushLib *)library didExitRegion:(CLRegion *)region;
+
+
 - (void)notificarePushLib:(NotificarePushLib *)library rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error;
 - (void)notificarePushLib:(NotificarePushLib *)library didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
+
+
 
 - (void)notificarePushLib:(NotificarePushLib *)library didChangeAccountNotification:(NSDictionary *)info;
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToRequestAccessNotification:(NSError *)error;
@@ -316,6 +320,27 @@ typedef enum  {
 @property (nonatomic, assign) BOOL ranging;
 
 /*!
+ *  @abstract Beacons
+ *
+ *  @discussion
+ *	Returns Beacons being monitored
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * beacons;
+
+
+
+/*!
+ *  @abstract Beacons
+ *
+ *  @discussion
+ *	Returns an array of beacons that were triggered by entry
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * stateBeacons;
+
+
+/*!
  *  @abstract Application info
  *
  *  @discussion
@@ -334,14 +359,6 @@ typedef enum  {
 @property (strong, nonatomic) NSMutableArray * geofences;
 
 
-/*!
- *  @abstract Beacons
- *
- *  @discussion
- *	Returns Beacons being monitored
- *
- */
-@property (strong, nonatomic) NSMutableArray * beacons;
 
 /*!
  *  @abstract Log of entries in a region
@@ -352,14 +369,8 @@ typedef enum  {
  */
 @property (strong, nonatomic) NSMutableArray * stateEntries;
 
-/*!
- *  @abstract Beacons
- *
- *  @discussion
- *	Returns an array of beacons that were triggered by entry
- *
- */
-@property (strong, nonatomic) NSMutableArray * stateBeacons;
+
+
 
 
 /*!
@@ -594,6 +605,7 @@ typedef enum  {
 - (void)removeTag:(NSString *)tag completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)clearTags:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 
+
 //Manually start Beacons without a geofence
 - (void)startMonitoringBeaconRegion:(NSUUID *)uuid;
 - (void)startMonitoringBeaconRegion:(NSUUID *)uuid andMajor:(NSNumber *)major;
@@ -609,6 +621,7 @@ typedef enum  {
  */
 - (void)openBeacon:(NSDictionary *)beacon;
 - (void)openBeacons;
+
 /*!
  *  @abstract Open User Preferences
  *
@@ -617,6 +630,13 @@ typedef enum  {
  */
 - (void)openUserPreferences;
 
+/*!
+ *  @abstract Segments
+ *
+ *  @discussion
+ *  List of all available user selectable segments
+ */
+- (void)getSegments:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 /*!
  *  @abstract Reply action
  *
@@ -695,6 +715,8 @@ typedef enum  {
 - (void)generateEmailToken:(SuccessBlock)info errorHandler:(ErrorBlock)error __attribute__((deprecated("use generateAccessToken:completionHandler:errorHandler: instead.")));
 - (void)generateAccessToken:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)changePassword:(NSDictionary *)params completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)addSegment:(NSString *)segmentId completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
+- (void)removeSegment:(NSString *)segmentId completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
 - (void)checkAccount:(NSString *)user completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)handleOpenURL:(NSURL *)url;
 - (void)logoutAccount;

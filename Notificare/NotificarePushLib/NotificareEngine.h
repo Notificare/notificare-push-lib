@@ -59,7 +59,7 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 -(NotificareMKNetworkOperation*)removeTag:(NSString *)tag forDevice:(NSString *)device completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
 
--(NotificareMKNetworkOperation*)getSegments:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)fetchUserPreferences:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
 
 -(NotificareMKNetworkOperation*)getNearestFences:(NSString *)device forLatitude:(float)latitude andLongitude:(float)longitude completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
 

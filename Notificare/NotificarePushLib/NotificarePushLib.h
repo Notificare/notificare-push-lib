@@ -15,8 +15,11 @@
 #import "NotificareSRWebSocket.h"
 #import "NotificareNotification.h"
 #import <CoreLocation/CoreLocation.h>
-#import "NSString+Utils.h"
 #import "NotificareNXOAuth2.h"
+#import "NotificareUser.h"
+#import "NotificareUserPreference.h"
+#import "NotificareSegment.h"
+#import "NotificareBeacon.h"
 
 #define Suppressor(Selector) \
 do { \
@@ -26,6 +29,7 @@ Selector; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
+typedef void (^SuccessArrayBlock)(NSArray * info);
 typedef void (^SuccessBlock)(NSDictionary * info);
 typedef void (^ErrorBlock)(NSError * error);
 
@@ -192,6 +196,15 @@ typedef enum  {
  *
  */
 @property (strong, nonatomic) NotificareNXOAuth2Account * account;
+
+/*!
+ *  @abstract The Notificare User object
+ *
+ *  @discussion
+ *	Returns the Notificare User object
+ *
+ */
+@property (strong, nonatomic) NotificareUser * user;
 
 
 /*!
@@ -636,7 +649,8 @@ typedef enum  {
  *  @discussion
  *  List of all available user selectable segments
  */
-- (void)getSegments:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)fetchUserPreferences:(SuccessArrayBlock)info errorHandler:(ErrorBlock)error;
+
 /*!
  *  @abstract Reply action
  *
@@ -715,8 +729,8 @@ typedef enum  {
 - (void)generateEmailToken:(SuccessBlock)info errorHandler:(ErrorBlock)error __attribute__((deprecated("use generateAccessToken:completionHandler:errorHandler: instead.")));
 - (void)generateAccessToken:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)changePassword:(NSDictionary *)params completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
-- (void)addSegment:(NSString *)segmentId completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
-- (void)removeSegment:(NSString *)segmentId completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
+- (void)addSegment:(NotificareSegment *)segment toPreference:(NotificareUserPreference *)preference completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
+- (void)removeSegment:(NotificareSegment *)segment fromPreference:(NotificareUserPreference *)preference completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
 - (void)checkAccount:(NSString *)user completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
 - (void)handleOpenURL:(NSURL *)url;
 - (void)logoutAccount;

@@ -18,21 +18,20 @@
 #import "UIImage+FromBundle.h"
 #import "NSDictionary+FromPlist.h"
 #import "NotificareEngine.h"
+#import "NotificareDeviceViewController.h"
 
-@interface NotificareUserPreferences : NSObject <NotificationType,UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate>
+@interface NotificareUserPreferences : NSObject <NotificationType,UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
+@property (strong, nonatomic) NotificareDeviceViewController * deviceController;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) NSMutableArray *preferences;
-@property (strong, nonatomic) NSMutableArray *categories;
 
 
 

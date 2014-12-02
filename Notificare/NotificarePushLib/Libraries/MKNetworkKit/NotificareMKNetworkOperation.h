@@ -31,21 +31,21 @@ typedef enum {
   nMKNetworkOperationStateFinished = 3
 } nMKNetworkOperationState;
 
-typedef void (^nMKNKVoidBlock)(void);
-typedef void (^nMKNKIDBlock)(void);
-typedef void (^nMKNKProgressBlock)(double progress);
-typedef void (^nMKNKResponseBlock)(NotificareMKNetworkOperation* completedOperation);
+typedef void (^NotificareMKNKVoidBlock)(void);
+typedef void (^NotificareMKNKIDBlock)(void);
+typedef void (^NotificareMKNKProgressBlock)(double progress);
+typedef void (^NotificareMKNKResponseBlock)(NotificareMKNetworkOperation* completedOperation);
 #if TARGET_OS_IPHONE
-typedef void (^nMKNKImageBlock) (UIImage* fetchedImage, NSURL* url, BOOL isInCache);
+typedef void (^NotificareMKNKImageBlock) (UIImage* fetchedImage, NSURL* url, BOOL isInCache);
 #elif TARGET_OS_MAC
-typedef void (^nMKNKImageBlock) (NSImage* fetchedImage, NSURL* url, BOOL isInCache);
+typedef void (^NotificareMKNKImageBlock) (NSImage* fetchedImage, NSURL* url, BOOL isInCache);
 #endif
-typedef void (^nMKNKResponseErrorBlock)(NotificareMKNetworkOperation* completedOperation, NSError* error);
-typedef void (^nMKNKErrorBlock)(NSError* error);
+typedef void (^NotificareMKNKResponseErrorBlock)(NotificareMKNetworkOperation* completedOperation, NSError* error);
+typedef void (^NotificareMKNKErrorBlock)(NSError* error);
 
-typedef void (^nMKNKAuthBlock)(NSURLAuthenticationChallenge* challenge);
+typedef void (^NotificareMKNKAuthBlock)(NSURLAuthenticationChallenge* challenge);
 
-typedef NSString* (^nMKNKEncodingBlock) (NSDictionary* postDataDict);
+typedef NSString* (^NotificareMKNKEncodingBlock) (NSDictionary* postDataDict);
 
 typedef enum {
   
@@ -70,7 +70,7 @@ typedef enum {
  *  Printing a MKNetworkOperation prints out a cURL command that can be copied and pasted directly on terminal
  *  Freezable operations are serialized when network connectivity is lost and performed when connection is restored
  */
-@interface NotificareMKNetworkOperation : NSOperation {
+@interface NotificareMKNetworkOperation : NSOperation <NSURLConnectionDataDelegate> {
   
 @private
   int _state;
@@ -178,7 +178,7 @@ typedef enum {
  *  @seealso
  *  postDataEncoding
  */
--(void) setCustomPostDataEncodingHandler:(nMKNKEncodingBlock) postDataEncodingHandler forType:(NSString*) contentType;
+-(void) setCustomPostDataEncodingHandler:(NotificareMKNKEncodingBlock) postDataEncodingHandler forType:(NSString*) contentType;
 
 /*!
  *  @abstract String Encoding Property
@@ -209,6 +209,47 @@ typedef enum {
  *	If the network operation results in an error, this will hold the response error, otherwise it will be nil
  */
 @property (nonatomic, readonly, strong) NSError *error;
+
+/*!
+ *  @abstract Boolean variable that states whether the operation's response should be cached despite coming from a secured source
+ *  @property shouldCacheEvenIfProtocolIsHTTPS
+ *
+ *  @discussion
+ *	If you set this property to YES, the operation's data will be cached even if the source is secure (HTTPS)
+ *  The default value is NO. MKNetworkKit will not cache responses from secure servers
+ */
+@property (nonatomic, assign) BOOL shouldCacheResponseEvenIfProtocolIsHTTPS;
+
+/*!
+ *  @abstract Boolean variable that states whether the operation's response should be cached
+ *  @property shouldNotCacheResponse
+ *
+ *  @discussion
+ *	If you set this property to YES, the operation's data will not be cached even if the engine's useCache is enabled
+ *  The default value is NO. MKNetworkKit will cache responses based on the engine setting.
+ *  This property should be used sparingly if your backend isn't written adhering to HTTP 1.1 caching standards
+ */
+@property (nonatomic, assign) BOOL shouldNotCacheResponse;
+
+/*!
+ *  @abstract Boolean variable that states whether the operation should continue if the certificate is invalid.
+ *  @property shouldContinueWithInvalidCertificate
+ *
+ *  @discussion
+ *	If you set this property to YES, the operation will continue as if the certificate was valid (if you use Server Trust Auth)
+ *  The default value is NO. MKNetworkKit will not run an operation with a server that is not trusted.
+ */
+@property (nonatomic, assign) BOOL shouldContinueWithInvalidCertificate;
+
+/*!
+ *  @abstract Boolean variable that states whether the request should automatically include an Accept-Language header.
+ *  @property shouldSendAcceptLanguageHeader
+ *
+ *  @discussion
+ *	If set to YES, then MKNetworkKit will generate an Accept-Language header using [NSLocale preferredLanguages] + "en-us".
+ *  This is set by MKNetworkEngine when it creates the MKNetworkOperation instance, so it gets its default from there.
+ */
+@property (nonatomic, assign) BOOL shouldSendAcceptLanguageHeader;
 
 /*!
  *  @abstract Cache headers of the response
@@ -250,6 +291,15 @@ typedef enum {
 @property (copy, nonatomic) NSString *clientCertificate;
 
 /*!
+ *  @abstract Authentication methods (Password for the Client Certificate)
+ *  @property clientCertificatePassword
+ *
+ *  @discussion
+ *	If your client certificate is encrypted with a password, specify it here
+ */
+@property (copy, nonatomic) NSString *clientCertificatePassword;
+
+/*!
  *  @abstract Custom authentication handler
  *  @property authHandler
  *  
@@ -257,7 +307,7 @@ typedef enum {
  *	If your request needs to be authenticated using a custom method (like a Web page/HTML Form), add a block method here
  *  and process the NSURLAuthenticationChallenge
  */
-@property (nonatomic, copy) nMKNKAuthBlock authHandler;
+@property (nonatomic, copy) NotificareMKNKAuthBlock authHandler;
 
 /*!
  *  @abstract Handler that you implement to monitor reachability changes
@@ -305,6 +355,23 @@ typedef enum {
 #endif
 
 /*!
+ *  @abstract Add additional POST/GET parameters to your request
+ *
+ *  @discussion
+ *	If you ever need to set additional params after creating your operation, you this method.
+ *  You normally set default parameters to the params parameter when you create a operation.
+ *  On specific cases where you need to add a new parameter for a call, you can use this
+ */
+-(void) addParams:(NSDictionary*) paramsDictionary;
+
+/*!
+ *  @abstract Add additional header
+ *
+ *  @discussion Add a single additional header.  See addHeaders for a full discussion.
+ */
+-(void) addHeader:(NSString*)key withValue:(NSString*)value;
+
+/*!
  *  @abstract Add additional header parameters
  *  
  *  @discussion
@@ -313,6 +380,14 @@ typedef enum {
  *  On specific cases where you need to set a new header parameter for just a single API call, you can use this
  */
 -(void) addHeaders:(NSDictionary*) headersDictionary;
+
+/*!
+ *  @abstract Set a header, overwriting any value already set.
+ *
+ *  @discussion addHeader will append the value to any header already set.  If you want to overwrite
+ *  that value, then use setHeader instead.
+ */
+-(void) setHeader:(NSString*)key withValue:(NSString*)value;
 
 /*!
  *  @abstract Sets the authorization header after prefixing it with a given auth type
@@ -324,7 +399,7 @@ typedef enum {
  *  To use HTTP Basic Authentication, consider using the method setUsername:password:basicAuth: instead.
  *
  *  Example
- *  [op setToken:@"abracadabra" forAuthType:@"Token"] will set the header value to 
+ *  [op setAuthorizationHeaderValue:@"abracadabra" forAuthType:@"Token"] will set the header value to
  *  "Authorization: Token abracadabra"
  * 
  *  @seealso
@@ -389,7 +464,7 @@ typedef enum {
  *  isCachedResponse
  *  addCompletionHandler:errorHandler:
  */
--(void) onCompletion:(nMKNKResponseBlock) response onError:(nMKNKErrorBlock) error DEPRECATED_ATTRIBUTE;
+-(void) onCompletion:(NotificareMKNKResponseBlock) response onError:(NotificareMKNKErrorBlock) error DEPRECATED_ATTRIBUTE;
 
 /*!
  *  @abstract adds a block Handler for completion and error
@@ -402,7 +477,7 @@ typedef enum {
  *  @seealso
  *  onCompletion:onError:
  */
--(void) addCompletionHandler:(nMKNKResponseBlock) response errorHandler:(nMKNKResponseErrorBlock) error;
+-(void) addCompletionHandler:(NotificareMKNKResponseBlock) response errorHandler:(NotificareMKNKResponseErrorBlock) error;
 
 /*!
  *  @abstract Block Handler for tracking 304 not modified state
@@ -411,7 +486,7 @@ typedef enum {
  *	This method will be called if the server sends a 304 HTTP status for your request.
  *
  */
--(void) onNotModified:(nMKNKVoidBlock) notModifiedBlock;
+-(void) onNotModified:(NotificareMKNKVoidBlock) notModifiedBlock;
 
 /*!
  *  @abstract Block Handler for tracking upload progress
@@ -421,7 +496,7 @@ typedef enum {
  *  The value range of the progress is 0 to 1.
  *
  */
--(void) onUploadProgressChanged:(nMKNKProgressBlock) uploadProgressBlock;
+-(void) onUploadProgressChanged:(NotificareMKNKProgressBlock) uploadProgressBlock;
 
 /*!
  *  @abstract Block Handler for tracking download progress
@@ -431,7 +506,7 @@ typedef enum {
  *  The value range of the progress is 0 to 1.
  *
  */
--(void) onDownloadProgressChanged:(nMKNKProgressBlock) downloadProgressBlock;
+-(void) onDownloadProgressChanged:(NotificareMKNKProgressBlock) downloadProgressBlock;
 
 /*!
  *  @abstract Uploads a resource from a stream
@@ -545,10 +620,30 @@ typedef enum {
  *  @discussion
  *	This method is used for accessing the downloaded data as a NSDictionary or an NSArray. If the operation is still in progress, the method returns nil. If the response is not a valid JSON, this method returns nil. The difference between this and responseJSON is that, this method decodes JSON in the background.
  *
+ *  @see also
+ *  responseJSON
+ *  responseJSONWithOptions:completionHandler:
+ *
  *  @availability
  *  iOS 5 and above or Mac OS 10.7 and above
  */
 -(void) responseJSONWithCompletionHandler:(void (^)(id jsonObject)) jsonDecompressionHandler;
+
+/*!
+ *  @abstract Helper method to retrieve the contents as a NSDictionary or NSArray depending on the JSON contents in the background
+ *
+ *  @discussion
+ *	This method is used for accessing the downloaded data as a NSDictionary or an NSArray. If the operation is still in progress, the method returns nil. If the response is not a valid JSON, this method returns nil. The difference between this and responseJSON is that, this method decodes JSON in the background and allows passing JSON reading options like parsing JSON fragments.
+ *
+ *  @see also
+ *  responseJSON
+ *  responseJSONWithCompletionHandler:
+ *
+ *  @availability
+ *  iOS 5 and above or Mac OS 10.7 and above
+ */
+-(void) responseJSONWithOptions:(NSJSONReadingOptions) options completionHandler:(void (^)(id jsonObject)) jsonDecompressionHandler;
+
 /*!
  *  @abstract Overridable custom method where you can add your custom business logic error handling
  *  
@@ -574,16 +669,24 @@ typedef enum {
  */
 -(void) operationFailedWithError:(NSError*) error;
 
+/*!
+ *  @abstract Copy this MKNetworkOperation, with the intention of retrying the call.
+ *
+ *  @discussion This means that the request parameters and callbacks are all preserved, but anything related
+ *  to an ongoing request is discarded, so that a new request with the same configuration can be made.
+ */
+-(instancetype) copyForRetry;
+
 // internal methods called by MKNetworkEngine only.
 // Don't touch
 -(BOOL) isCacheable;
 -(void) setCachedData:(NSData*) cachedData;
--(void) setCacheHandler:(nMKNKResponseBlock) cacheHandler;
+-(void) setCacheHandler:(NotificareMKNKResponseBlock) cacheHandler;
 -(void) updateHandlersFromOperation:(NotificareMKNetworkOperation*) operation;
 -(void) updateOperationBasedOnPreviousHeaders:(NSMutableDictionary*) headers;
 -(NSString*) uniqueIdentifier;
 
-- (id)initWithURLString:(NSString *)aURLString
+- (instancetype)initWithURLString:(NSString *)aURLString
                  params:(NSDictionary *)params
              httpMethod:(NSString *)method;
 @end

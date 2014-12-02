@@ -44,28 +44,38 @@
 #endif
 
 #ifdef DEBUG
+#ifndef DLog
 #   define DLog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#endif
+#ifndef ELog
 #   define ELog(err) {if(err) DLog(@"%@", err)}
+#endif
 #else
+#ifndef DLog
 #   define DLog(...)
+#endif
+#ifndef ELog
 #   define ELog(err)
+#endif
 #endif
 
 // ALog always displays output regardless of the DEBUG setting
+#ifndef ALog
 #define ALog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);};
-
-#import "NSString+NotificareMKNetworkKitAdditions.h"
-#import "NSDictionary+NotificareRequestEncoding.h"
-#import "NSDate+NotificareRFC1123.h"
-#import "NSData+NotificareMKBase64.h"
-
-#if TARGET_OS_IPHONE
-#import "UIAlertView+NotificareMKNetworkKitAdditions.h"
-#elif TARGET_OS_MAC
-#import "NSAlert+NotificareMKNetworkKitAdditions.h"
 #endif
 
-#import "NotificareReachability.h"
+#import "Categories/NSString+NotificareMKNetworkKitAdditions.h"
+#import "Categories/NSDictionary+NotificareRequestEncoding.h"
+#import "Categories/NSDate+NotificareRFC1123.h"
+#import "Categories/NSData+NotificareMKBase64.h"
+#import "Categories/UIImageView+NotificareMKNetworkKitAdditions.h"
+#if TARGET_OS_IPHONE
+#import "Categories/UIAlertView+NotificareMKNetworkKitAdditions.h"
+#elif TARGET_OS_MAC
+#import "Categories/NSAlert+MKNetworkKitAdditions.h"
+#endif
+
+#import "Reachability/NotificareReachability.h"
 
 #import "NotificareMKNetworkOperation.h"
 #import "NotificareMKNetworkEngine.h"

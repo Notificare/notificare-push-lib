@@ -30,6 +30,8 @@
 "beacons_not_supported" = "iBeacons worden niet ondersteund door dit apparaat. BTLE ondersteuning is niet beschikbaar of een recentere versie van iOS is vereist.";
 
 
+“settings” = “Instellingen”;
+
 /* Date text */
 "days_ago" = "%d dagen geleden";
 "hour_ago" = "een uur geleden";

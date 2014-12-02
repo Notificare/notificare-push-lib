@@ -21,6 +21,10 @@
 @property (strong, nonatomic) NSDictionary * proximityNotifications;
 @property (strong, nonatomic) NSString * application;
 @property (strong, nonatomic) NSDictionary * notification;
+@property (strong, nonatomic) NSString * latitude;
+@property (strong, nonatomic) NSString * longitude;
+@property (strong, nonatomic) NSString * batteryLevel;
+@property (strong, nonatomic) NSString * purpose;
 @property (strong, nonatomic) CLBeacon * beacon;
 @property (strong, nonatomic) NSString * timezone;
 @property (assign, nonatomic) BOOL triggers;

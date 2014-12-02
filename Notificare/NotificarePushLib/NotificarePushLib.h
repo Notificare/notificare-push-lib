@@ -15,11 +15,13 @@
 #import "NotificareSRWebSocket.h"
 #import "NotificareNotification.h"
 #import <CoreLocation/CoreLocation.h>
+#import <StoreKit/StoreKit.h>
 #import "NotificareNXOAuth2.h"
 #import "NotificareUser.h"
 #import "NotificareUserPreference.h"
 #import "NotificareSegment.h"
 #import "NotificareBeacon.h"
+#import "NotificareProduct.h"
 
 #define Suppressor(Selector) \
 do { \
@@ -29,6 +31,7 @@ Selector; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
+typedef void (^SuccessProductBlock)(NotificareProduct * product);
 typedef void (^SuccessArrayBlock)(NSArray * info);
 typedef void (^SuccessBlock)(NSDictionary * info);
 typedef void (^ErrorBlock)(NSError * error);
@@ -92,9 +95,21 @@ typedef enum  {
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveResetPasswordToken:(NSString *)token;
 
 
+- (void)notificarePushLib:(NotificarePushLib *)library didLoadStore:(NSArray *)products;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToLoadStore:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didCompleteProductTransaction:(SKPaymentTransaction *)transaction;
+- (void)notificarePushLib:(NotificarePushLib *)library didRestoreProductTransaction:(SKPaymentTransaction *)transaction;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailProductTransaction:(SKPaymentTransaction *)transaction withError:(NSError *)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didStartDownloadContent:(SKPaymentTransaction *)transaction;
+- (void)notificarePushLib:(NotificarePushLib *)library didPauseDownloadContent:(SKDownload *)download;
+- (void)notificarePushLib:(NotificarePushLib *)library didCancelDownloadContent:(SKDownload *)download;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveProgressDownloadContent:(SKDownload *)download;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailDownloadContent:(SKDownload *)download;
+- (void)notificarePushLib:(NotificarePushLib *)library didFinishDownloadContent:(SKDownload *)download;
+
 @end
 
-@interface NotificarePushLib : NSObject <NotificareSRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate>
+@interface NotificarePushLib : NSObject <NotificareSRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 /*!
  *  @abstract Public delegate to handle Notificare events
@@ -384,7 +399,18 @@ typedef enum  {
 
 
 
-
+/*!
+ *  @abstract In-App Billing
+ *
+ *  @discussion
+ *	Methods for the In-App Billing add-on
+ *
+ */
+@property (strong, nonatomic) NSMutableSet * productIdentifiers;
+@property (strong, nonatomic) NSMutableArray * products;
+@property (strong, nonatomic) NSMutableArray * pendingTransactions;
+@property (strong, nonatomic) NSMutableSet * purchasedProducts;
+@property (strong, nonatomic) SKProductsRequest * storeRequest;
 
 /*!
  *  @abstract The shared singleton implementation
@@ -735,6 +761,24 @@ typedef enum  {
 - (void)handleOpenURL:(NSURL *)url;
 - (void)logoutAccount;
 - (BOOL)isLoggedIn;
+
+/*!
+ *
+ *  @abstract In-App Billing Methods
+ *
+ *  @discussion
+ *  When enabled in the dashboard (this feature is an add-on, activation done in your dashboard) you can sell virtual goods using the App Store in app purchases.
+ *
+ */
+
+- (void)fetchProducts:(SuccessArrayBlock)info errorHandler:(ErrorBlock)error;
+- (void)fetchPurchasedProducts:(SuccessArrayBlock)info errorHandler:(ErrorBlock)error;
+- (void)fetchProduct:(NSString *)productIdentifier completionHandler:(SuccessProductBlock)info errorHandler:(ErrorBlock)error;
+- (void)buyProduct:(NotificareProduct *)product;
+- (void)pauseDownloads:(NSArray *)downloads;
+- (void)cancelDownloads:(NSArray *)downloads;
+- (void)resumeDownloads:(NSArray *)downloads;
+- (NSString *)contentPathForProduct:(NSString *)productIdentifier;
 
 @end
 

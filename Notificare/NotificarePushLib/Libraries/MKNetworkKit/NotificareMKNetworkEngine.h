@@ -23,9 +23,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "NotificareMKNetworkKit.h"
 #import "NotificareMKNetworkOperation.h"
 #import "NotificareReachability.h"
-
 /*!
  @header MKNetworkEngine.h
  @abstract   Represents a subclassable Network Engine for your app
@@ -42,7 +42,6 @@
  *  MKNetworkEngine also allows you to provide custom header fields that gets appended automatically to every request
  */
 @interface NotificareMKNetworkEngine : NSObject
-
 /*!
  *  @abstract Initializes your network engine with a hostname
  *  
@@ -81,6 +80,21 @@
  *  
  */
 - (id) initWithHostName:(NSString*) hostName apiPath:(NSString*) apiPath customHeaderFields:(NSDictionary*) headers;
+
+/*!
+ *  @abstract Initializes your network engine with a hostname, port, path, and headers.
+ *
+ *  @discussion
+ *	Creates an engine for a given host name
+ *  The hostname parameter is optional
+ *  The port parameter can be 0, which means to use the appropriate default port (80 or 443 for HTTP or HTTPS respectively).
+ *  The apiPath paramter is optional
+ *  The apiPath is prefixed to every call to operationWithPath: You can use this method if your server's API location is not at the root (/)
+ *  The hostname, if not null, initializes a Reachability notifier.
+ *  Network reachability notifications are automatically taken care of by MKNetworkEngine
+ *
+ */
+- (id) initWithHostName:(NSString*) hostName portNumber:(int)portNumber apiPath:(NSString*) apiPath customHeaderFields:(NSDictionary*) headers;
 
 /*!
  *  @abstract Creates a simple GET Operation with a request URL
@@ -203,7 +217,7 @@
  *  @seealso
  *  imageAtUrl:onCompletion:
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size onCompletion:(nMKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size onCompletion:(NotificareMKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
 
 /*!
  *  @abstract Handy helper method for fetching images
@@ -213,7 +227,7 @@
  *  The hostname of the engine is *NOT* prefixed.
  *  The image is returned to the caller via MKNKImageBlock callback block.
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url onCompletion:(nMKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url onCompletion:(NotificareMKNKImageBlock) imageFetchedBlock DEPRECATED_ATTRIBUTE;
 
 /*!
  *  @abstract Handy helper method for fetching images in the background
@@ -225,7 +239,7 @@
  *  @seealso
  *  imageAtUrl:onCompletion:
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url completionHandler:(nMKNKImageBlock) imageFetchedBlock errorHandler:(nMKNKResponseErrorBlock) errorBlock;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url completionHandler:(NotificareMKNKImageBlock) imageFetchedBlock errorHandler:(NotificareMKNKResponseErrorBlock) errorBlock;
 
 /*!
  *  @abstract Handy helper method for fetching images asynchronously in the background
@@ -237,7 +251,7 @@
  *  @seealso
  *  imageAtUrl:onCompletion:
  */
-- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size completionHandler:(nMKNKImageBlock) imageFetchedBlock errorHandler:(nMKNKResponseErrorBlock) errorBlock;
+- (NotificareMKNetworkOperation*)imageAtURL:(NSURL *)url size:(CGSize) size completionHandler:(NotificareMKNKImageBlock) imageFetchedBlock errorHandler:(NotificareMKNKResponseErrorBlock) errorBlock;
 #endif
 
 /*!
@@ -263,6 +277,34 @@
 -(void) enqueueOperation:(NotificareMKNetworkOperation*) operation forceReload:(BOOL) forceReload;
 
 /*!
+ *  @abstract Cancels operations matching a given string
+ *
+ *  @discussion
+ *	Cancels all operations in the shared queue that matches a given string. This string could be your host name or a path
+ *
+ */
++(void) cancelOperationsContainingURLString:(NSString*) string;
+
+/*!
+ *  @abstract Cancels operations matching the given block.
+ *
+ *  @discussion
+ *	Cancels all operations in the shared queue for which the given block returns YES.
+ *
+ */
++(void) cancelOperationsMatchingBlock:(BOOL (^)(NotificareMKNetworkOperation*))block;
+
+/*!
+ *  @abstract Cancels all operations created by this engine
+ *
+ *  @discussion
+ *	Cancels all operations that matches this engine's host name
+ *  This method is a no-op if the engine's host name was not set.
+ *
+ */
+- (void) cancelAllOperations;
+
+/*!
  *  @abstract HostName of the engine
  *  @property readonlyHostName
  *  
@@ -282,6 +324,15 @@
  *  This property is optional and you DON'T have to specify the default HTTP port 80
  */
 @property (assign, nonatomic) int portNumber;
+
+/*!
+ *  @abstract WiFi only mode
+ *  @property wifiOnlyMode
+ *
+ *  @discussion
+ *	When you set this property to YES, MKNetworkEngine will not run operations on mobile data network.
+ */
+@property (assign, nonatomic) BOOL wifiOnlyMode;
 
 /*!
  *  @abstract Sets an api path if it is different from root URL
@@ -363,5 +414,14 @@
  *	This method is a handy helper that you can use to check for network reachability.
  */
 -(BOOL) isReachable;
+
+/*!
+ *  @abstract Boolean variable that states whether the request should automatically include an Accept-Language header.
+ *  @property shouldSendAcceptLanguageHeader
+ *
+ *  @discussion
+ *	The default value is YES. MKNetworkKit will generate an Accept-Language header using [NSLocale preferredLanguages] + "en-US".
+ */
+@property (nonatomic, assign) BOOL shouldSendAcceptLanguageHeader;
 
 @end

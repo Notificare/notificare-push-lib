@@ -21,18 +21,18 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 @property (strong, nonatomic) NSString * device;
 
 
--(NotificareMKNetworkOperation*)registerDevice:(NSString*)device completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
--(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
--(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username completionHandler:(NotificationResponseBlock) info errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDevice:(NSString*)device completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID completionHandler:(NotificationResponseBlock) info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username completionHandler:(NotificationResponseBlock) info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device;
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID;
 -(NotificareMKNetworkOperation*)registerDevice:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username;
 
 
--(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
--(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
--(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID withUsername:(NSString*)username completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device;
 -(NotificareMKNetworkOperation*)registerDeviceForWebsockets:(NSString*)device withUserID:(NSString*)userID;
@@ -47,45 +47,50 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 -(NotificareMKNetworkOperation*)updateDeviceLanguage:(NSString*)device;
 
--(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)getNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
--(NotificareMKNetworkOperation*)clearNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)clearNotification:(NSString*)notificationID completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
--(NotificareMKNetworkOperation*)getTags:(NSString *)deviceID completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)getTags:(NSString *)deviceID completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)error;
 
--(NotificareMKNetworkOperation*)addTags:(NSArray *)tags forDevice:(NSString *)device completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)addTags:(NSArray *)tags forDevice:(NSString *)device completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
--(NotificareMKNetworkOperation*)clearTags:(NSString *)deviceID completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock) error;
+-(NotificareMKNetworkOperation*)clearTags:(NSString *)deviceID completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) error;
 
--(NotificareMKNetworkOperation*)removeTag:(NSString *)tag forDevice:(NSString *)device completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)removeTag:(NSString *)tag forDevice:(NSString *)device completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
--(NotificareMKNetworkOperation*)fetchUserPreferences:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)fetchUserPreferences:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
--(NotificareMKNetworkOperation*)getNearestFences:(NSString *)device forLatitude:(float)latitude andLongitude:(float)longitude completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)getNearestFences:(NSString *)device forLatitude:(float)latitude andLongitude:(float)longitude completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
 -(NotificareMKNetworkOperation*)trigger:(NSString*)device forDevice:(NSString *)device andRegion:(NSString *)region;
 
 -(NotificareMKNetworkOperation*)trigger:(NSString*)device forDevice:(NSString *)device andBeacon:(NSString *)beacon;
 
 -(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params;
--(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params completionHandler:(NotificationResponseBlock)response errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params completionHandler:(NotificationResponseBlock)response errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 
--(NotificareMKNetworkOperation*)uploadFile:(NSData*)file completionHandler:(FileUploadResponseBlock)response errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)uploadFile:(NSData*)file completionHandler:(FileUploadResponseBlock)response errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 
 -(NotificareMKNetworkOperation*)executeAction:(NSString *)path withParams:(NSDictionary *)params withMethod:(NSString *)method isSSL:(BOOL)ssl;
 
 -(NotificareMKNetworkOperation*)actionLog:(NSDictionary *)data;
--(NotificareMKNetworkOperation*)actionLog:(NSDictionary *)data completionHandler:(NotificationResponseBlock)response errorHandler:(nMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)actionLog:(NSDictionary *)data completionHandler:(NotificationResponseBlock)response errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 
--(NotificareMKNetworkOperation*)getBeacons:(NSString *)region completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)getBeacons:(NSString *)region completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)error;
 
--(NotificareMKNetworkOperation*)getApplicationInfo:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)getApplicationInfo:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)error;
 
--(NotificareMKNetworkOperation*)createAccount:(NSDictionary *)params completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
--(NotificareMKNetworkOperation*)resetPassword:(NSDictionary *)params withToken:(NSString *)token completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
--(NotificareMKNetworkOperation*)validateAccount:(NSString *)token completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)errorBlock;
--(NotificareMKNetworkOperation*)sendPassword:(NSDictionary *)params completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
--(NotificareMKNetworkOperation*)checkAccount:(NSString *)user completionHandler:(NotificationResponseBlock)info errorHandler:(nMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)createAccount:(NSDictionary *)params completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)resetPassword:(NSDictionary *)params withToken:(NSString *)token completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)validateAccount:(NSString *)token completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)sendPassword:(NSDictionary *)params completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)error;
+-(NotificareMKNetworkOperation*)checkAccount:(NSString *)user completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)error;
 
+-(NotificareMKNetworkOperation*)getProducts:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)getProduct:(NSString *)productId completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)getProductByIdentifier:(NSString *)identifier completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+
+-(NotificareMKNetworkOperation*)doPurchase:(NSString *)receipt withPrice:(NSString *)price withCurrency:(NSString *)currency forDevice:(NSString *)device completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 
 @end

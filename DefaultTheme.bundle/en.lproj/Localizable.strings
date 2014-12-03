@@ -29,7 +29,7 @@
 "beacons_empty_text" = "No iBeacons found. Make sure Bluetooth is enabled.";
 "beacons_not_supported" = "iBeacons are not supported by this device. Either BTLE support is not available or you need to upgrade to more recent version of iOS.";
 
-“settings” = “Settings”;
+"settings" = "Settings";
 
 /* Date text */
 "days_ago" = "%d days ago";

@@ -14,5 +14,7 @@
 +(NSString*)machineName;
 
 +(NSString*)randomID;
+
++(NSString*)appName;
     
 @end

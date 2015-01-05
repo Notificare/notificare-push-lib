@@ -31,6 +31,8 @@
 
 "settings" = "Configuraçōes";
 
+"oauth_disconnected_text" = "Não foi possível continuar conectado. Por favor faça login novamente.";
+
 /* Date text */
 "days_ago" = "%d dias atrás";
 "hour_ago" = "uma hora atrás";

@@ -32,6 +32,8 @@
 
 "settings" = "Instellingen";
 
+"oauth_disconnected_text" = "Je bent automatisch uitgelogd. Log opnieuw in.";
+
 /* Date text */
 "days_ago" = "%d dagen geleden";
 "hour_ago" = "een uur geleden";

@@ -31,6 +31,8 @@
 
 "settings" = "Settings";
 
+"oauth_disconnected_text" = "You've been automatically signed out. Please sign in again.";
+
 /* Date text */
 "days_ago" = "%d days ago";
 "hour_ago" = "one hour ago";

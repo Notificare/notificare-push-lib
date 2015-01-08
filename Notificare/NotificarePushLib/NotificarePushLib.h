@@ -1324,5 +1324,14 @@ typedef enum  {
  */
 - (NSString *)contentPathForProduct:(NSString *)productIdentifier;
 
+/*!
+ *  @abstract SDK Version
+ *
+ *  @discussion
+ *  Retrieve the SDK version. Used by other frameworks to identify the native version.
+ *  @return A NSString representing the path to the product's content
+ */
+- (NSString *)sdkVersion;
+
 @end
 

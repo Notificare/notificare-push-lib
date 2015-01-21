@@ -851,7 +851,14 @@ typedef enum  {
  *  @param notificationID A NSString that represents the notification ID
  */
 - (void)openNotification:(NSDictionary *)notification;
-
+/*!
+ *  @abstract Log Open notification
+ *
+ *  @discussion
+ *  Logs the open notification manually. This should be used when you don't use the openNotification.
+ *  @param notification A NSDictionary object usually the result of getNotification: or Apple's userInfo dictionary provided in didReceiveRemoteNotification:.
+ */
+- (void)logOpenNotification:(NSDictionary *)notification;
 /*!
  *  @abstract Get Notification
  *
@@ -896,6 +903,7 @@ typedef enum  {
  *  @param longitude A float that represents the longitude of the device
  */
 - (void)updateLocation:(NSString*)device withLatitude:(float)latitude andLongitude:(float)longitude;
+
 /*!
  *  @abstract Stop Location Updates
  *
@@ -978,6 +986,7 @@ typedef enum  {
  *  @param minor A NSNumber that represents the number found in your beacons as the minor
  */
 - (void)startMonitoringBeaconRegion:(NSUUID *)uuid andMajor:(NSNumber *)major andMinor:(NSNumber *)minor;
+
 
 /*!
  *  @abstract Open beacon content

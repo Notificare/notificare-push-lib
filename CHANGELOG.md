@@ -1,5 +1,20 @@
 Changelog
 =========
+1.3.2   (2015-01-22)
+- Added exponential fallback for fetchApplicationInfo and openNotification
+- End beacon session on will terminate
+- Start Location updates with best accuracy  on ranging and while inside region
+- Added check to prevent the same notification to be added to the queue 
+- Allow more than one triggered message for the same notification Id in the inbox 
+- Removed register device on every add/remove segment for OAuth2
+- Removed OAuth2 metrics AddSegment/RemoveSegment
+- Removed local notification for OAuth2 invalid grant error 
+1.3.1   (2015-01-08)
+- Reset account on new install
+- Register device if account exists on launch
+- Update inbox on same notification received
+- Several minor changes for better region & beacon monitoring
+
 1.3.0   (2015-01-05)
 - added fix for invalid grant
 - changed beacon session to a NSDictionary

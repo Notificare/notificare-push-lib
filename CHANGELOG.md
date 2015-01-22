@@ -9,6 +9,8 @@ Changelog
 - Removed register device on every add/remove segment for OAuth2
 - Removed OAuth2 metrics AddSegment/RemoveSegment
 - Removed local notification for OAuth2 invalid grant error 
+- Better fetchApplication handling on becoming active
+- Added precompiled flag to ignore assertions 
 1.3.1   (2015-01-08)
 - Reset account on new install
 - Register device if account exists on launch

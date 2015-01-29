@@ -14,6 +14,7 @@
 "pref_header_notifications" = "Notificaties";
 "pref_header_location_services" = "Locatie Diensten";
 "pref_location_services" = "Houdt mijn locatie bij om locatiegebonden richtingaanwijzingen, updates en waarschuwingen te ontvangen.";
+"pref_remote_notifications" = "Pushberichten toestaan voor deze app";
 "pref_header_beacons" = "iBeacons";
 
 /* Rate Dialog text */

@@ -14,6 +14,7 @@
 "pref_header_notifications" = "Notificações";
 "pref_header_location_services" = "Serviços de Localização";
 "pref_location_services" = "Use a minha localização para poder receber direcções e/ou receber alertas baseados na minha posição geográfica";
+"pref_remote_notifications" = "Autorizar o envio de mensagens através desta applicação";
 "pref_header_beacons" = "iBeacons";
 
 

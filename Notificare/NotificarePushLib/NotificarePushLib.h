@@ -22,6 +22,7 @@
 #import "NotificareSegment.h"
 #import "NotificareBeacon.h"
 #import "NotificareProduct.h"
+#import "NotificareDevice.h"
 
 
 /**
@@ -376,13 +377,22 @@ typedef enum  {
 @property (strong, nonatomic) NSString * apiSecret;
 
 /*!
+ *  @abstract Get the device properties
+ *
+ *  @discussion
+ *	A NotificareDevice object containing all information about the device properties like the device token, language, location, etc.
+ *
+ */
+@property (strong, nonatomic) NotificareDevice * myDevice;
+/*!
  *  @abstract The device Token
  *
  *  @discussion
  *	A NSString representing the device token
  *
  */
-@property (strong, nonatomic) NSString * deviceToken;
+@property (strong, nonatomic) NSString * deviceToken __attribute__((deprecated("use myDevice instead.")));
+
 
 /*!
  *  @abstract The raw device Token
@@ -391,7 +401,7 @@ typedef enum  {
  *	A NSData object representing the device token
  *
  */
-@property (strong, nonatomic) NSData * deviceTokenData;
+@property (strong, nonatomic) NSData * deviceTokenData __attribute__((deprecated("use myDevice instead.")));
 
 /*!
  *  @abstract The device UUID
@@ -400,7 +410,7 @@ typedef enum  {
  *	A NSString representing the device's websockets UUID
  *
  */
-@property (strong, nonatomic) NSString * deviceUUID;
+@property (strong, nonatomic) NSString * deviceUUID __attribute__((deprecated("use myDevice instead.")));
 
 /*!
  *  @abstract The Notificare device string
@@ -409,7 +419,7 @@ typedef enum  {
  *	A NSString representing the device model
  *
  */
-@property (strong, nonatomic) NSString * device;
+@property (strong, nonatomic) NSString * device __attribute__((deprecated("use myDevice instead.")));
 
 /*!
  *  @abstract The userID
@@ -418,7 +428,7 @@ typedef enum  {
  *	A NSString representing the userID
  *
  */
-@property (strong, nonatomic) NSString * userID;
+@property (strong, nonatomic) NSString * userID __attribute__((deprecated("use myDevice or user instead.")));
 
 /*!
  *  @abstract The oAuth account
@@ -446,7 +456,7 @@ typedef enum  {
  *	A NSString representing the current user's username
  *
  */
-@property (strong, nonatomic) NSString * username;
+@property (strong, nonatomic) NSString * username __attribute__((deprecated("use myDevice or user instead.")));
 
 /*!
  *  @abstract The notificationTypes
@@ -480,8 +490,18 @@ typedef enum  {
  *  @abstract CLRegion Object for the current Fence
  *
  */
-@property (strong, nonatomic) CLRegion * currentFence;
+@property (strong, nonatomic) CLRegion * currentFence __attribute__((deprecated("use currentRegions instead.")));
 
+/*!
+ *  @abstract NSMutableArray containing the CLRegion objects the user is currently inside
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * currentRegions;
+/*!
+ *  @abstract NSMutableArray containing the CLBeaconRegion objects the user is currently in range
+ *
+ */
+@property (strong, nonatomic) NSMutableArray * currentBeacons;
 /*!
  *  @abstract An NSMutableArray with notification objects to be displayed
  *
@@ -661,6 +681,15 @@ typedef enum  {
  *  This method will register a device for remote notifications and user notifications. Should only be invoked after the delegate method onReady is triggered.
  */
 - (void)registerForNotifications;
+
+/*!
+ *  @abstract Check if device is registered with APNS
+ *
+ *  @discussion
+ *  Use this method to quickly identify if the device has been registered with APNS
+ *  @return A Boolean indicating if device has been registered with APNS
+ */
+-(BOOL)checkRemoteNotifications;
 
 /*!
  *  @abstract Handle launching options

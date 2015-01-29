@@ -61,11 +61,15 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 
 -(NotificareMKNetworkOperation*)fetchUserPreferences:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
--(NotificareMKNetworkOperation*)getNearestFences:(NSString *)device forLatitude:(float)latitude andLongitude:(float)longitude completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)getNearestFencesForLatitude:(float)latitude andLongitude:(float)longitude completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
 -(NotificareMKNetworkOperation*)trigger:(NSString*)device forDevice:(NSString *)device andRegion:(NSString *)region;
 
 -(NotificareMKNetworkOperation*)trigger:(NSString*)device forDevice:(NSString *)device andBeacon:(NSString *)beacon;
+
+-(NotificareMKNetworkOperation*)trigger:(NSString *)type forDevice:(NSString *)device andRegion:(NSString *)region completionHandler:(NotificationResponseBlock)response errorHandler:(NotificareMKNKErrorBlock)errorBlock;
+
+-(NotificareMKNetworkOperation*)trigger:(NSString *)type forDevice:(NSString *)device andBeacon:(NSString *)beacon completionHandler:(NotificationResponseBlock)response errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
 -(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params;
 -(NotificareMKNetworkOperation*)eventLog:(NSDictionary *)params completionHandler:(NotificationResponseBlock)response errorHandler:(NotificareMKNKErrorBlock) errorBlock;

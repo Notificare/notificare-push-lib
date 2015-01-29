@@ -1,5 +1,16 @@
 Changelog
 =========
+1.4.0   (2015-01-29)
+- Added user defaults for device properties, current regions and current beacons
+- Check for device properties when registering the device to prevent useless requests
+- Added current regions and beacons list to prevent an enter before an exit
+- Added better session handling for regions and beacons
+- Added regions and beacon sessions to NSUserDefaults for better persistence
+- Added retry on error for logs and triggers
+- Fixes for unidentified or missing logs when app is inactive
+- Fixes for duplicated or unnecessary logs
+- Added new NotificareDevice model and myDevice property object, deprecated user/device related properties
+
 1.3.2   (2015-01-22)
 - Added exponential fallback for fetchApplicationInfo and openNotification
 - End beacon session on will terminate
@@ -10,7 +21,8 @@ Changelog
 - Removed OAuth2 metrics AddSegment/RemoveSegment
 - Removed local notification for OAuth2 invalid grant error 
 - Better fetchApplication handling on becoming active
-- Added precompiled flag to ignore assertions 
+- Added precompiled flag to ignore assertions
+ 
 1.3.1   (2015-01-08)
 - Reset account on new install
 - Register device if account exists on launch

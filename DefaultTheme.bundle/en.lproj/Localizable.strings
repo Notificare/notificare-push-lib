@@ -14,6 +14,7 @@
 "pref_header_notifications" = "Notifications";
 "pref_header_location_services" = "Location Services";
 "pref_location_services" = "Track my location in order to easily get directions and/or to receive updates based on my geographical position";
+"pref_remote_notifications" = "Allow remote push notifications for this application";
 "pref_header_beacons" = "iBeacons";
 
 /* Rate Dialog text */

@@ -1,6 +1,6 @@
 Changelog
 =========
-1.4.0   (2015-01-29)
+1.4.0   (2015-01-30)
 - Added user defaults for device properties, current regions and current beacons
 - Check for device properties when registering the device to prevent useless requests
 - Added current regions and beacons list to prevent an enter before an exit

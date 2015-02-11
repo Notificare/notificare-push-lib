@@ -1,5 +1,9 @@
 Changelog
 =========
+1.4.1   (2015-02-11)
+- Fix for local notification key in launch options dictionary
+- Added checks for empty/nil values on register device
+- Added start of monitoring of beacons in didDetermineState (inside) of a CLRegion
 1.4.0   (2015-01-30)
 - Added user defaults for device properties, current regions and current beacons
 - Check for device properties when registering the device to prevent useless requests

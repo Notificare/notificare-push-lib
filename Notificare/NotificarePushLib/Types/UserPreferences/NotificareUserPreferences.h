@@ -19,6 +19,7 @@
 #import "NSDictionary+FromPlist.h"
 #import "NotificareEngine.h"
 #import "NotificareDeviceViewController.h"
+#import "NotificarePassbookViewController.h"
 
 @interface NotificareUserPreferences : NSObject <NotificationType,UIActionSheetDelegate>
 
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (strong, nonatomic) NotificareDeviceViewController * deviceController;
+@property (strong, nonatomic) NotificarePassbookViewController * passbookController;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;
 @property (strong, nonatomic) UINavigationController * navigationController;

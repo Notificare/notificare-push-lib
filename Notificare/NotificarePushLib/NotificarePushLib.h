@@ -67,6 +67,8 @@ typedef enum  {
     kNotificareErrorCodeConflict = 409,
     kNotificareErrorCodeUnprocessableEntity = 422,
     kNotificareErrorCodeInternalServerError = 500,
+    kNotificareErrorCodeBadGateway = 502,
+    kNotificareErrorCodeServiceUnavailable = 503,
     kNotificareErrorCodeGatewayTimeout = 504
 } kNotificareErrorCode;
 

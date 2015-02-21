@@ -1,5 +1,11 @@
 Changelog
 =========
+1.4.2   (2015-02-21)
+- Added new event log for passes added to passbook
+- Added new error codes for gateway timeouts
+- Added network errors check for retries 
+- Added possibility to use less than two iOS8 actionable buttons  
+- Added better cell refresh in inbox
 1.4.1   (2015-02-11)
 - Fix for local notification key in launch options dictionary
 - Added checks for empty/nil values on register device

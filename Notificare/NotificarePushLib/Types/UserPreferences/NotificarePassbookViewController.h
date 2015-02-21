@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PassKit/PassKit.h>
+#import "NSString+FromBundle.h"
+#import "UIImage+FromBundle.h"
+#import "NSDictionary+FromPlist.h"
+#import "NSDate+TimeAgo.h"
 
-@interface NotificarePassbookViewController : UIViewController
+@interface NotificarePassbookViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) NSMutableArray * tableSections;
+@property (strong, nonatomic) NSMutableArray * tableSectionTitles;
+@property (strong, nonatomic) UITableView * tableView;
+@property (strong, nonatomic) UILabel * emptyLabel;
+@property (strong, nonatomic) PKPassLibrary * passLib;
 
 @end

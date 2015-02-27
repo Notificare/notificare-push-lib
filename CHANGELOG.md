@@ -1,5 +1,8 @@
 Changelog
 =========
+1.4.3   (2015-02-27)
+- Fix for geo triggered notifications when launching the app inside a region
+- Added new Passbook view
 1.4.2   (2015-02-21)
 - Added new event log for passes added to passbook
 - Added new error codes for gateway timeouts

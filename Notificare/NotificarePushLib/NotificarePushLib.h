@@ -1372,6 +1372,14 @@ typedef enum  {
  *  @return A NSString representing the path to the product's content
  */
 - (NSString *)sdkVersion;
+/*!
+ *  @abstract Passes list
+ *
+ *  @discussion
+ *  Retrieve a list of passes added to the Passbook app that this app can access
+ *  @return A NSArray containing PKPasses objects
+ */
+-(NSArray *)myPasses;
 
 @end
 

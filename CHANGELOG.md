@@ -1,5 +1,12 @@
 Changelog
 =========
+1.5.0   (2015-04-24)
+- Fixes in saveToInbox related to messages received when in an inactive state
+- Added new metric re.notifica.event.pass.Add when adding pass to Passbook
+- Added -(NSArray *)myPasses method for a list of passes added to Passbook for this application
+- Added queues for enter/exit triggers 
+- Added support for silent push
+- Added reload of UIUserNotificationSettings on silent push
 1.4.3   (2015-02-27)
 - Fix for geo triggered notifications when launching the app inside a region
 - Added new Passbook view

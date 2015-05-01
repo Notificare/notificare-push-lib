@@ -1,5 +1,9 @@
 Changelog
 =========
+1.5.1   (2015-05-01)
+- Updated to iOS SDK 8.3
+- Added last registered check in registerDevice
+- Added old device in registerDevice when different
 1.5.0   (2015-04-24)
 - Fixes in saveToInbox related to messages received when in an inactive state
 - Added new metric re.notifica.event.pass.Add when adding pass to Passbook

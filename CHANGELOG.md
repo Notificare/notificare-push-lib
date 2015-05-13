@@ -1,5 +1,7 @@
 Changelog
 =========
+1.5.2   (2015-05-14)
+- Double check for didExit regions on didDetermineState
 1.5.1   (2015-05-01)
 - Updated to iOS SDK 8.3
 - Added last registered check in registerDevice

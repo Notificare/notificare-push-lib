@@ -2,10 +2,12 @@ Changelog
 =========
 1.5.2   (2015-05-14)
 - Double check for didExit regions on didDetermineState
+
 1.5.1   (2015-05-01)
 - Updated to iOS SDK 8.3
 - Added last registered check in registerDevice
 - Added old device in registerDevice when different
+
 1.5.0   (2015-04-24)
 - Fixes in saveToInbox related to messages received when in an inactive state
 - Added new metric re.notifica.event.pass.Add when adding pass to Passbook
@@ -13,19 +15,23 @@ Changelog
 - Added queues for enter/exit triggers 
 - Added support for silent push
 - Added reload of UIUserNotificationSettings on silent push
+
 1.4.3   (2015-02-27)
 - Fix for geo triggered notifications when launching the app inside a region
 - Added new Passbook view
+
 1.4.2   (2015-02-21)
 - Added new event log for passes added to passbook
 - Added new error codes for gateway timeouts
 - Added network errors check for retries 
 - Added possibility to use less than two iOS8 actionable buttons  
 - Added better cell refresh in inbox
+
 1.4.1   (2015-02-11)
 - Fix for local notification key in launch options dictionary
 - Added checks for empty/nil values on register device
 - Added start of monitoring of beacons in didDetermineState (inside) of a CLRegion
+
 1.4.0   (2015-01-30)
 - Added user defaults for device properties, current regions and current beacons
 - Check for device properties when registering the device to prevent useless requests

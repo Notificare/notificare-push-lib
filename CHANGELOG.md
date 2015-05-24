@@ -1,10 +1,11 @@
 Changelog
 =========
-1.5.3   (2015-05-23)
+1.5.3   (2015-05-24)
 - Added public method registerUserNotifications
 - Added formatted payload for WebSockets notifications
 - Fixed bug with empty beacon region when stop monitoring
 - Removed Passbook Add event will be added by API
+- Fixed bug with lastRegistered date
 
 1.5.2   (2015-05-14)
 - Double check for didExit regions on didDetermineState

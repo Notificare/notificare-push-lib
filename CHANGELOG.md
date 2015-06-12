@@ -1,5 +1,12 @@
 Changelog
 =========
+1.5.4   (2015-06-13)
+- Added hit test region for iOS7 and up
+- Changed deprecated clear notification endpoint
+- Added check for location services
+- Added possibility to override the apiID and apiSecret
+- Fixed bug in didReceiveLocationServiceAuthorizationStatus delegate that prevented it to be triggered always after startLocationUpdates
+
 1.5.3   (2015-05-24)
 - Added public method registerUserNotifications
 - Added formatted payload for WebSockets notifications

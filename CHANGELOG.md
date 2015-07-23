@@ -1,5 +1,16 @@
 Changelog
 =========
+1.5.5   (2015-07-23)
+- Added deviceID and userID to open/close application events
+- Added deviceID and userID to upgrade application events
+- Added country property of NotificareDevice
+- Added reverse geocode query to calculate country at every location update 
+- Added check in ranging beacons for current active fences
+- Removed check in exit event
+- Removed methods in state
+- Added log last location on enter and exit events
+- Built against iOS 8.4 SDK
+
 1.5.4   (2015-06-13)
 - Added hit test region for iOS7 and up
 - Changed deprecated clear notification endpoint

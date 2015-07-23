@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString * sdkVersion;
 @property (strong, nonatomic) NSString * appVersion;
 @property (strong, nonatomic) NSString * device;
+@property (strong, nonatomic) NSString * country;
 @property (nonatomic) float latitude;
 @property (nonatomic) float longitude;
 @property (assign, nonatomic) BOOL canReceiveNotifications;

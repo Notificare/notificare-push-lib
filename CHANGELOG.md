@@ -1,5 +1,8 @@
 Changelog
 =========
+1.5.6   (2015-07-27)
+- Clear session on didDetermineState for both beacons and regions
+
 1.5.5   (2015-07-23)
 - Added deviceID and userID to open/close application events
 - Added deviceID and userID to upgrade application events

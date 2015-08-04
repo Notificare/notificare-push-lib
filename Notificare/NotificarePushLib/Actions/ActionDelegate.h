@@ -19,6 +19,7 @@
 - (void)actionType:(id<ActionType>)type didExecuteAction:(NSDictionary *)info;
 - (void)actionType:(id<ActionType>)type didNotExecuteAction:(NSDictionary *)info;
 - (void)actionType:(id<ActionType>)type shouldPerformSelector:(NSString *)selector;
+- (void)actionType:(id<ActionType>)type shouldPerformSelectorWithURL:(NSURL *)url;
 - (void)actionType:(id<ActionType>)type didFailToExecuteAction:(NSError *)error;
 
 @end

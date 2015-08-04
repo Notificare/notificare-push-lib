@@ -156,7 +156,15 @@ typedef enum  {
     }
  }
  */
-- (void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelector:(NSString *)selector;
+- (void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelector:(NSString *)selector __attribute__((deprecated("use shouldPerformSelectorWithURL instead.")));
+/*!
+ * @brief Optional. This delegate method will be triggered when the action to be executed will require that you execute a selector method in your own code.
+ * @param selector A NSString that represents the method to be called
+ * @code -(void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelectorWithURL:(NSURL *)url{
+ [self performSelector:[url host] withObject:[url path]]
+ }
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelectorWithURL:(NSURL *)url;
 /*!
  * @brief Optional. This delegate method will be triggered when the action was cancelled.
  * @param info A NSDictionary object that represents the user selectable action

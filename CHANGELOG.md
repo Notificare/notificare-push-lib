@@ -1,5 +1,9 @@
 Changelog
 =========
+1.5.7   (2015-08-04)
+- Removed double check in didDetermineState
+- Added new delegate for handling custom type actions
+
 1.5.6   (2015-07-27)
 - Clear session on didDetermineState for both beacons and regions
 

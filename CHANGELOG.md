@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.8   (2015-08-07)
+1.5.8   (2015-08-08)
 - Added management of new loaded fences on location updates
 - Added clean up of current regions list to didDetermineState 
 - Added check for empty image and fallback for text on send button

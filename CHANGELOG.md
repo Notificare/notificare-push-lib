@@ -1,5 +1,12 @@
 Changelog
 =========
+
+1.5.8   (2015-08-07)
+- Added management of new loaded fences on location updates
+- Added clean up of current regions list to didDetermineState 
+- Added check for empty image and fallback for text on send button
+- Added retries with delay for triggers
+
 1.5.7   (2015-08-04)
 - Removed double check in didDetermineState
 - Added new delegate for handling custom type actions

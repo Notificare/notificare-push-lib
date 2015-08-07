@@ -2,6 +2,7 @@
 "cancel" = "Annuleer";
 "actions" = "Acties";
 "close" = "Bericht Sluiten";
+"send" = "klaar";
 
 /* Location Services purpose text (after iOS6 this has to be included in the app's .plist with the key NSLocationUsageDescription and translated in InfoPlist.strings) */
 "why_location_updates_text" = "We willen je locatie gebruiken om je kaarten en richtingaanwijzingen te geven en je updates en waarschuwingen te sturen gebaseerd op jouw locatie.";

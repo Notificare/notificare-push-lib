@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.5.9   (2015-08-25)
+- Several improvements on geofencing and beacons monitoring based on extensive field testing
+
 1.5.8   (2015-08-08)
 - Added management of new loaded fences on location updates
 - Added clean up of current regions list to didDetermineState 

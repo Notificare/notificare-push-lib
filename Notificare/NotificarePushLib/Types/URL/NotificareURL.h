@@ -16,8 +16,9 @@
 #import "NotificareActions.h"
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
+#import <SafariServices/SafariServices.h>
 
-@interface NotificareURL : NSObject <NotificationType,UIWebViewDelegate,UIActionSheetDelegate>
+@interface NotificareURL : NSObject <NotificationType,UIWebViewDelegate,UIActionSheetDelegate,SFSafariViewControllerDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;
 @property (strong, nonatomic) UIWebView * webView;
+@property (strong, nonatomic) SFSafariViewController * safariViewController;
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;

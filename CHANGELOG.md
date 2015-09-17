@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.6.0  (2015-09-18)
+- Changes in openNotification to prioritised messages previously loaded
+- Added iOS9 Text Input in actions with keyboard
+- Changed to SFSafariViewController for URL push (new SafariServices.framework needed)
+- Enabled bitcode export (for App Thinning)
+- Built against SDK 9 (please update to Xcode 7)
+
+
 1.5.9   (2015-08-25)
 - Several improvements on geofencing and beacons monitoring based on extensive field testing
 

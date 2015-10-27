@@ -2,6 +2,7 @@
 "cancel" = "Annuleer";
 "actions" = "Acties";
 "close" = "Bericht Sluiten";
+"remove_all" = "Postvak IN legen";
 "send" = "klaar";
 
 /* Location Services purpose text (after iOS6 this has to be included in the app's .plist with the key NSLocationUsageDescription and translated in InfoPlist.strings) */
@@ -25,7 +26,7 @@
 
 "pass_already_in_passbook" = "Je hebt deze kaart al in je Passbook.";
 
-"inbox_title" = "Inbox";
+"inbox_title" = "Postvak In";
 "inbox_empty_text" = "geen berichten ontvangen";
 
 "beacons_empty_text" = "Geen iBeacons gevonden. Zorg ervoor dat Bluetooth ingeschakeld is.";

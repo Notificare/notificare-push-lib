@@ -149,17 +149,6 @@ typedef enum  {
 /*!
  * @brief Optional. This delegate method will be triggered when the action to be executed will require that you execute a selector method in your own code.
  * @param selector A NSString that represents the method to be called
- * @code -(void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelector:(NSString *)selector{
-    SEL mySelector = NSSelectorFromString(selector);
-    if([self respondsToSelector:mySelector]){
-       Suppressor([self performSelector:mySelector]);
-    }
- }
- */
-- (void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelector:(NSString *)selector __attribute__((deprecated("use shouldPerformSelectorWithURL instead.")));
-/*!
- * @brief Optional. This delegate method will be triggered when the action to be executed will require that you execute a selector method in your own code.
- * @param selector A NSString that represents the method to be called
  * @code -(void)notificarePushLib:(NotificarePushLib *)library shouldPerformSelectorWithURL:(NSURL *)url{
  [self performSelector:[url host] withObject:[url path]]
  }
@@ -204,7 +193,7 @@ typedef enum  {
 /*!
  * @brief Optional. This delegate method will be triggered every time a region starts to be monitored.
  * @constant state A CLRegionState constant that represents the state of the region
- * @param error A NSError object
+ * @param region A CLRegion object
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region;
 /*!
@@ -468,14 +457,6 @@ typedef enum  {
  */
 @property (strong, nonatomic) NSString * username __attribute__((deprecated("use myDevice or user instead.")));
 
-/*!
- *  @abstract The notificationTypes
- *
- *  @discussion
- *	A UIRemoteNotificationType list of notification types
- *
- */
-@property (nonatomic, assign) UIRemoteNotificationType notificationTypes;
 
 /*!
  *  @abstract Boolean for checking if notification is open
@@ -491,7 +472,7 @@ typedef enum  {
 
 
 /*!
- *  @abstract Boolean for checking if notification is open
+ *  @abstract Boolean that states if rich content message should present an alert
  *
  */
 @property (assign) BOOL displayMessage;
@@ -503,12 +484,12 @@ typedef enum  {
 @property (strong, nonatomic) CLRegion * currentFence __attribute__((deprecated("use currentRegions instead.")));
 
 /*!
- *  @abstract NSMutableArray containing the CLRegion objects the user is currently inside
+ *  @abstract NSMutableArray containing the region IDs as a NSString
  *
  */
 @property (strong, nonatomic) NSMutableArray * currentRegions;
 /*!
- *  @abstract NSMutableArray containing the CLBeaconRegion objects the user is currently in range
+ *  @abstract NSMutableArray containing the the beacon IDs as a NSString
  *
  */
 @property (strong, nonatomic) NSMutableArray * currentBeacons;
@@ -534,7 +515,7 @@ typedef enum  {
  *  @abstract Location Manager
  *
  *  @discussion
- *	Core Location Manager that handles significant change updates
+ *	Core Location Manager that handles significant change updates and location services
  *
  */
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -543,7 +524,7 @@ typedef enum  {
  *  @abstract Last Locations
  *
  *  @discussion
- *	A mutable array that holds lasts readings from Core Location
+ *	A mutable array that holds lasts GPS readings from Core Location
  *
  */
 @property (strong, nonatomic) NSMutableArray *lastLocations;
@@ -552,7 +533,7 @@ typedef enum  {
  *  @abstract Region Session Data
  *
  *  @discussion
- *	A mutable array that holds hold the enter/exit sessions data for a fence
+ *	A mutable array that holds the enter/exit sessions data for a fence
  *
  */
 @property (strong, nonatomic) NSMutableArray * regionSessions;
@@ -571,7 +552,7 @@ typedef enum  {
  *  @abstract Beacon Region
  *
  *  @discussion
- *	A iBeacon region with UUID being monitored
+ *	A CLBeaconRegion currently in range
  *
  */
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
@@ -589,7 +570,7 @@ typedef enum  {
 /*!
  *  @abstract Ranging flag
  *  @discussion
- *	A BOOL to flag when iBeacon is in range
+ *	A BOOL to flag when a iBeacon region is ranging
  */
  
 @property (nonatomic, assign) BOOL ranging;
@@ -619,7 +600,7 @@ typedef enum  {
  *  @abstract Application info
  *
  *  @discussion
- *	Returns application's public
+ *	Returns application's object for public use
  *
  */
 @property (strong, nonatomic) NSDictionary * applicationInfo;
@@ -628,7 +609,7 @@ typedef enum  {
  *  @abstract Geo-fences
  *
  *  @discussion
- *	Returns Regions being monitored
+ *	Returns regions objects being monitored
  *
  */
 @property (strong, nonatomic) NSMutableArray * geofences;
@@ -639,7 +620,7 @@ typedef enum  {
  *  @abstract Log of entries in a region
  *
  *  @discussion
- *	Returns an array of regions that were triggered by entry
+ *	Returns an array of regions that were triggered by a user entry
  *
  */
 @property (strong, nonatomic) NSMutableArray * stateEntries;
@@ -650,7 +631,7 @@ typedef enum  {
  *  @abstract In-App Billing
  *
  *  @discussion
- *	Methods for the In-App Billing add-on
+ *	Properties for the In-App Billing add-on
  *
  */
 @property (strong, nonatomic) NSMutableSet * productIdentifiers;
@@ -675,14 +656,6 @@ typedef enum  {
  *  Initializes the NotificarePushLib, should be the first method to be invoked in your App Delegate
  */
 - (void)launch;
-
-/*!
- *  @abstract Register for APNS
- *
- *  @discussion
- *  Registers for APNS with types. This method is deprecated in favour of registerForRemoteNotificationsTypes and will be totally removed after 15 Feb 2015.
- */
-- (void)registerForRemoteNotificationsTypes:(UIRemoteNotificationType)types __attribute__((deprecated("use registerForNotifications instead.")));;
 
 /*!
  *  @abstract Register for APNS + User Notifications
@@ -907,6 +880,14 @@ typedef enum  {
  */
 - (void)logOpenNotification:(NSDictionary *)notification;
 /*!
+ *  @abstract Log Influenced Open notification
+ *
+ *  @discussion
+ *  Logs the influenced open notification manually. This should be used when you don't use the handleOptions.
+ *  @param notification A NSDictionary object usually the result of getNotification: or Apple's userInfo dictionary provided in handleOptions:.
+ */
+- (void)logInfluencedOpenNotification:(NSDictionary *)notification;
+/*!
  *  @abstract Get Notification
  *
  *  @discussion
@@ -919,7 +900,7 @@ typedef enum  {
  *  @abstract Delete Notification
  *
  *  @discussion
- *  Deletes a notification. Should be used if you want to remove a notification from our system. This can not be undone.
+ *  Deletes a notification. Should be used if you want to remove a notification from our system. Only applicable for private (sent to a single user or device) notifications. This can not be undone.
  *  @param notification A NSString that represents the notification ID
  */
 - (void)clearNotification:(NSString *)notification;
@@ -1010,7 +991,7 @@ typedef enum  {
  *  @abstract Start monitoring beacons for region
  *
  *  @discussion
- *  Start monitoring beacons for a specific region using a NSUUID
+ *  Start monitoring beacons for a specific region using a NSUUID. This method is only needed if you are handling location services yourself.
  *  @param uuid A NSUUID that represents the number found in your beacons as the UUID
  */
 - (void)startMonitoringBeaconRegion:(NSUUID *)uuid;
@@ -1018,7 +999,7 @@ typedef enum  {
  *  @abstract Start monitoring beacons for region
  *
  *  @discussion
- *  Start monitoring beacons for a specific region using a NSUUID and a NSNumber representing the major identifier found in the beacons
+ *  Start monitoring beacons for a specific region using a NSUUID and a NSNumber representing the major identifier found in the beacons. This method is only needed if you are handling location services yourself.
  *  @param uuid A NSUUID that represents the number found in your beacons as the UUID
  *  @param major A NSNumber that represents the number found in your beacons as the major
  */
@@ -1027,7 +1008,7 @@ typedef enum  {
  *  @abstract Start monitoring beacons for region
  *
  *  @discussion
- *  Start monitoring beacons for a specific region using a NSUUID, a NSNumber representing the major identifier and a NSNumber representing the minor identifier found in the beacons
+ *  Start monitoring beacons for a specific region using a NSUUID, a NSNumber representing the major identifier and a NSNumber representing the minor identifier found in the beacons. This method is only needed if you are handling location services yourself.
  *  @param uuid A NSUUID that represents the number found in your beacons as the UUID
  *  @param major A NSNumber that represents the number found in your beacons as the major
  *  @param minor A NSNumber that represents the number found in your beacons as the minor
@@ -1121,6 +1102,13 @@ typedef enum  {
  *  @param notification A NSDictionary containing the notification object
  */
 - (void)removeFromInbox:(NSDictionary *)notification;
+/*!
+ *  @abstract Remove All Notifications from Inbox
+ *
+ *  @discussion
+ *  Remove all notifications from the Inbox
+ */
+- (void)clearInbox;
 
 /*!
  *  @abstract Open Inbox
@@ -1150,24 +1138,6 @@ typedef enum  {
  */
 -(int)myBadge;
 
-/*!
- *  @abstract Create Account
- *
- *  @discussion
- *  Use this method to create an account. According to the settings of your add-on module, this can trigger the recipient to receive
- *  email messages to activate this account or simply to welcome him/her to your app. Deprecated in favour of createAccount:withName:andPassword:.
- *  @param params A NSDictionary containing the following keys: email, password and userName
- *  @code NSMutableDictionary * params = [NSMutableDictionary dictionary];
- [params setObject:[[self email] text] forKey:@"email"];
- [params setObject:[[self password] text] forKey:@"password"];
- [params setObject:[[self name] text] forKey:@"userName"];
- [[NotificarePushLib shared] createAccount:params completionHandler:^(NSDictionary *info) {
-
- } errorHandler:^(NSError *error) {
-
- }];
- */
-- (void)createAccount:(NSDictionary *)params completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock  __attribute__((deprecated("use createAccount:withName:andPassword: instead.")));
 /*!
  *  @abstract Create Account
  *
@@ -1242,13 +1212,6 @@ typedef enum  {
  *  Use this method to access the user profile.
  */
 - (void)fetchAccountDetails:(SuccessBlock)info errorHandler:(ErrorBlock)error;
-/*!
- *  @abstract Email Token
- *
- *  @discussion
- *  Use this method to generate a new email token for this user. (Deprecated please use the Access Token)
- */
-- (void)generateEmailToken:(SuccessBlock)info errorHandler:(ErrorBlock)error __attribute__((deprecated("use generateAccessToken:completionHandler:errorHandler: instead.")));
 /*!
  *  @abstract Access Token
  *

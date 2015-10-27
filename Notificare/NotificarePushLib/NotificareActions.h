@@ -19,7 +19,6 @@
 
 - (void)notificareActions:(NotificareActions *)library willExecuteAction:(NotificareNotification *)notification;
 - (void)notificareActions:(NotificareActions *)library didExecuteAction:(NSDictionary *)info;
-- (void)notificareActions:(NotificareActions *)library shouldPerformSelector:(NSString *)selector;
 - (void)notificareActions:(NotificareActions *)library shouldPerformSelectorWithURL:(NSURL *)url;
 - (void)notificareActions:(NotificareActions *)library didNotExecuteAction:(NSDictionary *)info;
 - (void)notificareActions:(NotificareActions *)library didFailToExecuteAction:(NSError *)error;

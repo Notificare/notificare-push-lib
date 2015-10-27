@@ -2,6 +2,7 @@
 "cancel" = "Cancelar";
 "actions" = "Acções";
 "close" = "Fechar Mensagem";
+"remove_all" = "Apagar todas as mensagens";
 "send" = "enviar";
 
 /* Location Services purpose text (after iOS6 this has to be included in the app's .plist with the key NSLocationUsageDescription and translated in InfoPlist.strings) */

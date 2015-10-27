@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.6.1  (2015-10-27)
+- Corrections in headerdocs
+- Fixes for colours in SafariViewController navigation bar
+- Added Localizable strings for action categories
+- Added logInfluencedOpenNotification method
+- Added clearInbox method
+- Dropped support for iOS6
+- Built against SDK 9.1
+
 1.6.0  (2015-09-18)
 - Changes in openNotification to prioritised messages previously loaded
 - Added iOS9 Text Input in actions with keyboard

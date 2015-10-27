@@ -2,6 +2,7 @@
 "cancel" = "Cancel";
 "actions" = "Actions";
 "close" = "Close Message";
+"remove_all" = "Clear Inbox";
 "send" = "send";
 
 /* Location Services purpose text (after iOS6 this has to be included in the app's .plist with the key NSLocationUsageDescription and translated in InfoPlist.strings) */

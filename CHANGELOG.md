@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.6.2  (2015-11-02)
+- Hotfix for event’s retries & reachability
+- Added update user notifications settings on language change
+
 1.6.1  (2015-10-27)
 - Corrections in headerdocs
 - Fixes for colours in SafariViewController navigation bar

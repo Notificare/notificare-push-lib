@@ -37,7 +37,9 @@
 @property (nonatomic, assign) BOOL withMessage;
 @property (strong, nonatomic) UINavigationController *navController;
 @property (strong, nonatomic) UIViewController *controller;
-
+@property (nonatomic, assign) float keyboardSize;
+@property (strong, nonatomic) UIView *view;
+@property (strong, nonatomic) UIImageView *imageView;
 
 -(void)executeAction;
 

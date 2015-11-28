@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.6.3  (2015-11-28)
+- Fixes crash when clicking actions in rich content push on iPad
+- Better keyboard handling in keyboard actions
+- Fixes a problem with opening rich content views when other views are initiated before UIWindow
+
 1.6.2  (2015-11-02)
 - Hotfix for event’s retries & reachability
 - Added update user notifications settings on language change

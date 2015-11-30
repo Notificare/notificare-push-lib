@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.6.4  (2015-11-30)
+- Fixes issue with Done button of SafariViewController that prevents future messages from appearing
+
 1.6.3  (2015-11-28)
 - Fixes crash when clicking actions in rich content push on iPad
 - Better keyboard handling in keyboard actions

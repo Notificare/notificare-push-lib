@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.6.5  (2015-12-18)
+- Fixed issue with size of WebView controller in URL push
+- Added attribute to keychain insert item to allow keychain to be accessed even when device is locked
+- Fixed problem introduce in 1.6.3 with callback actions with no target that prevented replies
+- Removed check for added passes allowing passes to be always open on a push notification even if already in Wallet
+- Built against SDK 9.2
+
 1.6.4  (2015-11-30)
 - Fixes issue with Done button of SafariViewController that prevents future messages from appearing
 

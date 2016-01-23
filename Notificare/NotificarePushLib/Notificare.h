@@ -24,6 +24,7 @@
 - (void)notificare:(Notificare *)library didOpenNotification:(NotificareNotification *)info;
 - (void)notificare:(Notificare *)library didCloseNotification:(NotificareNotification *)info;
 - (void)notificare:(Notificare *)library didFailToOpenNotification:(NotificareNotification *)info;
+- (void)notificare:(Notificare *)library didClickURL:(NSURL *)url inNotification:(NotificareNotification *)notification;
 - (void)notificare:(Notificare *)library log:(NSDictionary *)info;
 - (void)notificare:(Notificare *)library onPreferencesChanged:(NSDictionary *)info;
 - (void)notificare:(Notificare *)library didUpdateBadge:(int)badge;

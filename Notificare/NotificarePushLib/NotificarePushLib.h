@@ -23,6 +23,7 @@
 #import "NotificareBeacon.h"
 #import "NotificareProduct.h"
 #import "NotificareDevice.h"
+#import "NotificareDeviceInbox.h"
 
 
 /**
@@ -42,6 +43,8 @@ _Pragma("clang diagnostic pop") \
  * Blocks definitions
  * Current blocks used by this library's methods
  */
+typedef void (^SuccessDeviceInboxBlock)(NotificareDeviceInbox * inbox);
+typedef void (^SuccessNotificationBlock)(NotificareNotification * notification);
 typedef void (^SuccessProductBlock)(NotificareProduct * product);
 typedef void (^SuccessArrayBlock)(NSArray * info);
 typedef void (^SuccessBlock)(NSDictionary * info);
@@ -136,6 +139,13 @@ typedef enum  {
  * @param notification A NotificareNotification object that represents the notification
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToOpenNotification:(NotificareNotification *)notification;
+/*!
+ * @brief Optional. This delegate method will be triggered when a user interacts with clickable content or events in WebView
+ * @param url A NSURL object that represents the URL clicked
+ * @param notification A NotificareNotification object that represents the notification
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didClickURL:(NSURL *)url inNotification:(NotificareNotification *)notification;
+
 /*!
  * @brief Optional. This delegate method will be triggered just before the action will is executed.
  * @param notification A NotificareNotification object that represents the notification
@@ -1093,7 +1103,32 @@ typedef enum  {
  *  @param notification A NSDictionary containing the notification object
  *  @param application A UIApplication object that references to this application
  */
-- (void)saveToInbox:(NSDictionary *)notification forApplication:(UIApplication *)application completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+- (void)saveToInbox:(NSDictionary *)notification forApplication:(UIApplication *)application completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock  __attribute__((deprecated("use handleNotification:forApplication: instead.")));
+/*!
+ *  @abstract Handle Notification
+ *
+ *  @discussion
+ *  Handles all the events for a notification. To be use in -application didReceiveRemoteNotification:fetchCompletionHandler:
+ *  This method will require the background mode in your project capabilities to be set to remote notifications.
+ *  @param notification A NSDictionary containing the notification object
+ *  @param application A UIApplication object that references to this application
+ */
+- (void)handleNotification:(NSDictionary *)notification forApplication:(UIApplication *)application completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+/*!
+ *  @abstract Get inbox for device
+ *
+ *  @discussion
+ *  Use this method to get a list of all inbox items for a device.
+ */
+- (void)fetchInbox:(NSDate *)sinceDate skip:(NSNumber *)skip limit:(NSNumber *)limit completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+/*!
+ *  @abstract Open inbox item
+ *
+ *  @discussion
+ *  Displays the inbox item. Should be used with a NotificareDeviceInbox item.
+ *  @param inboxItem A NotificareDeviceInbox object
+ */
+- (void)openInboxItem:(NotificareDeviceInbox *)inboxItem;
 /*!
  *  @abstract Remove Notification from Inbox
  *
@@ -1101,14 +1136,37 @@ typedef enum  {
  *  Remove a notification from the Inbox
  *  @param notification A NSDictionary containing the notification object
  */
-- (void)removeFromInbox:(NSDictionary *)notification;
+- (void)removeFromInbox:(NSDictionary *)notification  __attribute__((deprecated("use removeFromInbox with blocks instead.")));
+/*!
+ *  @abstract Remove Inbox Item from Inbox
+ *
+ *  @discussion
+ *  Remove an inbox item from the Inbox
+ *  @param notification A NotificareDeviceInbox object
+ */
+- (void)removeFromInbox:(NotificareDeviceInbox *)inboxItem completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+/*!
+ *  @abstract Mark Inbox Item as read
+ *
+ *  @discussion
+ *  Mark an inbox item as read
+ *  @param notification A NotificareDeviceInbox object
+ */
+- (void)markAsRead:(NotificareDeviceInbox *)inboxItem completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
 /*!
  *  @abstract Remove All Notifications from Inbox
  *
  *  @discussion
  *  Remove all notifications from the Inbox
  */
-- (void)clearInbox;
+- (void)clearInbox  __attribute__((deprecated("use clearInbox with blocks instead.")));
+/*!
+ *  @abstract Remove All Notifications from Inbox
+ *
+ *  @discussion
+ *  Remove all notifications from the Inbox
+ */
+- (void)clearInbox:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
 
 /*!
  *  @abstract Open Inbox
@@ -1117,7 +1175,7 @@ typedef enum  {
  *  Displays an inbox built-in view where the user can have access to all the notifications received in that device. Users can read and remove any notification in this inbox. This is stored locally in the device, so if the user uninstalls the app, these messages will be gone.
  *
  */
--(void)openInbox;
+-(void)openInbox  __attribute__((deprecated("use Inbox methods instead.")));
 /*!
  *  @abstract Inbox
  *
@@ -1127,7 +1185,7 @@ typedef enum  {
  *  Use these method for a starting to build your own inbox. See also the delegate didUpdateBadge.
  *  @return A NSArray containing the list of messages in the inbox
  */
--(NSArray *)myInbox;
+-(NSArray *)myInbox  __attribute__((deprecated("use fetchMyInbox with blocks instead.")));
 
 /*!
  *  @abstract Badge

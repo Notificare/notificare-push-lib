@@ -18,6 +18,7 @@
 - (void)notificationType:(id<NotificationType>)type didOpenNotification:(NotificareNotification *)notification;
 - (void)notificationType:(id<NotificationType>)type didCloseNotification:(NotificareNotification *)notification;
 - (void)notificationType:(id<NotificationType>)type didFailToOpenNotification:(NotificareNotification *)notification;
+- (void)notificationType:(id<NotificationType>)type didClickURL:(NSURL *)url inNotification:(NotificareNotification *)notification;
 - (void)notificationType:(id<NotificationType>)type log:(NSDictionary *)info;
 - (void)notificationType:(id<NotificationType>)type onPreferencesChanged:(NSDictionary *)info;
 - (void)notificationType:(id<NotificationType>)type didUpdateBadge:(int)badge;

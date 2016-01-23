@@ -18,6 +18,12 @@
 	<dict>
 		<key>APP_RUNS_ON_BACKGROUND</key>
 		<false/>
+		<key>USE_SAFARI_VIEW</key>
+		<true/>
+		<key>URL_SCHEMES</key>
+		<array>
+			<string>test</string>
+		</array>
 		<key>IMAGES_SHARING</key>
 		<true/>
 		<key>BACKGROUND_COLOR</key>

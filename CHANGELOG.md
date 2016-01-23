@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.7.0  (2016-01-23)
+- Added new server-side inbox methods
+- Deprecated device inbox methods
+- Deprecated saveToInbox in favour of handleNotification
+- Added plist OPTION keys USE_TEST_API, USE_SAFARI_VIEW and URL_SCHEMES
+- Added delegate didClickURL:inNotification: for events inside UIWebViews
+- Fixes for stop monitoring for individual beacons after exiting a region
+
 1.6.5  (2015-12-18)
 - Fixed issue with size of WebView controller in URL push
 - Added attribute to keychain insert item to allow keychain to be accessed even when device is locked

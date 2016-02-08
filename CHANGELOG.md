@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.7.1  (2016-02-08)
+- Added unregisterForNotifications and unregisterUserNotifications
+- Check for null location in location manager
+- Hotfix for lastRegisteredDate in unregisterDevice
+
 1.7.0  (2016-01-23)
 - Added new server-side inbox methods
 - Deprecated device inbox methods

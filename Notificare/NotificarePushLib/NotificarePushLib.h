@@ -676,12 +676,28 @@ typedef enum  {
 - (void)registerForNotifications;
 
 /*!
+ *  @abstract Unregister for APNS + User Notifications
+ *
+ *  @discussion
+ *  This method will unregister a device for remote notifications and user notifications. Should only be invoked after the delegate method onReady is triggered.
+ */
+-(void)unregisterForNotifications;
+
+/*!
  *  @abstract Register for User Notifications
  *
  *  @discussion
  *  Available since iOS 8. This method will prompt the user to accept badges, alerts and sounds. Should only be invoked after the delegate method onReady is triggered. Once the user accepts it, the delegate - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings will be triggered.
  */
 - (void)registerUserNotifications;
+
+/*!
+ *  @abstract Unregister for User Notifications
+ *
+ *  @discussion
+ *  Available since iOS 8. This method will disable Alerts, Badges or Sounds.
+ */
+-(void)unregisterUserNotifications;
 
 /*!
  *  @abstract Check if device is registered with APNS

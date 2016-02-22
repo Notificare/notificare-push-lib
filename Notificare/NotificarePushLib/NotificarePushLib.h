@@ -692,14 +692,6 @@ typedef enum  {
 - (void)registerUserNotifications;
 
 /*!
- *  @abstract Unregister for User Notifications
- *
- *  @discussion
- *  Available since iOS 8. This method will disable Alerts, Badges or Sounds.
- */
--(void)unregisterUserNotifications;
-
-/*!
  *  @abstract Check if device is registered with APNS
  *
  *  @discussion

@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.7.2  (2016-02-22)
+- Removed unregisterUserNotifications in favour of [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+
 1.7.1  (2016-02-08)
 - Added unregisterForNotifications and unregisterUserNotifications
 - Check for null location in location manager

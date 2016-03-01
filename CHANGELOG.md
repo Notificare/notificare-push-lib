@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.7.3  (2016-03-01)
+- Fixed issue with requestStateForRegion for beacon regions with UUID + major
+
 1.7.2  (2016-02-22)
 - Removed unregisterUserNotifications in favour of [[UIApplication sharedApplication] unregisterForRemoteNotifications];
 

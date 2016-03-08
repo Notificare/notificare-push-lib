@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.7.4  (2016-03-08)
+- Fixed issue with OPTIONS > USE_SAFARI_VIEW property of Notificare.plist
+- Fixed crash with retries of notification open logs
+
 1.7.3  (2016-03-01)
 - Fixed issue with requestStateForRegion for beacon regions with UUID + major
 

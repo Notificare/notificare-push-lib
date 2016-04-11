@@ -24,6 +24,7 @@
 #import "NotificareProduct.h"
 #import "NotificareDevice.h"
 #import "NotificareDeviceInbox.h"
+#import "NotificarePass.h"
 
 
 /**
@@ -43,6 +44,7 @@ _Pragma("clang diagnostic pop") \
  * Blocks definitions
  * Current blocks used by this library's methods
  */
+typedef void (^SuccessPassBlock)(NotificarePass * pass);
 typedef void (^SuccessDeviceInboxBlock)(NotificareDeviceInbox * inbox);
 typedef void (^SuccessNotificationBlock)(NotificareNotification * notification);
 typedef void (^SuccessProductBlock)(NotificareProduct * product);
@@ -1425,6 +1427,25 @@ typedef enum  {
  *  @return A NSArray containing PKPasses objects
  */
 -(NSArray *)myPasses;
+/*!
+ *  @abstract Wallet Pass Object
+ *
+ *  @discussion
+ *  Retrieves a Pass object
+ *  @param serial A NSString that indentifies the pass a.k.a serial
+ *  @return A NotificarePass object
+ */
+- (void)fetchPass:(NSString *)serial completionHandler:(SuccessPassBlock)result errorHandler:(ErrorBlock)error;
+
+/*!
+ *  @abstract Asset Group list
+ *
+ *  @discussion
+ *  Retrieves a list of assets from a specific group
+ *  @param group A NSString that indentifies the group name
+ *  @return A NSArray containing NotificareAsset objects
+ */
+- (void)fetchAssets:(NSString *)group completionHandler:(SuccessArrayBlock)result errorHandler:(ErrorBlock)error;
 
 @end
 

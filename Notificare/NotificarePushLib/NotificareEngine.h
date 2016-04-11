@@ -100,5 +100,7 @@ typedef void (^FileUploadResponseBlock)(NSDictionary*file);
 -(NotificareMKNetworkOperation*)getInboxMessage:(NSString *)inboxId completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 -(NotificareMKNetworkOperation*)deleteInboxMessage:(NSString *)inboxId completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
 -(NotificareMKNetworkOperation*)clearInbox:(NSString *)deviceId completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock) errorBlock;
+-(NotificareMKNetworkOperation*)fetchAssets:(NSString *)group completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
+-(NotificareMKNetworkOperation*)fetchPass:(NSString *)serial completionHandler:(NotificationResponseBlock)info errorHandler:(NotificareMKNKErrorBlock)errorBlock;
 
 @end

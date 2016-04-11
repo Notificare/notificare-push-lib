@@ -1,6 +1,16 @@
 Changelog
 =========
 
+1.8.0  (2016-04-11)
+- Added new API methods for Assets
+- Added check for application state when loggin application Open log
+- Changed Influenced event to be logged on notification open method
+- Added new notification type None (new default when unknown namespace is provided)
+- Added new notification type URLScheme
+- Added new notification type Video
+- Fixed issue with since date on fetchInbox in refreshBadge method
+- Fixed race condition when logging appVersion
+
 1.7.4  (2016-03-08)
 - Fixed issue with OPTIONS > USE_SAFARI_VIEW property of Notificare.plist
 - Fixed crash with retries of notification open logs

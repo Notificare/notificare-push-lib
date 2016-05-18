@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.8.1  (2016-05-18)
+- Fixed language format to match all platforms
+- Added userID and deviceID to fetchAssets
+- Added check for empty key and metaData in fetchAssets
+
 1.8.0  (2016-04-11)
 - Added new API methods for Assets
 - Added check for application state when loggin application Open log

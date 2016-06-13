@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.8.2  (2016-06-13)
+- Fixed issue with last character of actions of type Response with Keyboard & Camera
+- Added crash reports
+- Added helper method for assets URLs
+- Fixed issue with the triggers properties of beacon objects
+
 1.8.1  (2016-05-18)
 - Fixed language format to match all platforms
 - Added userID and deviceID to fetchAssets

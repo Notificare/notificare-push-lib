@@ -10,9 +10,9 @@
 
 @interface NotificareUserPreference : NSObject
 
-@property (strong, nonatomic) NSString * preferenceLabel;
-@property (strong, nonatomic) NSString * preferenceId;
-@property (strong, nonatomic) NSString * preferenceType;
-@property (strong, nonatomic) NSArray * preferenceOptions;
+@property (strong, nonatomic, nonnull) NSString * preferenceLabel;
+@property (strong, nonatomic, nonnull) NSString * preferenceId;
+@property (strong, nonatomic, nonnull) NSString * preferenceType;
+@property (strong, nonatomic, nonnull) NSArray * preferenceOptions;
 
 @end

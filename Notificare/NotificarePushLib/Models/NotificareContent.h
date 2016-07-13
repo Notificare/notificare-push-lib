@@ -10,8 +10,8 @@
 
 @interface NotificareContent : NSObject
 
-@property (strong, nonatomic) NSString * type;
-@property (strong, nonatomic) NSString * data;
-@property (strong, nonatomic) NSDictionary * dataDictionary;
+@property (strong, nonatomic, nonnull) NSString * type;
+@property (strong, nonatomic, nonnull) NSString * data;
+@property (strong, nonatomic, nonnull) NSDictionary * dataDictionary;
 
 @end

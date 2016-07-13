@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.8.3  (2016-07-13)
+- Added nonnull and nullable properties in Models
+- Added new methods for Do Not Disturb
+- Fixed typos in header file
+- Fixed an issue with timeAgo method
+
 1.8.2  (2016-06-13)
 - Fixed issue with last character of actions of type Response with Keyboard & Camera
 - Added crash reports

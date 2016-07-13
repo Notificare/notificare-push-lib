@@ -10,10 +10,10 @@
 
 @interface NotificareAsset : NSObject
 
-@property (strong, nonatomic) NSString * assetTitle;
-@property (strong, nonatomic) NSString * assetDescription;
-@property (strong, nonatomic) NSString * assetUrl;
-@property (strong, nonatomic) NSDictionary * assetButton;
-@property (strong, nonatomic) NSDictionary * assetMetaData;
+@property (strong, nonatomic, nonnull) NSString * assetTitle;
+@property (strong, nonatomic, nullable) NSString * assetDescription;
+@property (strong, nonatomic, nullable) NSString * assetUrl;
+@property (strong, nonatomic, nullable) NSDictionary * assetButton;
+@property (strong, nonatomic, nullable) NSDictionary * assetMetaData;
 
 @end

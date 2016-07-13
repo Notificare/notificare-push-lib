@@ -10,14 +10,14 @@
 
 @interface NotificarePass : NSObject
 
-@property (strong, nonatomic) NSString * passbook;
-@property (strong, nonatomic) NSString * serial;
-@property (strong, nonatomic) NSString * redeem;
-@property (strong, nonatomic) NSString * token;
-@property (strong, nonatomic) NSDate * date;
-@property (strong, nonatomic) NSDictionary * data;
-@property (strong, nonatomic) NSNumber * limit;
-@property (strong, nonatomic) NSArray * redeemHistory;
+@property (strong, nonatomic, nonnull) NSString * passbook;
+@property (strong, nonatomic, nonnull) NSString * serial;
+@property (strong, nonatomic, nonnull) NSString * redeem;
+@property (strong, nonatomic, nonnull) NSString * token;
+@property (strong, nonatomic, nonnull) NSDate * date;
+@property (strong, nonatomic, nonnull) NSDictionary * data;
+@property (strong, nonatomic, nullable) NSNumber * limit;
+@property (strong, nonatomic, nullable) NSArray * redeemHistory;
 @property (assign, nonatomic) BOOL active;
 
 @end

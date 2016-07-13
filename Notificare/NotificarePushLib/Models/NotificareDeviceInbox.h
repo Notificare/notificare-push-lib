@@ -10,14 +10,14 @@
 
 @interface NotificareDeviceInbox : NSObject
 
-@property (strong, nonatomic) NSString * inboxId;
-@property (strong, nonatomic) NSString * applicationId;
-@property (strong, nonatomic) NSString * deviceID;
-@property (strong, nonatomic) NSDictionary * data;
-@property (strong, nonatomic) NSString * message;
-@property (strong, nonatomic) NSString * notification;
-@property (strong, nonatomic) NSString * time;
-@property (strong, nonatomic) NSString * userID;
+@property (strong, nonatomic, nonnull) NSString * inboxId;
+@property (strong, nonatomic, nonnull) NSString * applicationId;
+@property (strong, nonatomic, nonnull) NSString * deviceID;
+@property (strong, nonatomic, nullable) NSDictionary * data;
+@property (strong, nonatomic, nonnull) NSString * message;
+@property (strong, nonatomic, nonnull) NSString * notification;
+@property (strong, nonatomic, nonnull) NSString * time;
+@property (strong, nonatomic, nullable) NSString * userID;
 @property (assign, nonatomic) BOOL opened;
 
 @end

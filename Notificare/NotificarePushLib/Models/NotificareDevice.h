@@ -10,15 +10,16 @@
 
 @interface NotificareDevice : NSObject
 
-@property (strong, nonatomic) NSString * deviceID;
-@property (strong, nonatomic) NSString * userID;
-@property (strong, nonatomic) NSString * username;
-@property (strong, nonatomic) NSNumber * timezone;
-@property (strong, nonatomic) NSString * osVersion;
-@property (strong, nonatomic) NSString * sdkVersion;
-@property (strong, nonatomic) NSString * appVersion;
-@property (strong, nonatomic) NSString * device;
-@property (strong, nonatomic) NSString * country;
+@property (strong, nonatomic, nonnull) NSString * deviceID;
+@property (strong, nonatomic, nullable) NSString * userID;
+@property (strong, nonatomic, nullable) NSString * username;
+@property (strong, nonatomic, nonnull) NSNumber * timezone;
+@property (strong, nonatomic, nonnull) NSString * osVersion;
+@property (strong, nonatomic, nonnull) NSString * sdkVersion;
+@property (strong, nonatomic, nonnull) NSString * appVersion;
+@property (strong, nonatomic, nonnull) NSString * device;
+@property (strong, nonatomic, nonnull) NSString * country;
+@property (strong, nonatomic, nullable) NSDictionary * dnd;
 @property (nonatomic) float latitude;
 @property (nonatomic) float longitude;
 @property (assign, nonatomic) BOOL canReceiveNotifications;

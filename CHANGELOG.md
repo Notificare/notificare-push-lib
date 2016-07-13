@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.8.3  (2016-07-13)
+1.8.3  (2016-07-14)
 - Added nonnull and nullable properties in Models
 - Added new methods for Do Not Disturb
 - Fixed typos in header file

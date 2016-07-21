@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.8.4  (2016-07-21)
+- Hotfix for PUT requests introduced in 1.8.3
+
 1.8.3  (2016-07-14)
 - Added nonnull and nullable properties in Models
 - Added new methods for Do Not Disturb

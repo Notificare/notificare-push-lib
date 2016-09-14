@@ -35,7 +35,7 @@
 @property (strong, nonatomic) PKPassLibrary * passLib;
 @property (strong, nonatomic) PKPass * pass;
 @property (strong, nonatomic) UIButton * button;
-
+@property (strong, nonatomic) UIViewController * originalView;
 
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

@@ -18,6 +18,9 @@
 @property (strong, nonatomic, nullable) NSMutableArray * segments;
 @property (strong, nonatomic, nullable) NSString * userID;
 @property (strong, nonatomic, nullable) NSString * userName;
+@property (strong, nonatomic, nullable) NSDictionary * userData;
 @property (nonatomic, assign) BOOL validated;
+
+- (void)setValuesWithUserJSON:(NSDictionary * _Nonnull)userJSON;
 
 @end

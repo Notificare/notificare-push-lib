@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NotificareSegment.h"
 
 @interface NotificareUserPreference : NSObject
 
@@ -14,5 +15,7 @@
 @property (strong, nonatomic, nonnull) NSString * preferenceId;
 @property (strong, nonatomic, nonnull) NSString * preferenceType;
 @property (strong, nonatomic, nonnull) NSArray * preferenceOptions;
+
+- (void)setValuesWithUserPreferenceJSON:(NSDictionary * _Nonnull)userPreferenceJSON;
 
 @end

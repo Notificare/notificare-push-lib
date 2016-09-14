@@ -15,11 +15,13 @@
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 
-@interface NotificareAlert : NSObject <NotificationType,UIAlertViewDelegate>
+@interface NotificareAlert : NSObject <NotificationType>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
+@property (strong, nonatomic) UIViewController * rootViewController;
+@property (strong, nonatomic) UIViewController * originalView;
 
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

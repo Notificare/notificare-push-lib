@@ -14,4 +14,6 @@
 @property (strong, nonatomic, nonnull) NSString * data;
 @property (strong, nonatomic, nonnull) NSDictionary * dataDictionary;
 
+- (void)setValuesWithContentJSON:(NSDictionary * _Nonnull)contentJSON;
+
 @end

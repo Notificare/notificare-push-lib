@@ -17,7 +17,6 @@
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 #import "NSDictionary+FromPlist.h"
-#import "NotificareEngine.h"
 #import "NotificareDeviceViewController.h"
 #import "NotificarePassbookViewController.h"
 
@@ -26,7 +25,6 @@
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
-@property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (strong, nonatomic) NotificareDeviceViewController * deviceController;
 @property (strong, nonatomic) NotificarePassbookViewController * passbookController;
 @property (strong, nonatomic) UIViewController * rootViewController;
@@ -34,7 +32,7 @@
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
-
+@property (strong, nonatomic) UIViewController * originalView;
 
 
 -(void)openNotification;

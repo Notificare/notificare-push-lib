@@ -18,7 +18,7 @@
 #import "UIImage+FromBundle.h"
 #import <SafariServices/SafariServices.h>
 
-@interface NotificareURL : NSObject <NotificationType,UIWebViewDelegate,UIActionSheetDelegate,SFSafariViewControllerDelegate>
+@interface NotificareURL : NSObject <NotificationType,UIWebViewDelegate,SFSafariViewControllerDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
@@ -34,9 +34,9 @@
 @property (strong, nonatomic) UIBarButtonItem * forwardButton;
 @property (strong, nonatomic) UIBarButtonItem * refreshButton;
 @property (strong, nonatomic) UIToolbar * toolbar;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIAlertController *actionSheet;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
-
+@property (strong, nonatomic) UIViewController * originalView;
 
 
 -(void)openNotification;

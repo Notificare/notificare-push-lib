@@ -17,5 +17,6 @@
 @property (nonatomic, assign) BOOL actionKeyboard;
 @property (nonatomic, assign) BOOL actionCamera;
 
+- (void)setValuesWithActionJSON:(NSDictionary * _Nonnull)actionJSON;
 
 @end

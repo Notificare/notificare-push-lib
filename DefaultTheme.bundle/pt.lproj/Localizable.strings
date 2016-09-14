@@ -49,3 +49,10 @@
 "weeks_ago" = "%d semanas atrás";
 "years_ago" = "%d anos atrás";
 "yesterday" = "ontem";
+
+/* Mail Client*/
+"your_subject" = "O seu assunto";
+"your_message" = "A sua mensagem";
+
+/* Lock screen keyboard text field placeholder */
+"type_some_text" = "Escreva aqui";

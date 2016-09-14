@@ -51,3 +51,10 @@
 "weeks_ago" = "%d weken geleden";
 "years_ago" = "%d yaren geleden";
 "yesterday" = "gisteren";
+
+/* Mail Client*/
+"your_subject" = "Jouw onderwerp";
+"your_message" = "Jouw bericht";
+
+/* Lock screen keyboard text field placeholder */
+"type_some_text" = "Type hier";

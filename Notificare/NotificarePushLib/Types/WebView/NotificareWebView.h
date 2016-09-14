@@ -17,7 +17,7 @@
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 
-@interface NotificareWebView : NSObject <NotificationType,UIWebViewDelegate,UIActionSheetDelegate>
+@interface NotificareWebView : NSObject <NotificationType,UIWebViewDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
@@ -27,8 +27,8 @@
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
-
+@property (strong, nonatomic) UIAlertController *actionSheet;
+@property (strong, nonatomic) UIViewController * originalView;
 
 
 -(void)openNotification;

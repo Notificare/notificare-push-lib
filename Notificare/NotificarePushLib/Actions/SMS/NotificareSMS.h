@@ -10,19 +10,17 @@
 #import <MessageUI/MessageUI.h>
 #import "ActionType.h"
 #import "ActionDelegate.h"
-#import "NotificareEngine.h"
 #import "NotificareAction.h"
 #import "NotificareNotification.h"
 
 @interface NotificareSMS : NSObject <ActionType,MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, assign) id<ActionDelegate> delegate;
-@property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (strong, nonatomic) NotificareAction * action;
 @property (strong, nonatomic) NotificareNotification * notification;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) MFMessageComposeViewController *messageComposer;
-
+@property (strong, nonatomic) UIViewController * originalView;
 
 -(void)executeAction;
 

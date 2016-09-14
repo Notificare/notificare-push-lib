@@ -19,7 +19,7 @@
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 
-@interface NotificareMap : NSObject <NotificationType,MKMapViewDelegate,UIActionSheetDelegate>
+@interface NotificareMap : NSObject <NotificationType,MKMapViewDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
@@ -29,7 +29,8 @@
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIAlertController *actionSheet;
+@property (strong, nonatomic) UIViewController * originalView;
 
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

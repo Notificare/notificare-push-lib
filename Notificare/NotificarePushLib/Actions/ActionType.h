@@ -16,6 +16,7 @@
 -(void)setDelegate:(id<ActionDelegate>)delegate;
 -(void)setAction:(NotificareAction *)action;
 -(void)setNotification:(NotificareNotification *)notification;
+-(void)setOriginalView:(UIViewController *)originalView;
 -(void)executeAction;
 
 @end

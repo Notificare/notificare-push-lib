@@ -19,6 +19,8 @@
 @property (nonatomic, assign) id<ActionDelegate> delegate;
 @property (strong, nonatomic) NotificareAction * action;
 @property (strong, nonatomic) NotificareNotification * notification;
+@property (strong, nonatomic) UIViewController * originalView;
+@property (strong, nonatomic) UIViewController * rootViewController;
 
 -(void)executeAction;
 

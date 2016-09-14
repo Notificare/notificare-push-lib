@@ -20,9 +20,11 @@
 @property (strong, nonatomic, nonnull) NSString * device;
 @property (strong, nonatomic, nonnull) NSString * country;
 @property (strong, nonatomic, nullable) NSDictionary * dnd;
+@property (strong, nonatomic, nullable) NSDictionary * userData;
 @property (nonatomic) float latitude;
 @property (nonatomic) float longitude;
 @property (assign, nonatomic) BOOL canReceiveNotifications;
 @property (assign, nonatomic) BOOL allowedLocationServices;
+@property (assign, nonatomic) BOOL allowedUI;
 
 @end

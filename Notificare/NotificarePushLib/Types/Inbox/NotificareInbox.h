@@ -18,14 +18,12 @@
 #import "UIImage+FromBundle.h"
 #import "NSDictionary+FromPlist.h"
 #import "NSDate+TimeAgo.h"
-#import "NotificareEngine.h"
 
 @interface NotificareInbox : NSObject <NotificationType,UITableViewDelegate, UITableViewDataSource,UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
-@property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;
 @property (strong, nonatomic) UINavigationController * navigationController;
@@ -36,7 +34,7 @@
 @property (strong, nonatomic) NSMutableArray *types;
 @property (strong, nonatomic) UITableView * notificationTableView;
 @property (strong, nonatomic) UILabel * emptyLabel;
-
+@property (strong, nonatomic) UIViewController * originalView;
 
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

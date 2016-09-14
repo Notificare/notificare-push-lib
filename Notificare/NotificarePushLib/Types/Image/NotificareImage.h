@@ -21,7 +21,6 @@
 @interface NotificareImage : NSObject <NotificationType,UIScrollViewDelegate,UIPageViewControllerDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
-@property (strong, nonatomic) NotificareEngine * notificareEngine;
 @property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) UIViewController * rootViewController;
@@ -35,6 +34,7 @@
 @property (strong, nonatomic) NSMutableArray *imagesArray;
 @property (assign, nonatomic) BOOL pageControlUsed;
 @property (strong, nonatomic) UIActivityIndicatorView * activityIndicator;
+@property (strong, nonatomic) UIViewController * originalView;
 
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

@@ -49,3 +49,10 @@
 "weeks_ago" = "%d weeks ago";
 "years_ago" = "%d years ago";
 "yesterday" = "yesterday";
+
+/* Mail Client*/
+"your_subject" = "Your subject";
+"your_message" = "Your message";
+
+/* Lock screen keyboard text field placeholder */
+"type_some_text" = "Type here";

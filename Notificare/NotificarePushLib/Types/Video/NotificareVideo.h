@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "NotificareNotification.h"
+#import "NotificareAction.h"
+#import "NotificareContent.h"
+#import "NotificareAttachment.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
 #import "NotificareActions.h"
 #import "NSString+FromBundle.h"
 #import "UIImage+FromBundle.h"
 
-@interface NotificareVideo : NSObject <NotificationType, UIActionSheetDelegate>
+@interface NotificareVideo : NSObject <NotificationType,UIWebViewDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
@@ -24,7 +27,8 @@
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
-@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIAlertController *actionSheet;
+@property (strong, nonatomic) UIViewController * originalView;
 
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

@@ -20,4 +20,6 @@
 @property (strong, nonatomic, nullable) NSString * userID;
 @property (assign, nonatomic) BOOL opened;
 
+- (void)setValuesWithDeviceInboxJSON:(NSDictionary * _Nonnull)deviceInboxJSON;
+
 @end

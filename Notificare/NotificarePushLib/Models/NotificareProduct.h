@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
+#import "SKProduct+priceAsString.h"
 
 @interface NotificareProduct : NSObject
 
@@ -26,5 +27,8 @@
 @property (strong, nonatomic, nonnull) NSString * currency;
 @property (assign, nonatomic) BOOL active;
 @property (assign, nonatomic) BOOL purchased;
+
+- (void)setValuesWithProductJSON:(NSDictionary * _Nonnull)productJSON;
+- (void)setValuesWithSKProduct:(SKProduct * _Nonnull)skProduct;
 
 @end

@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "NotificareAction.h"
+#import "NotificareContent.h"
+#import "NotificareAttachment.h"
 
 @interface NotificareNotification : NSObject <NSCoding>
 
 
-@property (strong, nonatomic, nonnull) NSString * notificationID;
+@property (strong, nonatomic, nullable) NSString * notificationID;
 @property (strong, nonatomic, nonnull) NSDictionary * application;
 @property (strong, nonatomic, nonnull) NSString * notificationType;
 @property (strong, nonatomic, nonnull) NSString * notificationTime;
@@ -29,5 +32,6 @@
 @property (strong, nonatomic, nullable) NSDictionary * notificationInfo;
 @property (strong, nonatomic, nonnull) NSNumber * displayMessage;
 
+- (void)setValuesWithNotificationJSON:(NSDictionary * _Nonnull)notificationJSON;
 
 @end

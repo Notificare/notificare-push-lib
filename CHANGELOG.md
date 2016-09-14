@@ -1,6 +1,22 @@
 Changelog
 =========
 
+1.9.0  (2016-09-14)
+- Built against SDK 10
+- Removed MKNetWorkKit in favour of our own network library
+- Fixed header docs
+- Added new iOS10 notification center
+- Added new iOS10 unified logging
+- Added a new managed inbox with device storage in Core Data
+- Added generic api endpoint for the Cloud API
+- Added helper method for Notification Service Extensions
+- Protective checks for notification's content
+- Added allowedUI property of device
+- Added new user data methods for rich device profiles
+- Fixed issue with modal views when handling notifications
+- Better app lifecycle event handling
+- Several small bugfixes and performance improvements
+
 1.8.4  (2016-07-21)
 - Hotfix for PUT requests introduced in 1.8.3
 

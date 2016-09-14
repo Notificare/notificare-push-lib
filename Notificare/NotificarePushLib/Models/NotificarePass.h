@@ -20,4 +20,6 @@
 @property (strong, nonatomic, nullable) NSArray * redeemHistory;
 @property (assign, nonatomic) BOOL active;
 
+- (void)setValuesWithPassJSON:(NSDictionary * _Nonnull)passJSON;
+
 @end

@@ -128,6 +128,12 @@ typedef enum  {
 - (void)notificarePushLib:(NotificarePushLib *)library willHandleNotification:(UNNotification *)notification;
 
 /*!
+ * @brief Optional. This delegate method will be triggered when a system (silent) remote notification is received.
+ * @param info A NSDictionary containing the notification received
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveSystemPush:(NSDictionary *)info;
+
+/*!
  * @brief Optional. This delegate method should return a boolean that represents if you wish for the library to handle the notification.
  * @param info A NSDictionary representing the notification
  * @return A boolean indicating if developer wishes the library to handle the notification

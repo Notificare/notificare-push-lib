@@ -122,10 +122,10 @@ typedef NS_ENUM(NSInteger, NotificareNetworkResponseStatusCode) {
 @property (strong, nonatomic, nonnull) NSString *contentType;
 
 /*! @brief Content transfer encoding parameter for multipart/form-data part. Uses "binary" if set to nil. */
-@property (strong, nonatomic, nullable) NSString *contentTransferEncoding;
+@property (strong, nonatomic, nullable) NSString * theContentTransferEncoding;
 
 /*! @brief Filed contents for multipart/form-data part. */
-@property (strong, nonatomic, nonnull) NSData *fileData;
+@property (strong, nonatomic, nonnull) NSData * theFileData;
 
 @end
 

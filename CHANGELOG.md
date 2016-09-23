@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.9.1  (2016-09-23)
+- Changed network lib property names so they don't clash with private apis
+- Added system and systemType push for silent notifications
+
 1.9.0  (2016-09-14)
 - Built against SDK 10
 - Removed MKNetWorkKit in favour of our own network library

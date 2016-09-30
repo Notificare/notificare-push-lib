@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.9.2  (2016-09-30)
+- Hotfix for crashes in initializing lib in iOS8 and below
+- Added UNNotificationPresentationOptions to customize in-app alerts
+
 1.9.1  (2016-09-23)
 - Changed network lib property names so they don't clash with private apis
 - Added system and systemType push for silent notifications

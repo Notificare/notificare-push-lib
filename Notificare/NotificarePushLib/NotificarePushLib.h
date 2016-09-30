@@ -418,6 +418,16 @@ typedef enum  {
 @property (nonatomic,assign) UNNotificationCategoryOptions notificationCategoryOptions;
 
 /*!
+ *  @abstract The UNNotificationPresentationOptions constants
+ *  @property notificationPresentationOptions
+ *
+ *  @discussion
+ *	A UNNotificationPresentationOptions holds constants indicating how to handle notifications when app is active. Possible values are: UNNotificationPresentationOptionAlert, UNNotificationPresentationOptionBadge, UNNotificationPresentationOptionSound or UNNotificationPresentationOptionNone. If none is provided it will default to UNNotificationPresentationOptionNone.
+ *
+ */
+@property (nonatomic,assign) UNNotificationPresentationOptions notificationPresentationOptions;
+
+/*!
  *  @abstract the apiID key
  *  @property apiID
  *

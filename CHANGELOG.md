@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.9.3  (2016-10-13)
+- Hotfix for crashes related to unified logging in iOS8
+
 1.9.2  (2016-09-30)
 - Hotfix for crashes in initializing lib in iOS8 and below
 - Added UNNotificationPresentationOptions to customize in-app alerts

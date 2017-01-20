@@ -647,6 +647,30 @@ typedef enum  {
 @property (nonatomic, assign) BOOL ranging;
 
 /*!
+ *  @abstract Is deferring updates flag
+ *  @discussion
+ *	A BOOL to flag when a location updates are being deferred
+ */
+
+@property (nonatomic, assign) BOOL isDeferringUpdates;
+
+/*!
+ *  @abstract Allow background location updates flag
+ *  @discussion
+ *	A BOOL to flag when a location manager should allow background updates (mandatory for background mode in iOS9 +)
+ */
+
+@property (nonatomic, assign) BOOL allowsBackgroundLocationUpdates;
+
+/*!
+ *  @abstract Activity type for location manager
+ *  @discussion
+ *	Activity type definition for location manager, by default it is set to CLActivityTypeOther
+ */
+
+@property (nonatomic, assign) CLActivityType activityType;
+
+/*!
  *  @abstract Beacons
  *
  *  @discussion

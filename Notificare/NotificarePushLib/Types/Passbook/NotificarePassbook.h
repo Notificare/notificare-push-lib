@@ -22,7 +22,7 @@
 #import "NotificareAttachment.h"
 
 
-@interface NotificarePassbook : NSObject <NotificationType,PKAddPassesViewControllerDelegate>
+@interface NotificarePassbook : NSObject <NotificationType,PKAddPassesViewControllerDelegate, UIWebViewDelegate>
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
@@ -36,6 +36,7 @@
 @property (strong, nonatomic) PKPass * pass;
 @property (strong, nonatomic) UIButton * button;
 @property (strong, nonatomic) UIViewController * originalView;
+@property (strong, nonatomic) UIWebView * webView;
 
 -(void)openNotification;
 -(void)sendData:(NSArray *)data;

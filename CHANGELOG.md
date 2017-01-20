@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.9.4  (2017-01-20)
+- Added check for refreshBadge configurations
+- Added fallback for wallet passes in iPad
+- Added configuration property for Visits and Heading API
+- Added advanced geometry methods
+- Removed headers from debug messages in network classes
+- Changed device registration to cache token only for 1 day
+- Protective checks for null deviceIDs
+
 1.9.3  (2016-10-13)
 - Hotfix for crashes related to unified logging in iOS8
 

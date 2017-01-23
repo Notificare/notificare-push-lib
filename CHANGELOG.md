@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.9.5  (2017-01-23)
+- Hotfix for keyboard/camera actions in rich content views
+- Hotfix for protective checks in refresh badge
+
 1.9.4  (2017-01-20)
 - Added check for refreshBadge configurations
 - Added fallback for wallet passes in iPad

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.9.6  (2017-02-14)
+- Hotfix for notification center when setting keys manually
+- Discard distant future departures from VISITS API
+
 1.9.5  (2017-01-23)
 - Hotfix for keyboard/camera actions in rich content views
 - Hotfix for protective checks in refresh badge

@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.9.7  (2017-03-17)
+- Hotfix for device registration when using oauth2 library
+
 1.9.6  (2017-02-14)
 - Hotfix for notification center when setting keys manually
 - Discard distant future departures from VISITS API

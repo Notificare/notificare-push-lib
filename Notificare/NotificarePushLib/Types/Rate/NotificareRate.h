@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <StoreKit/StoreKit.h>
 #import "NotificareNotification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"

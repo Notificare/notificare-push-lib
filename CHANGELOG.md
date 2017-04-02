@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.9.8  (2017-04-02)
+- Built for 10.3 SDK
+- Added new App Rating built-in view in Rate notification type
+- Added App Recommendation notification type
+- Added register and unregister userIDs for OAuth2 accounts
+
 1.9.7  (2017-03-17)
 - Hotfix for device registration when using oauth2 library
 

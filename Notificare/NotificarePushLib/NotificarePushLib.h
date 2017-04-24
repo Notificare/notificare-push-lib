@@ -1594,6 +1594,21 @@ typedef enum  {
  * @return The NotificareNetworkOperation that is being executed
  */
 - (NotificareNetworkOperation *)doCloudHostOperation:(NSString *)HTTPMethod path:(NSString *)path URLParams:(NSDictionary<NSString *, NSString *> * _Nullable)URLParams bodyJSON:(id _Nullable)bodyJSON successHandler:(SuccessBlock)successHandler errorHandler:(OperationErrorBlock)errorHandler;
+/*!
+ * @abstract Basic request method for Cloud API
+ *
+ * @discussion
+ * Creates and executes a Cloud API request.
+ * @param HTTPMethod HTTP method, i.e. @"POST"
+ * @param path The relative path of the request, i.e. device
+ * @param URLParams URL encoded parameters that are added to the request's URL
+ * @param customHeaders Key/value pairs for optional custom HTTPS headers
+ * @param bodyJSON The JSON payload for the request's body
+ * @param successHandler SuccessBlock code block that is executed when the request completes successfully
+ * @param errorHandler OperationErrorBlock code block that is executed when the request fails
+ * @return The NotificareNetworkOperation that is being executed
+ */
+- (NotificareNetworkOperation *)doCloudHostOperation:(NSString *)HTTPMethod path:(NSString *)path URLParams:(NSDictionary<NSString *, NSString *> * _Nullable)URLParams customHeaders:(NSDictionary<NSString *, NSString *> * _Nullable)customHeaders bodyJSON:(id _Nullable)bodyJSON successHandler:(SuccessBlock)successHandler errorHandler:(OperationErrorBlock)errorHandler;
 
 /*!
  *  @abstract Fetch Rich Content Attachments

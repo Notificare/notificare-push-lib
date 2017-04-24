@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.9.9  (2017-04-24)
+- Added CLOSE_WINDOW_QUERY_PARAMETER property in OPTIONS
+- Handle notificareCloseWindow query parameter for WebViews
+- Added new method for custom headers with Cloud API
+- Added parameters for App Recommendation for campaign, provider, affiliates and advertisers tokens
+
 1.9.8  (2017-04-02)
 - Built for 10.3 SDK
 - Added new App Rating built-in view in Rate notification type

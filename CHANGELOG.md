@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.9.10  (2017-07-10)
+- Handle notificareCloseWindow query parameter for URL notification type when using UIWebView
+- Handle itms URL scheme in Rate notification type for pre iOS 10.3
+- Fixed issue with empty action target for actions of type Callback
+
 1.9.9  (2017-04-24)
 - Added CLOSE_WINDOW_QUERY_PARAMETER property in OPTIONS
 - Handle notificareCloseWindow query parameter for WebViews

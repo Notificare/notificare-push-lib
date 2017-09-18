@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#if DO_NOT_USE_PASSKIT == 1
+#else
 #import <PassKit/PassKit.h>
+#endif
+
 #import "NotificareNotification.h"
 #import "NotificationType.h"
 #import "NotificationDelegate.h"
@@ -22,7 +27,12 @@
 #import "NotificareAttachment.h"
 
 
+#if DO_NOT_USE_PASSKIT == 1
+@interface NotificarePassbook : NSObject <NotificationType, UIWebViewDelegate>
+#else
 @interface NotificarePassbook : NSObject <NotificationType,PKAddPassesViewControllerDelegate, UIWebViewDelegate>
+#endif
+
 
 @property (nonatomic, assign) id<NotificationDelegate> delegate;
 @property (nonatomic, strong) NotificareNotification * notification;
@@ -32,8 +42,13 @@
 @property (strong, nonatomic) UINavigationController * navigationController;
 @property (strong, nonatomic) UIBarButtonItem * closeButton;
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
+
+#if DO_NOT_USE_PASSKIT == 1
+#else
 @property (strong, nonatomic) PKPassLibrary * passLib;
 @property (strong, nonatomic) PKPass * pass;
+#endif
+
 @property (strong, nonatomic) UIButton * button;
 @property (strong, nonatomic) UIViewController * originalView;
 @property (strong, nonatomic) UIWebView * webView;

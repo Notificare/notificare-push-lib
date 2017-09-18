@@ -1,5 +1,12 @@
 Changelog
 =========
+1.10.0 (2017-09-18)
+- Built for iOS 11.0 SDK
+- Removed support for WebSockets
+- Added support for Scannables (NFC & QR Code scanner)
+- Some fine tuning for geo-fencing with polygons
+- Added pre-processor flag to exclude PassKit
+- Added Registration event for first registration after install
 
 1.9.10  (2017-07-10)
 - Handle notificareCloseWindow query parameter for URL notification type when using UIWebView

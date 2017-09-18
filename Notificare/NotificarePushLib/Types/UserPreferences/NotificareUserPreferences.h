@@ -18,7 +18,6 @@
 #import "UIImage+FromBundle.h"
 #import "NSDictionary+FromPlist.h"
 #import "NotificareDeviceViewController.h"
-#import "NotificarePassbookViewController.h"
 
 @interface NotificareUserPreferences : NSObject <NotificationType,UIActionSheetDelegate>
 
@@ -26,7 +25,6 @@
 @property (nonatomic, strong) NotificareNotification * notification;
 @property (nonatomic, strong) NotificareActions * notificareActions;
 @property (strong, nonatomic) NotificareDeviceViewController * deviceController;
-@property (strong, nonatomic) NotificarePassbookViewController * passbookController;
 @property (strong, nonatomic) UIViewController * rootViewController;
 @property (strong, nonatomic) UIViewController * viewController;
 @property (strong, nonatomic) UINavigationController * navigationController;

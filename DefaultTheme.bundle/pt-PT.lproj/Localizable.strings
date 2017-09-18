@@ -58,3 +58,5 @@
 
 /* Lock screen keyboard text field placeholder */
 "type_some_text" = "Escreva aqui";
+
+"scan_title" = "Scan";

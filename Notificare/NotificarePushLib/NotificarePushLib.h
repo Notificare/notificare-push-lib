@@ -11,14 +11,18 @@
 #import "Notificare.h"
 #import "NSData+Hex.h"
 #import "NotificareActions.h"
-#import "NotificareSRWebSocket.h"
 #import "NotificareNotification.h"
 #import <CoreLocation/CoreLocation.h>
 #import <StoreKit/StoreKit.h>
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotificationsUI/UserNotificationsUI.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <CoreNFC/CoreNFC.h>
 #import <os/log.h>
+#if DO_NOT_USE_PASSKIT == 1
+#else
+#import <PassKit/PassKit.h>
+#endif
 #import "NotificareNXOAuth2.h"
 #import "NotificareUser.h"
 #import "NotificareUserPreference.h"
@@ -34,6 +38,7 @@
 #import "NotificareContent.h"
 #import "NotificareAction.h"
 #import "NotificareAsset.h"
+#import "NotificareScannable.h"
 #import "NotificareNetworkHost.h"
 
 /**
@@ -100,26 +105,6 @@ typedef enum  {
 
 @optional
 
-/*!
- * @brief Optional. This delegate method will be triggered after a register for websockets
- * @param uuid A NSString representing the device UUID
- */
-- (void)notificarePushLib:(NotificarePushLib *)library didRegisterForWebsocketsNotifications:(NSString *)uuid;
-/*!
- * @brief Optional. This delegate method will be triggered when a websocket notification is received.
- * @param info A NSDictionary containing notification received
- */
-- (void)notificarePushLib:(NotificarePushLib *)library didReceiveWebsocketNotification:(NSDictionary *)info;
-/*!
- * @brief Optional. This delegate method will be triggered whenever a websocket connection fails to register a device.
- * @param error A NSError object
- */
-- (void)notificarePushLib:(NotificarePushLib *)library didFailToRegisterWebsocketNotifications:(NSError *)error;
-/*!
- * @brief Optional. This delegate method will be triggered when the websocket connection is closed.
- * @param reason A NSError object
- */
-- (void)notificarePushLib:(NotificarePushLib *)library didCloseWebsocketConnection:(NSString *)reason;
 
 /*!
  * @brief Optional. This delegate method will be triggered when a user clicks a notification from the lock screen or notification center.
@@ -330,6 +315,18 @@ typedef enum  {
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didFinishDownloadContent:(SKDownload *)download;
 
+/*!
+ * @brief Optional. This delegate method will be triggered whenever a Scannable Session invalidates.
+ * @param error A NSError object
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didInvalidateScannableSessionWithError:(NSError *)error;
+
+/*!
+ * @brief Optional. This delegate method will be triggered whenever a Scannable Session detects an object.
+ * @param scannable A NotificareScannable object
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didDetectScannable:(NotificareScannable *)scannable;
+
 @required
 
 /*!
@@ -344,7 +341,7 @@ typedef enum  {
 @end
 
 
-@interface NotificarePushLib : NSObject <NotificareSRWebSocketDelegate,NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UNUserNotificationCenterDelegate>
+@interface NotificarePushLib : NSObject <NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UNUserNotificationCenterDelegate, NFCNDEFReaderSessionDelegate>
 
 /*!
  *  @abstract Protocol of NotificarePushLib class that handles events
@@ -870,14 +867,14 @@ typedef enum  {
  *  @seealso
  *  unregisterForWebsockets:
  */
--(void)registerForWebsockets;
+-(void)registerForWebsockets __attribute__((deprecated("Websockets no longer supported, use APNS instead")));
 /*!
  *  @abstract Unregister for WebSockets Notifications
  *
  *  @discussion
  *  Closes the WebSockets channel
  */
--(void)unregisterForWebsockets;
+-(void)unregisterForWebsockets __attribute__((deprecated("Websockets no longer supported, use APNS instead")));
 
 /*!
  *  @abstract Register Device Anonymously for WebSockets
@@ -898,7 +895,7 @@ typedef enum  {
  } errorHandler:^(NSError *error) {
  }];
  */
-- (void)registerDeviceForWebsockets:(NSString *)uuid completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)registerDeviceForWebsockets:(NSString *)uuid completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error  __attribute__((deprecated("Websockets no longer supported, use APNS instead")));
 /*!
  *  @abstract Register Device with ID for WebSockets
  *
@@ -921,7 +918,7 @@ typedef enum  {
  } errorHandler:^(NSError *error) {
  }];
  */
-- (void)registerDeviceForWebsockets:(NSString *)uuid withUserID:(NSString *)userID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)registerDeviceForWebsockets:(NSString *)uuid withUserID:(NSString *)userID completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error __attribute__((deprecated("Websockets no longer supported, use APNS instead")));
 /*!
  *  @abstract Register Device with ID
  *
@@ -945,7 +942,7 @@ typedef enum  {
  } errorHandler:^(NSError *error) {
  }];
  */
-- (void)registerDeviceForWebsockets:(NSString *)uuid withUserID:(NSString *)userID withUsername:(NSString *)username completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error;
+- (void)registerDeviceForWebsockets:(NSString *)uuid withUserID:(NSString *)userID withUsername:(NSString *)username completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)error __attribute__((deprecated("Websockets no longer supported, use APNS instead")));
 
 /*!
  *  @abstract Unregister Device
@@ -1523,6 +1520,7 @@ typedef enum  {
  *  @return A NSArray containing PKPasses objects
  */
 -(NSArray *)myPasses;
+
 /*!
  *  @abstract Wallet Pass Object
  *
@@ -1635,6 +1633,26 @@ typedef enum  {
  *  @param data A NSDictionary holding the userDataFields to be updated
  */
 - (void)updateUserData:(NSDictionary *)data completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
+
+/*!
+ *  @abstract Start a Scannable session
+ *
+ *  @discussion
+ *  Use this method to start a Scannable Session
+ *  When you implement this method it can/will trigger both - (void)notificarePushLib:(NotificarePushLib *)library didInvalidateScannableSessionWithError:(NSError *)error or - (void)notificarePushLib:(NotificarePushLib *)library didDetectScannable:(NSArray *)messages delegate methods.
+ */
+-(void)startScannableSession;
+
+/*!
+ *  @abstract Fetch a scannable
+ *
+ *  @discussion
+ *  Use this method to manually fetch a scannable
+ *  This method will be useful if you are building your own custom scanning functionality and only require the API request
+ * @param message The string we should look for
+ *  When you implement this method it can/will trigger both - (void)notificarePushLib:(NotificarePushLib *)library didInvalidateScannableSessionWithError:(NSError *)error or - (void)notificarePushLib:(NotificarePushLib *)library didDetectScannable:(NSArray *)messages delegate methods.
+ */
+-(void)fetchScannable:(NSString *)message;
 
 @end
 

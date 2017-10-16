@@ -1,5 +1,8 @@
 Changelog
 =========
+1.10.1 (2017-10-16)
+- Added handling of Launch Options URL key for other destinations other than reset password and validate
+
 1.10.0 (2017-09-18)
 - Built for iOS 11.0 SDK
 - Removed support for WebSockets

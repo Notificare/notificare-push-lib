@@ -1,5 +1,10 @@
 Changelog
 =========
+1.11.0 (2017-10-24)
+- Introducing machine-readable object (extra) in asset groups items
+- Added URL encoding for group name in fetchAssets
+- Using singleton class app keys in reply upload file
+
 1.10.1 (2017-10-16)
 - Added handling of Launch Options URL key for other destinations other than reset password and validate
 

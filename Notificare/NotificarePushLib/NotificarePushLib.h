@@ -17,12 +17,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <UserNotificationsUI/UserNotificationsUI.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <CoreNFC/CoreNFC.h>
 #import <os/log.h>
-#if DO_NOT_USE_PASSKIT == 1
-#else
-#import <PassKit/PassKit.h>
-#endif
 #import "NotificareNXOAuth2.h"
 #import "NotificareUser.h"
 #import "NotificareUserPreference.h"
@@ -341,7 +336,7 @@ typedef enum  {
 @end
 
 
-@interface NotificarePushLib : NSObject <NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UNUserNotificationCenterDelegate, NFCNDEFReaderSessionDelegate>
+@interface NotificarePushLib : NSObject <NotificareDelegate,NotificareActionsDelegate,CLLocationManagerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, UNUserNotificationCenterDelegate>
 
 /*!
  *  @abstract Protocol of NotificarePushLib class that handles events
@@ -1512,14 +1507,6 @@ typedef enum  {
  *  @return A NSString representing the path to the product's content
  */
 - (NSString *)sdkVersion;
-/*!
- *  @abstract Passes list
- *
- *  @discussion
- *  Retrieve a list of passes added to the Passbook app that this app can access
- *  @return A NSArray containing PKPasses objects
- */
--(NSArray *)myPasses;
 
 /*!
  *  @abstract Wallet Pass Object
@@ -1635,13 +1622,13 @@ typedef enum  {
 - (void)updateUserData:(NSDictionary *)data completionHandler:(SuccessBlock)info errorHandler:(ErrorBlock)errorBlock;
 
 /*!
- *  @abstract Start a Scannable session
+ *  @abstract Start a Scannable session with QRCode scanner built-in view
  *
  *  @discussion
  *  Use this method to start a Scannable Session
  *  When you implement this method it can/will trigger both - (void)notificarePushLib:(NotificarePushLib *)library didInvalidateScannableSessionWithError:(NSError *)error or - (void)notificarePushLib:(NotificarePushLib *)library didDetectScannable:(NSArray *)messages delegate methods.
  */
--(void)startScannableSession;
+-(void)startScannableSessionWithQRCode;
 
 /*!
  *  @abstract Fetch a scannable
@@ -1653,6 +1640,14 @@ typedef enum  {
  *  When you implement this method it can/will trigger both - (void)notificarePushLib:(NotificarePushLib *)library didInvalidateScannableSessionWithError:(NSError *)error or - (void)notificarePushLib:(NotificarePushLib *)library didDetectScannable:(NSArray *)messages delegate methods.
  */
 -(void)fetchScannable:(NSString *)message;
+
+/*!
+ *  @abstract Parse URI Payload
+ *
+ *  @discussion
+ *  This is a helper method to parse a payload of a tag and retrieve it's encoded URL
+ */
+- (nullable NSString *)parseURIPayload:(unsigned char*)payloadBytes length:(NSUInteger)length ;
 
 @end
 

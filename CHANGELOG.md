@@ -1,5 +1,9 @@
 Changelog
 =========
+1.12.0 (2017-10-30)
+- Removed CoreNFC from included frameworks (Core NFC methods must now be implemented manually)
+- Removed Passbook type from static library and its implementation file is now included in the source code
+
 1.11.0 (2017-10-24)
 - Introducing machine-readable object (extra) in asset groups items
 - Added URL encoding for group name in fetchAssets

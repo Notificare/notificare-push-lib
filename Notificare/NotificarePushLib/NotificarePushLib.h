@@ -1646,8 +1646,9 @@ typedef enum  {
  *
  *  @discussion
  *  This is a helper method to parse a payload of a tag and retrieve it's encoded URL
+ *  @param data A NSData object from a tag payload
  */
-- (nullable NSString *)parseURIPayload:(unsigned char*)payloadBytes length:(NSUInteger)length ;
+- (nullable NSString *)parseURIPayload:(NSData*)data;
 
 @end
 

@@ -1,5 +1,10 @@
 Changelog
 =========
+1.12.1 (2017-11-28)
+- Add more protective checks for open/received/influenced events
+- Add exponentials retries for received/influenced events
+- Add more protective checks for coordinates in load nearest fences
+
 1.12.0 (2017-10-30)
 - Removed CoreNFC from included frameworks (Core NFC methods must now be implemented manually to avoid problems with Apple's approval process for clients not using CoreNFC features)
 

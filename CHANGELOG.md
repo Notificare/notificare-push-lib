@@ -1,5 +1,10 @@
 Changelog
 =========
+1.13.0 (2018-02-04)
+- Introduced new delegate to provide apps with launch URL key
+- Support for ASCII chars in URLs (for notifications & actions)
+- Avoid stop monitoring fences while still inside them when new fences are loaded
+
 1.12.1 (2017-11-28)
 - Add more protective checks for open/received/influenced events
 - Add exponentials retries for received/influenced events

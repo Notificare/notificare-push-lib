@@ -100,7 +100,11 @@ typedef enum  {
 
 @optional
 
-
+/*!
+ * @brief Optional. This delegate method will be triggered when a launch URL is detected.
+ * @param launchURL A NSURL object holding the launch URL
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveLaunchURL:(NSURL *)launchURL;
 /*!
  * @brief Optional. This delegate method will be triggered when a user clicks a notification from the lock screen or notification center.
  * @param notification A UNNotification object holding the APNS payload

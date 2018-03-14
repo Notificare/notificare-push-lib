@@ -16,10 +16,6 @@
 	<string>DefaultTheme.bundle</string>
 	<key>OPTIONS</key>
 	<dict>
-		<key>APP_RUNS_ON_BACKGROUND</key>
-		<false/>
-		<key>USE_SAFARI_VIEW</key>
-		<true/>
 		<key>URL_SCHEMES</key>
 		<array>
 			<string>test</string>
@@ -30,11 +26,7 @@
 		<string>FFFFFF</string>
 		<key>TOOLBAR_COLOR</key>
 		<string>FFFFFF</string>
-		<key>NAVBAR_COLOR</key>
-		<string>FFFFFF</string>
 		<key>ACTIVITY_INDICATOR_COLOR</key>
-		<string>000000</string>
-		<key>TITLE_COLOR</key>
 		<string>000000</string>
 		<key>BUTTONS_TEXT_COLOR</key>
 		<string>000000</string>

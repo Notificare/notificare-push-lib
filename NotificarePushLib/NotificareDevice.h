@@ -32,7 +32,8 @@
 @property (assign, nonatomic) BOOL registeredForNotifications;
 @property (assign, nonatomic) BOOL allowedLocationServices;
 @property (assign, nonatomic) BOOL allowedUI;
-
+@property (assign, nonatomic) BOOL backgroundAppRefresh;
+@property (assign, nonatomic) BOOL bluetoothON;
 
 
 @end

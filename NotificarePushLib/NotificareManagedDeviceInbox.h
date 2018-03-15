@@ -17,6 +17,9 @@
 @property (strong, nonatomic, nonnull) NSString * deviceID;
 @property (strong, nonatomic, nullable) NSDictionary * data;
 @property (strong, nonatomic, nonnull) NSString * message;
+@property (strong, nonatomic, nullable) NSString * title;
+@property (strong, nonatomic, nullable) NSString * subtitle;
+@property (strong, nonatomic, nullable) NSString * attachment;
 @property (strong, nonatomic, nonnull) NSString * notification;
 @property (strong, nonatomic, nonnull) NSDate * time;
 @property (strong, nonatomic, nullable) NSString * userID;

@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "NotificareManagedDeviceInbox.h"
 #import "NotificareDeviceInbox.h"
+#import "NotificareNotification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,7 +34,8 @@ typedef void (^NotificareInboxCompletionBlock)(id _Nullable response , NSError *
 
 +(NotificareInboxManager*)shared;
 - (void)launch;
-- (void)updateInbox;
+- (void)updateInboxItem:(NotificareNotification*)notification;
+- (void)addInboxItem:(NSDictionary*)userInfo;
 - (int)myBadge;
 
 /*!

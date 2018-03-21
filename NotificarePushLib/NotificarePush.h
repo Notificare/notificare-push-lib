@@ -38,10 +38,6 @@ typedef void (^ErrorReplyBlock)(NSError * error);
 
 - (void)notificarePush:(NotificarePush *)notificarePush didReceiveRemoteNotificationInForeground:(NotificareNotification *)notification withController:(id _Nullable)controller;
 
-- (void)notificarePush:(NotificarePush *)notificarePush didReceiveSystemPushInBackground:(NotificareNotification *)notification;
-
-- (void)notificarePush:(NotificarePush *)notificarePush didReceiveSystemPushInForeground:(NotificareNotification *)notification;
-
 - (void)notificarePush:(NotificarePush *)notificarePush willOpenNotification:(NotificareNotification *)notification;
 
 - (void)notificarePush:(NotificarePush *)notificarePush didOpenNotification:(NotificareNotification *)notification;
@@ -82,7 +78,8 @@ typedef void (^ErrorReplyBlock)(NSError * error);
 -(void)unregisterForNotifications;
 -(BOOL)remoteNotificationsEnabled;
 -(BOOL)allowedUIEnabled;
-- (void)handleOptions:(NSDictionary *)options;
+-(void)reloadActionCategories;
+-(void)handleOptions:(NSDictionary *)options;
 -(void)handleNotification:(NSDictionary*)userInfo completionHandler:(SuccessNotificationBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock;
 -(void)handleAction:(NSString *)action forNotification:(NSDictionary *)notification withData:(NSDictionary *)data completionHandler:(SuccessActionBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock;
 -(void)fetchNotification:(id)notification completionHandler:(SuccessNotificationBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock;

@@ -33,6 +33,7 @@
 #import "NotificareLocation.h"
 #import "NotificareVisit.h"
 #import "NotificareHeading.h"
+#import "NotificareSystemNotification.h"
 
 
 /* Main Classes */
@@ -117,13 +118,13 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  * @brief Optional. This delegate method will be triggered when a system (silent) remote notification is received in the background.
  * @param notification A NotificareNotification object containing the notification received
  */
-- (void)notificarePushLib:(NotificarePushLib *)library didReceiveSystemPushInBackground:(NotificareNotification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveSystemPushInBackground:(NotificareSystemNotification *)notification;
 
 /*!
  * @brief Optional. This delegate method will be triggered when a system (silent) remote notification is received in the foreground.
  * @param notification A NotificareNotification object containing the notification received
  */
-- (void)notificarePushLib:(NotificarePushLib *)library didReceiveSystemPushInForeground:(NotificareNotification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveSystemPushInForeground:(NotificareSystemNotification *)notification;
 /*!
  * @brief Optional. This delegate method will be triggered just before the notification opens.
  * @param notification A NotificareNotification object that represents the notification

@@ -49,7 +49,8 @@ typedef void (^ErrorProductBlock)(NSError * error);
 @property (strong, nonatomic) SKProductsRequest * storeRequest;
 
 +(NotificareMonetize*)shared;
--(void)launch;
+- (void)launch;
+- (void)reloadProducts;
 - (void)fetchProducts:(SuccessProductsBlock)info errorHandler:(ErrorProductBlock)error;
 - (void)fetchPurchasedProducts:(SuccessProductsBlock)info errorHandler:(ErrorProductBlock)error;
 - (void)fetchProduct:(NSString *)productIdentifier completionHandler:(SuccessProductBlock)info errorHandler:(ErrorProductBlock)error;

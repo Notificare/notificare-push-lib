@@ -27,6 +27,7 @@ typedef void (^OperationErrorBlock)(NotificareNetworkOperation *operation, NSErr
  * @constant kNotificareErrorCodeGatewayTimeout Request failed due to a network timeout
  */
 typedef enum  {
+    kNotificareErrorCodeNotModified = 304,
     kNotificareErrorCodeBadRequest = 400,
     kNotificareErrorCodeUnauthorized = 401,
     kNotificareErrorCodeForbidden = 403,

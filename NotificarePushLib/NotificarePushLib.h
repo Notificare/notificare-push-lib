@@ -898,6 +898,55 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  */
 - (void)doCloudHostOperation:(NSString *)HTTPMethod path:(NSString *)path URLParams:(NSDictionary<NSString *, NSString *> * _Nullable)URLParams customHeaders:(NSDictionary<NSString *, NSString *> * _Nullable)customHeaders bodyJSON:(id _Nullable)bodyJSON completionHandler:(NotificareCompletionBlock)completionBlock;
 
+
+/**
+ * Non-Managed Methods
+ * To be implemented in case you need to disable App Delegate Proxy. This is done by setting the property (boolean) DISABLE_APP_DELEGATE_PROXY to YES in the Notificare.plist under OPTIONS.
+ */
+
+/*!
+ * @abstract Handle Launch Options
+ *
+ * @discussion
+ * When the App Delegate Proxy is disabled this method must be implemented in order to handle launch options. Implement this method after launching the library in the application:didFinishLaunchingWithOptions.
+ * @param launchOptions The NSDictionary object provided by the application launch
+ */
+- (void)didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+/*!
+ * @abstract Handle Device registration
+ *
+ * @discussion
+ * When the App Delegate Proxy is disabled this method must be implemented in order to handle device registration. Must be used in the delegate method application:didRegisterForRemoteNotificationsWithDeviceToken.
+ * @param deviceToken The NSData object provided by the app delegate method application:didRegisterForRemoteNotificationsWithDeviceToken
+ */
+- (void)didRegisterForRemoteNotificationsWithDeviceToken:(nonnull NSData *)deviceToken;
+/*!
+ * @abstract Handle Remote Notifications
+ *
+ * @discussion
+ * When the App Delegate Proxy is disabled this method must be implemented in order to handle remote notifications. Must be used in the delegate method application:didReceiveRemoteNotification.
+ * @param userInfo The NSDictionary object provided by the app delegate method application:didReceiveRemoteNotification
+ */
+- (void)didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo completionHandler:(NotificareCompletionBlock)completionBlock;
+/*!
+ * @abstract Handle User Notification Settings (iOS 9 and below)
+ *
+ * @discussion
+ * When the App Delegate Proxy is disabled this method must be implemented in order to handle user notification settings. Must be used in the delegate method application:didRegisterUserNotificationSettings.
+ * @param notificationSettings The UIUserNotificationSettings object provided by the app delegate method application:didRegisterUserNotificationSettings
+ */
+- (void)didRegisterUserNotificationSettings:(nonnull UIUserNotificationSettings *)notificationSettings NS_CLASS_DEPRECATED_IOS(8_0, 10_0, "Use UserNotifications Framework's UNNotificationSettings");
+/*!
+ * @abstract Handle Actions Settings (iOS 9 and below)
+ *
+ * @discussion
+ * When the App Delegate Proxy is disabled this method must be implemented in order to handle actions. Must be used in the delegate method application:handleActionWithIdentifier:forRemoteNotification: or application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:.
+ * @param identifier The NSString object provided by the app delegate method
+ * @param userInfo The NSDictionary object provided by the app delegate method
+ * @param responseInfo The NSDictionary object provided by the app delegate method
+ */
+- (void)handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(nonnull NSDictionary *)userInfo withResponseInfo:(nullable NSDictionary *)responseInfo completionHandler:(NotificareCompletionBlock)completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

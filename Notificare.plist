@@ -16,6 +16,8 @@
 	<string>DefaultTheme.bundle</string>
 	<key>OPTIONS</key>
 	<dict>
+		<key>DISABLE_APP_DELEGATE_PROXY</key>
+		<false/>
 		<key>URL_SCHEMES</key>
 		<array>
 			<string>test</string>

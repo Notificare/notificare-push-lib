@@ -20,14 +20,9 @@
 @property (strong, nonatomic, nonnull) NSString * notificationType;
 @property (strong, nonatomic, nonnull) NSString * notificationTime;
 @property (strong, nonatomic, nonnull) NSString * notificationMessage;
-@property (strong, nonatomic, nullable) NSString * notificationLatitude;
-@property (strong, nonatomic, nullable) NSString * notificationLongitude;
-@property (strong, nonatomic, nullable) NSString * notificationDistance;
 @property (strong, nonatomic, nullable) NSArray * notificationContent;
 @property (strong, nonatomic, nullable) NSArray * notificationActions;
 @property (strong, nonatomic, nullable) NSArray * notificationAttachments;
-@property (strong, nonatomic, nullable) NSArray * notificationTags;
-@property (strong, nonatomic, nullable) NSArray * notificationSegments;
 @property (strong, nonatomic, nullable) NSDictionary * notificationExtra;
 @property (strong, nonatomic, nullable) NSDictionary * notificationInfo;
 

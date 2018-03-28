@@ -20,6 +20,7 @@
 @property (strong, nonatomic, nonnull) NSString * appVersion;
 @property (strong, nonatomic, nonnull) NSString * deviceModel;
 @property (strong, nonatomic, nullable) NSString * country;
+@property (strong, nonatomic, nullable) NSString * countryCode;
 @property (strong, nonatomic, nonnull) NSString * language;
 @property (strong, nonatomic, nonnull) NSString * transport;
 @property (strong, nonatomic, nullable) NSDictionary * dnd;

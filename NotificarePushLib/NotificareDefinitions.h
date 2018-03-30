@@ -24,4 +24,42 @@
 #define ATTACHMENT_KEY @"attachment"
 #define IS_IPAD ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
 
+#define kNotificareNewRegistration @"notificareNewRegistration"
+#define kNotificareSessionDate @"notificareSessionDate"
+#define kNotificareRegisteredForNotifications @"notificareRegisteredForNotifications"
+#define kNotificareAllowedUI @"notificareAllowedUI"
+#define kNotificareUserID @"notificareUserID"
+#define kNotificareUserName @"notificareUserName"
+#define kNotificareDeviceToken @"notificareDeviceToken"
+#define kNotificareDeviceTokenData @"notificareDeviceTokenData"
+#define kNotificareDeviceCountry @"notificareDeviceCountry"
+#define kNotificareDeviceCountryCode @"notificareDeviceCountryCode"
+#define kNotificareAllowedLocationServices @"notificareAllowedLocationServices"
+#define kNotificareLocationServicesAuthStatus @"notificareLocationServicesAuthStatus"
+#define kNotificareDeviceTimezone @"notificareDeviceTimezone"
+#define kNotificareOSVersion @"notificareOSVersion"
+#define kNotificareSDKVersion @"notificareSDKVersion"
+#define kNotificareAppVersion @"notificareAppVersion"
+#define kNotificareDeviceModel @"notificareDeviceModel"
+#define kNotificareDeviceLanguage @"notificareDeviceLanguage"
+#define kNotificareDeviceDnD @"notificareDeviceDnD"
+#define kNotificareDeviceUserData @"notificareDeviceUserData"
+#define kNotificareDeviceLatitude @"notificareDeviceLatitude"
+#define kNotificareDeviceLongitude @"notificareDeviceLongitude"
+#define kNotificareDeviceFloor @"notificareDeviceFloor"
+#define kNotificareDeviceLastRegistered @"notificareDeviceLastRegistered"
+#define kNotificareBackgroundAppRefresh @"notificareBackgroundAppRefresh"
+#define kNotificareBluetoothON @"notificareBluetoothON"
+#define kNotificareDeviceTransport @"notificareDeviceTransport"
+
+#define kNotificareInboxBadge @"NotificareInboxBadge"
+#define kNotificareCoreDataDB @"notificareCoreDataDB"
+
+#define kNotificareCachedBeacons @"notificareCachedBeacons"
+#define kNotificareCachedRegions @"notificareCachedRegions"
+#define kNotificareRegionSessions @"notificareRegionSessions"
+#define kNotificareBeaconSession @"notificareBeaconSession"
+
+#define kNotificareErrorStack @"notificareErrorStack"
+
 #endif /* NotificareDefinitions_h */

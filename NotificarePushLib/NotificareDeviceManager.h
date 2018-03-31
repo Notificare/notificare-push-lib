@@ -54,6 +54,8 @@ typedef void (^ErrorDeviceDnDBlock)(NSError * response);
 -(void)clearDeviceLocation:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
 -(void)updateDeviceTimezone:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
 -(void)updateDeviceLanguage:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
+-(void)updateDeviceBackgroundAppRefresh:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
+-(void)updateDeviceBluetoothState:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
 
 -(void)fetchTags:(SuccessTagsBlock)successBlock errorHandler:(ErrorTagBlock)errorBlock;
 -(void)addTags:(NSArray *)tags completionHandler:(SuccessTagBlock)successBlock errorHandler:(ErrorTagBlock)errorBlock;

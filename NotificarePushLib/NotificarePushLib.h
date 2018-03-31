@@ -53,6 +53,7 @@
 #import "NotificareAuth.h"
 #import "NotificareGeo.h"
 #import "NotificareScannables.h"
+#import "NotificareLoyalty.h"
 
 /* Libraries */
 #import "NotificareNXOAuth2.h"
@@ -711,13 +712,22 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 -(void)fetchAssets:(NSString*)group completionHandler:(NotificareCompletionBlock)completionBlock;
 
 /*!
- *  @abstract Fetch a Pass
+ *  @abstract Fetch a Pass with Serial
  *
  *  @discussion
- *  Retrieves a Pass object
- *  @param serial A NSString that indentifies the pass (a.k.a. serial)
+ *  Retrieves a Pass object using the auto-generated serial
+ *  @param serial A NSString that indentifies the pass serial
  */
--(void)fetchPass:(NSString*)serial completionHandler:(NotificareCompletionBlock)completionBlock;
+-(void)fetchPassWithSerial:(NSString*)serial completionHandler:(NotificareCompletionBlock)completionBlock;
+
+/*!
+ *  @abstract Fetch a Pass with Barcode
+ *
+ *  @discussion
+ *  Retrieves a Pass object using the custom barcode
+ *  @param barcode A NSString that indentifies the pass barcode
+ */
+-(void)fetchPassWithBarcode:(NSString*)barcode completionHandler:(NotificareCompletionBlock)completionBlock;
 
 /*!
  *  @abstract Get all Products

@@ -11,6 +11,7 @@
 @interface NotificarePass : NSObject
 
 @property (strong, nonatomic, nonnull) NSString * passbook;
+@property (strong, nonatomic, nonnull) NSString * barcode;
 @property (strong, nonatomic, nonnull) NSString * serial;
 @property (strong, nonatomic, nonnull) NSString * redeem;
 @property (strong, nonatomic, nonnull) NSString * token;

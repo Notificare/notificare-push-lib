@@ -15,6 +15,7 @@
 @property (strong, nonatomic, nonnull) NSString * serial;
 @property (strong, nonatomic, nonnull) NSString * redeem;
 @property (strong, nonatomic, nonnull) NSString * token;
+@property (strong, nonatomic, nonnull) NSString * passURL;
 @property (strong, nonatomic, nonnull) NSDate * date;
 @property (strong, nonatomic, nonnull) NSDictionary * data;
 @property (strong, nonatomic, nullable) NSNumber * limit;

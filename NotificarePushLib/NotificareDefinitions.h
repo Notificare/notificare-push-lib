@@ -62,4 +62,6 @@
 
 #define kNotificareErrorStack @"notificareErrorStack"
 
+#define kNotificareMigrationCheck @"notificareMigrationCheckV2"
+
 #endif /* NotificareDefinitions_h */

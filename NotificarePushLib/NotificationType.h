@@ -16,9 +16,8 @@
 -(void)setDelegate:(id<NotificationDelegate>)delegate;
 -(void)setNotification:(NotificareNotification *)notification;
 -(void)setNotificareActions:(NotificareActions *)notificareActions;
-//-(void)openNotification;
 -(id)handleNotification;
-//-(void)sendData:(NSArray *)data;
+
 
 
 @end

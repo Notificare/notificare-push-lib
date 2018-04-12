@@ -55,6 +55,9 @@
 #define kNotificareInboxBadge @"NotificareInboxBadge"
 #define kNotificareCoreDataDB @"notificareCoreDataDB"
 
+#define kNotificareMonitoredBeacons @"notificareMonitoredBeacons"
+#define kNotificareMonitoredRegions @"notificareMonitoredRegions"
+
 #define kNotificareCachedBeacons @"notificareCachedBeacons"
 #define kNotificareCachedRegions @"notificareCachedRegions"
 #define kNotificareRegionSessions @"notificareRegionSessions"

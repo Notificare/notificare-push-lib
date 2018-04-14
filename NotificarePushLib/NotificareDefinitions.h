@@ -61,6 +61,7 @@
 #define kNotificareCachedBeacons @"notificareCachedBeacons"
 #define kNotificareCachedRegions @"notificareCachedRegions"
 #define kNotificareRegionSessions @"notificareRegionSessions"
+#define kNotificareBeaconSessions @"notificareBeaconSessions"
 #define kNotificareBeaconSession @"notificareBeaconSession"
 
 #define kNotificareErrorStack @"notificareErrorStack"

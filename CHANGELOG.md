@@ -1,5 +1,9 @@
 Changelog
 =========
+1.13.1 (2018-04-18)
+- Fixed small issue with protective check in didOpenNotification
+- Removed tags, segments and location from NotificareNotification model
+
 1.13.0 (2018-02-04)
 - Introduced new delegate to provide apps with launch URL key
 - Support for ASCII chars in URLs (for notifications & actions)

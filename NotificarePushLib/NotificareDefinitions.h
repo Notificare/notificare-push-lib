@@ -69,4 +69,29 @@
 
 #define kNotificareMigrationCheck @"notificareMigrationCheckV2"
 
+
+#define kNotificareEventAppInstall @"re.notifica.event.application.Install"
+#define kNotificareEventAppRegistration @"re.notifica.event.application.Registration"
+#define kNotificareEventAppUpgrade @"re.notifica.event.application.Upgrade"
+#define kNotificareEventAppOpen @"re.notifica.event.application.Open"
+#define kNotificareEventAppClose @"re.notifica.event.application.Close"
+#define kNotificareEventAppError @"re.notifica.event.application.Exception"
+#define kNotificareEventNotificationReceive @"re.notifica.event.notification.Receive"
+#define kNotificareEventNotificationOpen @"re.notifica.event.notification.Open"
+#define kNotificareEventNotificationInfluenced @"re.notifica.event.notification.Influenced"
+#define kNotificareEventRegionSession @"re.notifica.event.region.Session"
+#define kNotificareEventBeaconSession @"re.notifica.event.beacon.Session"
+#define kNotificareEventLocationVisit @"re.notifica.event.location.Visit"
+#define kNotificareEventProductBuy @"re.notifica.event.product.Buy"
+#define kNotificareEventProductBuyAppStore @"re.notifica.event.product.Buy.AppStore"
+#define kNotificareEventOAuth2Signin @"re.notifica.event.oauth2.Signin"
+#define kNotificareEventOAuth2Signup @"re.notifica.event.oauth2.Signup"
+#define kNotificareEventOAuth2Signout @"re.notifica.event.oauth2.Signout"
+#define kNotificareEventOAuth2ResetPassword @"re.notifica.event.oauth2.ResetPassword"
+#define kNotificareEventOAuth2NewPassword @"re.notifica.event.oauth2.NewPassword"
+#define kNotificareEventOAuth2SendPassword @"re.notifica.event.oauth2.SendPassword"
+#define kNotificareEventOAuth2Validate @"re.notifica.event.oauth2.Validate"
+#define kNotificareEventOAuth2Account @"re.notifica.event.oauth2.Account"
+#define kNotificareEventOAuth2AccessToken @"re.notifica.event.oauth2.AccessToken"
+
 #endif /* NotificareDefinitions_h */

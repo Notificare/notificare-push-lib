@@ -872,6 +872,15 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  */
 - (void)fetchAttachment:(NSDictionary *)notification completionHandler:(NotificareCompletionBlock)completionBlock;
 
+/*!
+ *  @abstract Log an event
+ *
+ *  @discussion
+ *  Helper method to log a Notificare event
+ *  @param event A NSString representing the event type (please check all macro definition starting with kNotificareEvent)
+ *  @param data A NSDictionary object containing extraneous data for an event (optional)
+ */
+- (void)logEvent:(NSString *)event withData:(NSDictionary* _Nullable)data completionHandler:(NotificareCompletionBlock)completionBlock;
 
 /*!
  *  @abstract Log a custom event

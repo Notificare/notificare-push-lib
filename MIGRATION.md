@@ -6,6 +6,12 @@ Guides for setup and implementation can be found here:
 
 https://docs.notifica.re/sdk/v2/ios/setup/
 
+## Initialization
+A few changes were introduces when initializing the library, mainly a new method is required to initialize the library (where you can override Notificare.plist app keys). This creates a clear separation between the moment you initialize our SDK and when you actually want to start using it.
+
+You can find more information about initialization here:
+
+https://docs.notifica.re/sdk/v2/ios/implementation/ 
 
 ## Device Registration
 

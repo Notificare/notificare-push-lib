@@ -437,31 +437,21 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 +(NotificarePushLib*)shared;
 
 /*!
+ *  @abstract Initializer
+ *  @property key The App key
+ *  @property secret The App secret
+ 
+ *  @discussion
+ *  Initializes the NotificarePushLib, should be the first method to be invoked in your App Delegate. In this method you can override the app keys defined in Notificare.plist.
+ */
+-(void)initializeWithKey:(NSString * _Nullable)key andSecret:(NSString * _Nullable)secret;
+/*!
  *  @abstract Initial setup
  *
  *  @discussion
- *  Initializes the NotificarePushLib, should be the first method to be invoked in your App Delegate
+ *  Launches the NotificarePushLib with the initialized coniguration. This method should be invoked whenever you want to start using the library. In response to this method the onReady delegate will be triggered.
  */
 - (void)launch;
-
-/*!
- *  @abstract the App key
- *  @property appKey
- *
- *  @discussion
- *    A NSString representing the Application Key
- *
- */
-@property (strong, nonatomic) NSString * appKey;
-/*!
- *  @abstract The App Secret
- *  @property appSecret
- *
- *  @discussion
- *  A NSString representing the Application Secret
- *
- */
-@property (strong, nonatomic) NSString * appSecret;
 
 /*!
  *  @abstract The App
@@ -492,7 +482,6 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *
  */
 @property (strong, nonatomic) NotificareAuth * authManager;
-
 
 /*!
  *  @abstract Handle URL Schemes

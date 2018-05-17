@@ -1,5 +1,8 @@
 Changelog
 =========
+1.13.2 (2018-05-17)
+- Fixed issue with session length registration where is would get be calculated incorrectly in iOS 11
+
 1.13.1 (2018-04-18)
 - Fixed small issue with protective check in didOpenNotification
 - Removed tags, segments and location from NotificareNotification model

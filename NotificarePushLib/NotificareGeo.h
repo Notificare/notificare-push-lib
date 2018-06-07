@@ -30,6 +30,14 @@ typedef enum NotificareRegionState : NSInteger {
     NotificareRegionStateOutside = 2
 } NotificareRegionState;
 
+typedef enum NotificareGeoAuthorizationStatus : NSInteger {
+    NotificareGeoAuthorizationStatusDenied = 0,
+    NotificareGeoAuthorizationStatusRestricted = 1,
+    NotificareGeoAuthorizationStatusNotDetermined = 2,
+    NotificareGeoAuthorizationStatusAuthorizedAlways = 3,
+    NotificareGeoAuthorizationStatusAuthorizedWhenInUse = 4
+} NotificareGeoAuthorizationStatus;
+
 @class NotificareGeo;
 
 @protocol NotificareGeoDelegate <NSObject>
@@ -37,7 +45,7 @@ typedef enum NotificareRegionState : NSInteger {
 @optional
 
 - (void)notificareGeo:(NotificareGeo *)notificareGeo didFailToStartLocationServiceWithError:(NSError *)error;
-- (void)notificareGeo:(NotificareGeo *)notificareGeo didReceiveLocationServiceAuthorizationStatus:(NSDictionary *)status;
+- (void)notificareGeo:(NotificareGeo *)notificareGeo didReceiveLocationServiceAuthorizationStatus:(NotificareGeoAuthorizationStatus)status;
 - (void)notificareGeo:(NotificareGeo *)notificareGeo didUpdateLocations:(NSArray<NotificareLocation*> *)locations;
 - (void)notificareGeo:(NotificareGeo *)notificareGeo monitoringDidFailForRegion:(id)region withError:(NSError *)error;
 - (void)notificareGeo:(NotificareGeo *)notificareGeo didStartMonitoringForRegion:(id)region;

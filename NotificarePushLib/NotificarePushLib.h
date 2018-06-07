@@ -216,7 +216,7 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  * @brief Optional. This delegate method will be triggered as response to a start location updates.
  * @param status A NSDictionary object that contains information about the location services' status
  */
-- (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAuthorizationStatus:(NSDictionary *)status;
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAuthorizationStatus:(NotificareGeoAuthorizationStatus)status;
 /*!
  * @brief Optional. This delegate method will be triggered every time a new location update is received.
  * @param locations A NSArray that contains a list of NotificareLocation objects

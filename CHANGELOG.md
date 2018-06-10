@@ -1,5 +1,11 @@
 Changelog
 =========
+1.14.0 (2018-06-11)
+- Built with iOS 11.4 SDK
+- Dropped support for iOS 7
+- Added support for location gathering when while in use
+- Several performance improvements in location services
+
 1.13.2 (2018-05-17)
 - Fixed issue with session length registration where is would get be calculated incorrectly in iOS 11
 

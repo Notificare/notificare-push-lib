@@ -126,6 +126,13 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  * @param notification A NotificareNotification object containing the notification received
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveSystemPushInForeground:(NotificareSystemNotification *)notification;
+
+/*!
+ * @brief Optional. This delegate method will be triggered when a remote notification is received from an unrecognizable source.
+ * @param notification A NSDictionary object containing the notification received
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownNotification:(NSDictionary *)notification;
+
 /*!
  * @brief Optional. This delegate method will be triggered just before the notification opens.
  * @param notification A NotificareNotification object that represents the notification
@@ -186,7 +193,14 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  * @param pass A NotificarePass object that should be handled by the PKAddPassesViewController
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didReceivePass:(NSURL *)pass inNotification:(NotificareNotification*)notification;
-
+/*!
+ * @brief Optional. This delegate method will be triggered when the user clicks from Instant Tuning and Notification Settings and it should take users to the in-app settings screen.
+ * @param notification A NotificareNotification object
+ * @code -(void)notificarePushLib:(NotificarePushLib *)library shouldOpenSettings:(NotificareNotification * _Nullable)notification{
+    //Handle deep link to settings view
+ }
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library shouldOpenSettings:(NotificareNotification* _Nullable)notification;
 /*
  * Inbox Delegates
  */
@@ -402,6 +416,15 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 @property (nonatomic, assign) id <NotificarePushLibDelegate> delegate;
 
 /*!
+ *  @abstract Authorization Options for iOS 10 and higher
+ *  @discussion
+ *  A UNAuthorizationOptions holds constants indicating which authorization options should be used. Possible values are: UNAuthorizationOptionAlert, UNAuthorizationOptionSound, UNAuthorizationOptionBadge, UNAuthorizationOptionCarPlay, UNAuthorizationOptionProvisional, UNAuthorizationOptionProvidesAppNotificationSettings and UNAuthorizationOptionCriticalAlert. If none is provided it will default to UNAuthorizationOptionAlert, UNAuthorizationOptionSound, UNAuthorizationOptionBadge.
+ *  @property presentationOptions
+ *
+ */
+@property (nonatomic,assign) UNAuthorizationOptions authorizationOptions NS_AVAILABLE_IOS(10.0);
+
+/*!
  *  @abstract Presentation Options for iOS 10 and higher
  *  @discussion
  *  A UNNotificationPresentationOptions holds constants indicating how to handle notifications when app is active. Possible values are: UNNotificationPresentationOptionAlert, UNNotificationPresentationOptionBadge, UNNotificationPresentationOptionSound or UNNotificationPresentationOptionNone. If none is provided it will default to UNNotificationPresentationOptionNone.
@@ -526,6 +549,14 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *  @return A Boolean indicating if the user has allowed alerts, badge and sounds
  */
 -(BOOL)allowedUIEnabled;
+/*!
+ *  @abstract Check if Remote Notification is from Notificare
+ *
+ *  @discussion
+ *  Use this method to quickly identify if the a notification is from Notificare
+ *  @return A Boolean indicating if the a notification is from Notificare
+ */
+-(BOOL)isNotificationFromNotificare:(NSDictionary*)userInfo;
 /*!
  *  @abstract The device
  *

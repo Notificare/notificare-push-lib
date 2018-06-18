@@ -27,7 +27,10 @@
 @property (strong, nonatomic, nullable) NSDictionary * userData;
 @property (strong, nonatomic, nullable) NSNumber * latitude;
 @property (strong, nonatomic, nullable) NSNumber * longitude;
+@property (strong, nonatomic, nullable) NSNumber * altitude;
 @property (strong, nonatomic, nullable) NSNumber * floor;
+@property (strong, nonatomic, nullable) NSNumber * speed;
+@property (strong, nonatomic, nullable) NSNumber * course;
 @property (strong, nonatomic, nonnull) NSDate * lastRegistered;
 @property (strong, nonatomic, nonnull) NSString * locationServicesAuthStatus;
 @property (assign, nonatomic) BOOL registeredForNotifications;

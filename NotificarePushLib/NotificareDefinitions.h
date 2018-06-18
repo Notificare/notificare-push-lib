@@ -23,6 +23,7 @@
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 #define ATTACHMENT_KEY @"attachment"
 #define IS_IPAD ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+#define kFakeBeaconIdentifier @"NotificareFakeBeacon"
 
 #define kNotificareNewRegistration @"notificareNewRegistration"
 #define kNotificareSessionDate @"notificareSessionDate"
@@ -46,7 +47,10 @@
 #define kNotificareDeviceUserData @"notificareDeviceUserData"
 #define kNotificareDeviceLatitude @"notificareDeviceLatitude"
 #define kNotificareDeviceLongitude @"notificareDeviceLongitude"
+#define kNotificareDeviceAltitude @"notificareDeviceAltitude"
+#define kNotificareDeviceCourse @"notificareDeviceCourse"
 #define kNotificareDeviceFloor @"notificareDeviceFloor"
+#define kNotificareDeviceSpeed @"notificareDeviceSpeed"
 #define kNotificareDeviceLastRegistered @"notificareDeviceLastRegistered"
 #define kNotificareBackgroundAppRefresh @"notificareBackgroundAppRefresh"
 #define kNotificareBluetoothON @"notificareBluetoothON"

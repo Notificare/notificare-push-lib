@@ -10,6 +10,7 @@
 
 @interface NotificareSystemNotification : NSObject
 
+@property (strong, nonatomic, nullable) NSString * notificationID;
 @property (strong, nonatomic, nonnull) NSString * type;
 @property (strong, nonatomic, nullable) NSDictionary * extra;
 

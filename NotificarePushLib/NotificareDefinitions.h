@@ -67,8 +67,6 @@
 #define kNotificareRegionSessions @"notificareRegionSessions"
 #define kNotificareBeaconSessions @"notificareBeaconSessions"
 
-#define kNotificareActiveAdvancedGeometryRegions @"notificareActiveAdvancedGeometryRegions"
-
 #define kNotificareErrorStack @"notificareErrorStack"
 
 #define kNotificareMigrationCheck @"notificareMigrationCheckV2"

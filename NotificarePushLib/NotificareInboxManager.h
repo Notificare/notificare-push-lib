@@ -36,7 +36,7 @@ typedef void (^NotificareInboxCompletionBlock)(id _Nullable response , NSError *
 - (void)launch;
 - (void)reloadInbox;
 - (void)updateInboxItem:(NotificareNotification*)notification;
-- (void)addInboxItem:(NSDictionary*)userInfo;
+- (void)addInboxItem:(NSDictionary*)userInfo completionHandler:(NotificareInboxCompletionBlock)completionBlock;
 - (int)myBadge;
 
 /*!

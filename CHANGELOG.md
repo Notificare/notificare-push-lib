@@ -1,5 +1,8 @@
 Changelog
 =========
+1.14.1 (2018-06-26)
+- Ported location services optimisations from v2 
+
 1.14.0 (2018-06-11)
 - Built with iOS 11.4 SDK
 - Dropped support for iOS 7

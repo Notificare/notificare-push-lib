@@ -109,7 +109,7 @@ typedef enum  {
  * @brief Optional. This delegate method will be triggered when a user clicks a notification from the lock screen or notification center.
  * @param notification A UNNotification object holding the APNS payload
  */
-- (void)notificarePushLib:(NotificarePushLib *)library willHandleNotification:(UNNotification *)notification;
+- (void)notificarePushLib:(NotificarePushLib *)library willHandleNotification:(UNNotification *)notification NS_AVAILABLE_IOS(10.0);
 
 /*!
  * @brief Optional. This delegate method will be triggered when a system (silent) remote notification is received.
@@ -401,7 +401,7 @@ typedef enum  {
  *	A UNUserNotificationCenter object holds a reference to the device notification center.
  *
  */
-@property (strong, nonatomic) UNUserNotificationCenter * notificationCenter;
+@property (strong, nonatomic) UNUserNotificationCenter * notificationCenter NS_AVAILABLE_IOS(10.0);
 
 /*!
  *  @abstract The UNNotificationCategoryOptions constants
@@ -411,7 +411,7 @@ typedef enum  {
  *	A UNNotificationCategoryOptions holds constants indicating how to handle notifications for categories. Possible values are: UNNotificationCategoryOptionNone, UNNotificationCategoryOptionCustomDismissAction, UNNotificationCategoryOptionAllowInCarPlay. If none is provided it will default to UNNotificationCategoryOptionCustomDismissAction.
  *
  */
-@property (nonatomic,assign) UNNotificationCategoryOptions notificationCategoryOptions;
+@property (nonatomic,assign) UNNotificationCategoryOptions notificationCategoryOptions NS_AVAILABLE_IOS(10.0);
 
 /*!
  *  @abstract The UNNotificationPresentationOptions constants
@@ -421,7 +421,7 @@ typedef enum  {
  *	A UNNotificationPresentationOptions holds constants indicating how to handle notifications when app is active. Possible values are: UNNotificationPresentationOptionAlert, UNNotificationPresentationOptionBadge, UNNotificationPresentationOptionSound or UNNotificationPresentationOptionNone. If none is provided it will default to UNNotificationPresentationOptionNone.
  *
  */
-@property (nonatomic,assign) UNNotificationPresentationOptions notificationPresentationOptions;
+@property (nonatomic,assign) UNNotificationPresentationOptions notificationPresentationOptions NS_AVAILABLE_IOS(10.0);
 
 /*!
  *  @abstract the apiID key
@@ -535,7 +535,7 @@ typedef enum  {
  *  @abstract Boolean for checking if position is being currently being updated
  *
  */
-@property (assign) BOOL isFixingGPS;
+@property (assign) BOOL isFixingGPS __attribute__((deprecated("this property is not used anymore since 1.14.0.")));
 
 
 /*!
@@ -648,7 +648,7 @@ typedef enum  {
  *	A BOOL to flag when a location updates are being deferred
  */
 
-@property (nonatomic, assign) BOOL isDeferringUpdates;
+@property (nonatomic, assign) BOOL isDeferringUpdates __attribute__((deprecated("this property is not used anymore since 1.14.0.")));
 
 /*!
  *  @abstract Allow background location updates flag
@@ -656,7 +656,7 @@ typedef enum  {
  *	A BOOL to flag when a location manager should allow background updates (mandatory for background mode in iOS9 +)
  */
 
-@property (nonatomic, assign) BOOL allowsBackgroundLocationUpdates;
+@property (nonatomic, assign) BOOL allowsBackgroundLocationUpdates __attribute__((deprecated("this property is not used anymore since 1.14.0.")));
 
 /*!
  *  @abstract Activity type for location manager
@@ -664,7 +664,7 @@ typedef enum  {
  *	Activity type definition for location manager, by default it is set to CLActivityTypeOther
  */
 
-@property (nonatomic, assign) CLActivityType activityType;
+@property (nonatomic, assign) CLActivityType activityType __attribute__((deprecated("this property is not used anymore since 1.14.0.")));
 
 /*!
  *  @abstract Beacons
@@ -1201,7 +1201,7 @@ typedef enum  {
  *  This method will require the background mode in your project capabilities to be set to remote notifications.
  *  @param notification A UNNotification containing the notification object
  */
-- (void)handleNotification:(UNNotification *)notification completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock;
+- (void)handleNotification:(UNNotification *)notification completionHandler:(SuccessBlock)result errorHandler:(ErrorBlock)errorBlock NS_AVAILABLE_IOS(10.0);
 
 /*!
  *  @abstract Handle Notification

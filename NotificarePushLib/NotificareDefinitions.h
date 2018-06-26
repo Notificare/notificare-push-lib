@@ -96,4 +96,7 @@
 #define kNotificareEventOAuth2Account @"re.notifica.event.oauth2.Account"
 #define kNotificareEventOAuth2AccessToken @"re.notifica.event.oauth2.AccessToken"
 
+#define kNotificareHTTPHeaderSDKVersion @"X-Notificare-SDK-Version"
+#define kNotificareHTTPHeaderAppVersion @"X-Notificare-App-Version"
+
 #endif /* NotificareDefinitions_h */

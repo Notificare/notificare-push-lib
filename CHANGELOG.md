@@ -1,6 +1,6 @@
 Changelog
 =========
-1.14.1 (2018-06-26)
+1.14.1 (2018-06-27)
 - Ported location services optimisations from v2 
 
 1.14.0 (2018-06-11)

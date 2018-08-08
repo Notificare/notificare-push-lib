@@ -38,6 +38,8 @@ typedef void (^ErrorReplyBlock)(NSError * error);
 
 - (void)notificarePush:(NotificarePush *)notificarePush didReceiveRemoteNotificationInForeground:(NotificareNotification *)notification withController:(id _Nullable)controller;
 
+- (void)notificarePush:(NotificarePush *)notificarePush didReceiveUnknownNotification:(NSDictionary *)notification;
+
 - (void)notificarePush:(NotificarePush *)notificarePush willOpenNotification:(NotificareNotification *)notification;
 
 - (void)notificarePush:(NotificarePush *)notificarePush didOpenNotification:(NotificareNotification *)notification;

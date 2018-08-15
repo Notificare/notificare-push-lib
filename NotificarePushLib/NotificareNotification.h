@@ -19,6 +19,8 @@
 @property (strong, nonatomic, nonnull) NSDictionary * application;
 @property (strong, nonatomic, nonnull) NSString * notificationType;
 @property (strong, nonatomic, nonnull) NSString * notificationTime;
+@property (strong, nonatomic, nullable) NSString * notificationTitle;
+@property (strong, nonatomic, nullable) NSString * notificationSubtitle;
 @property (strong, nonatomic, nonnull) NSString * notificationMessage;
 @property (strong, nonatomic, nullable) NSArray * notificationContent;
 @property (strong, nonatomic, nullable) NSArray * notificationActions;

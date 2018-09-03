@@ -20,5 +20,7 @@
 +(NSString*)appVersion;
 
 +(NSString*)deviceLanguage;
+
++(NSString*)deviceRegion;
     
 @end

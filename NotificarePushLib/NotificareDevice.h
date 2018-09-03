@@ -22,6 +22,7 @@
 @property (strong, nonatomic, nullable) NSString * country;
 @property (strong, nonatomic, nullable) NSString * countryCode;
 @property (strong, nonatomic, nonnull) NSString * language;
+@property (strong, nonatomic, nullable) NSString * region;
 @property (strong, nonatomic, nonnull) NSString * transport;
 @property (strong, nonatomic, nullable) NSDictionary * dnd;
 @property (strong, nonatomic, nullable) NSDictionary * userData;

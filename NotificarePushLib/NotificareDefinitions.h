@@ -57,6 +57,9 @@
 #define kNotificareBluetoothON @"notificareBluetoothON"
 #define kNotificareDeviceTransport @"notificareDeviceTransport"
 
+#define kNotificarePreferredLanguage @"notificarePreferredLanguage"
+#define kNotificarePreferredRegion @"notificarePreferredRegion"
+
 #define kNotificareInboxBadge @"NotificareInboxBadge"
 #define kNotificareCoreDataDB @"notificareCoreDataDB"
 

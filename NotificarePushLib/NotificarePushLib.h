@@ -571,6 +571,13 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  * @param username A NSString representing the username.
  */
 - (void)registerDevice:(NSString * _Nullable)userID withUsername:(NSString * _Nullable)username completionHandler:(NotificareCompletionBlock)completionBlock;
+
+/*!
+ * @brief This method should be used to override the preferred language for this device. Make sure you only invoke this method after the didRegisterDevice delegate. If never invoked, the [NSLocale preferredLanguages] will be used.
+ * @param language A NSString representing the language (ISO 639-1) and region (ISO 3166-2) (e.g. en-US).
+ */
+- (void)updatePreferredLanguage:(NSString * _Nullable)language;
+
 /*!
  *  @abstract Get all tags
  *

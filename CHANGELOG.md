@@ -1,4 +1,5 @@
 Changelog
 =========
-2.0.0-beta (2018-03-14)
-- Initial beta release
+
+2.0.0 (2018-09-13)
+- Initial 2.0.0 beta release

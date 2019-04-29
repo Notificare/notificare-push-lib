@@ -98,7 +98,11 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 /*
  * Push Delegates
  */
-
+/*!
+ * @brief Optional. This delegate method will be triggered when changes to notification settings occur.
+ * @param granted A boolean representing if users granted authorization to post user notifications
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didChangeNotificationSettings:(BOOL)granted;
 /*!
  * @brief Optional. This delegate method will be triggered when a launch URL key is detected.
  * @param launchURL A NSURL object containing the url received on launch
@@ -128,10 +132,16 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveSystemNotificationInForeground:(NotificareSystemNotification *)notification;
 
 /*!
- * @brief Optional. This delegate method will be triggered when a remote notification is received from an unrecognizable source.
+ * @brief Optional. This delegate method will be triggered when a remote or local notification is received from an unrecognizable source.
  * @param notification A NSDictionary object containing the notification received
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownNotification:(NSDictionary *)notification;
+
+/*!
+ * @brief Optional. This delegate method will be triggered when a remote or local action in a notification is received from an unrecognizable source.
+ * @param notification A NSDictionary object containing the notification received
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownAction:(NSDictionary *)action forNotification:(NSDictionary *)notification;
 
 /*!
  * @brief Optional. This delegate method will be triggered just before the notification opens.
@@ -468,6 +478,7 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *  Initializes the NotificarePushLib, should be the first method to be invoked in your App Delegate. In this method you can override the app keys defined in Notificare.plist.
  */
 -(void)initializeWithKey:(NSString * _Nullable)key andSecret:(NSString * _Nullable)secret;
+
 /*!
  *  @abstract Initial setup
  *
@@ -690,10 +701,18 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  */
 - (void)fetchNotification:(id)notification completionHandler:(NotificareCompletionBlock)completionBlock;
 /*!
+ *  @abstract Get a controller for a NotificareNotification object
+ *
+ *  @discussion
+ *  Helper method to get a controller for a NotificareNotification object on-demand.
+ *  @param notification A NotificareNotification object
+ */
+- (id)controllerForNotification:(NotificareNotification *)notification;
+/*!
  *  @abstract Clear a Private Notification
  *
  *  @discussion
- *  This method will remove any data from a private notification (sent to a user or device). Invoking this method on any other notification will scope will result in an error. Make sure you only invoke this method after the onReady delegate.
+ *  This method will remove any data from a private notification (private notification are messages sent to a user or device). Invoking this method on any other notification will result in an error. Make sure you only invoke this method after the onReady delegate.
  *  @param notification A NotificareNotification object
  */
 - (void)clearPrivateNotification:(NotificareNotification *)notification completionHandler:(NotificareCompletionBlock)completionBlock;
@@ -916,7 +935,7 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *
  *  @discussion
  *  Helper method to log a Notificare event
- *  @param event A NSString representing the event type (please check all macro definition starting with kNotificareEvent)
+ *  @param event A NSString representing the event type (please check all macro definitions starting with kNotificareEvent)
  *  @param data A NSDictionary object containing extraneous data for an event (optional)
  */
 - (void)logEvent:(NSString *)event withData:(NSDictionary* _Nullable)data completionHandler:(NotificareCompletionBlock)completionBlock;
@@ -927,7 +946,7 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *  @discussion
  *  Helper method to log a custom event
  *  @param event A NSString representing the event name
- *  @param data A NSDictionary object containing extraneous data for an event (optional)
+ *  @param data A NSDictionary object containing arbitrary data for an event (optional)
  */
 - (void)logCustomEvent:(NSString *)event withData:(NSDictionary* _Nullable)data completionHandler:(NotificareCompletionBlock)completionBlock;
 

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.1.1 (2019-06-20)
+- Fixed issue with asset URL when no file is used
+- Made handleOptions accept nullable options
+
 2.1.0 (2019-04-29)
 - Added helper method to retrieve controller for notification
 - Added new delegate method didChangeNotificationSettings

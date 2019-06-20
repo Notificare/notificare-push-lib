@@ -88,7 +88,7 @@ typedef void (^ErrorReplyBlock)(NSError * error);
 -(BOOL)remoteNotificationsEnabled;
 -(BOOL)allowedUIEnabled;
 -(void)reloadActionCategories;
--(void)handleOptions:(NSDictionary *)options;
+-(void)handleOptions:(nullable NSDictionary *)options;
 -(void)handleNotification:(NSDictionary*)userInfo completionHandler:(SuccessNotificationBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock;
 -(void)handleAction:(NSString *)action forNotification:(NSDictionary *)notification withData:(NSDictionary *)data completionHandler:(SuccessActionBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock;
 -(void)fetchNotification:(id)notification completionHandler:(SuccessNotificationBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock;

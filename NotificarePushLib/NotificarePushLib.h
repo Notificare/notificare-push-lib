@@ -847,7 +847,7 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *
  *  @discussion
  *  Retrieve the path for the download content of a product using its SKU.
- *  @param productIdentifier A NSString provided by the delegate didFinishLaunchingWithOptions:
+ *  @param productIdentifier A NSString representing the product's ideintifier
  *  @return A NSString representing the path to the product's content
  */
 - (NSString *)contentPathForProduct:(NSString *)productIdentifier;
@@ -988,7 +988,7 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  * When the App Delegate Proxy is disabled this method must be implemented in order to handle launch options. Implement this method after launching the library in the application:didFinishLaunchingWithOptions.
  * @param launchOptions The NSDictionary object provided by the application launch
  */
-- (void)didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+- (void)didFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions;
 /*!
  * @abstract Handle Device registration
  *

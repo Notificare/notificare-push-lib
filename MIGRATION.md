@@ -1,6 +1,6 @@
 # Migration
 
-If you are migrating from 1.x.x version of our SDK, there are several breaking changes that you will need to take into consideration. A considerable part of the API in version 1 was removed and replaced with a simplified new API that unifies integration of remote notifications, location services, user authentication, contextual content and analytics in iOS 8 up to iOS 11.
+If you are migrating from 1.x.x version of our SDK, there are several breaking changes that you will need to take into consideration. A considerable part of the API in version 1 was removed and replaced with a simplified new API that unifies integration of remote notifications, location services, user authentication, contextual content and analytics in iOS 9 and up.
 
 Guides for setup and implementation can be found here:
 
@@ -27,7 +27,7 @@ https://docs.notifica.re/sdk/v2/ios/implementation/register/
 
 ## Remote Notifications
 
-In SDK 2.0, we've unified notification handling to work as one for all versions from iOS 8 up to iOS 11. We've also simplified the implementation of this functionality by allowing you to take actions for 2 different situations, when notifications are received in foreground or background. Actionable notification are also totally managed by Notificare and you will not have to take care of anything to handle actions. 
+In SDK 2.0, we've unified notification handling to work as one for all versions from iOS 9 and higher. We've also simplified the implementation of this functionality by allowing you to take actions for 2 different situations, when notifications are received in foreground or background. Actionable notification are also totally managed by Notificare and you will not have to take care of anything to handle actions. 
 
 Basically for this version you should remove all the notification delegates implemented for previous versions and implement only the following delegates:
 

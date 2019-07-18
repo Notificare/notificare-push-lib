@@ -1,6 +1,9 @@
 Changelog
 =========
 
+2.1.2 (2019-07-18)
+- Added delay when executing didReceiveLaunchURL
+
 2.1.1 (2019-06-20)
 - Fixed issue with asset URL when no file is used
 - Made handleOptions accept nullable options

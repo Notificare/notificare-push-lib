@@ -1,5 +1,7 @@
 Changelog
 =========
+2.1.3 (2019-08-06)
+- Optimized launch options to be execute after onReady (if applicable)
 
 2.1.2 (2019-07-18)
 - Added delay when executing didReceiveLaunchURL

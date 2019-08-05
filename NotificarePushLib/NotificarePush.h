@@ -79,6 +79,7 @@ typedef void (^ErrorReplyBlock)(NSError * error);
 @property (nonatomic,assign) UNNotificationPresentationOptions notificationPresentationOptions NS_AVAILABLE_IOS(10.0);
 @property (strong, nonatomic) Notificare * notificare;
 @property (strong, nonatomic) NotificareActions * notificareActions;
+@property (nullable, strong, nonatomic) NSDictionary * launchOptions;
 @property (assign, nonatomic) BOOL usePassKit;
 
 +(NotificarePush*)shared;
@@ -96,6 +97,7 @@ typedef void (^ErrorReplyBlock)(NSError * error);
 -(void)reply:(NotificareNotification *)notification forAction:(NotificareAction *)action andData:(NSDictionary * _Nullable)data completionHandler:(SuccessReplyBlock)successBlock errorHandler:(ErrorReplyBlock)errorBlock;
 -(id)notificationController:(NotificareNotification *)notification;
 -(void)fetchAttachment:(NSDictionary *)notification completionHandler:(SuccessAttachmentBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock NS_AVAILABLE_IOS(10.0);
+-(void)handleLaunchOptions;
 
 @end
 

@@ -1,5 +1,8 @@
 Changelog
 =========
+2.1.4 (2019-08-22)
+- Added protective check when no country code can be retrieved
+
 2.1.3 (2019-08-06)
 - Optimized launch options to be execute after onReady (if applicable)
 

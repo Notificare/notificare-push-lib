@@ -1,5 +1,8 @@
 Changelog
 =========
+2.1.5 (2019-08-22)
+- Bump version in definitions file
+
 2.1.4 (2019-08-22)
 - Added protective check when no country code can be retrieved
 - Run launchOptions in main thread for safety

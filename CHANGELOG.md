@@ -1,5 +1,8 @@
 Changelog
 =========
+2.1.6 (2019-09-09)
+- Hotfix to prevent launchOptions crash
+
 2.1.5 (2019-08-22)
 - Bump version in definitions file
 

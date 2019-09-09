@@ -97,7 +97,6 @@ typedef void (^ErrorReplyBlock)(NSError * error);
 -(void)reply:(NotificareNotification *)notification forAction:(NotificareAction *)action andData:(NSDictionary * _Nullable)data completionHandler:(SuccessReplyBlock)successBlock errorHandler:(ErrorReplyBlock)errorBlock;
 -(id)notificationController:(NotificareNotification *)notification;
 -(void)fetchAttachment:(NSDictionary *)notification completionHandler:(SuccessAttachmentBlock)successBlock errorHandler:(ErrorNotificationBlock)errorBlock NS_AVAILABLE_IOS(10.0);
--(void)handleLaunchOptions;
 
 @end
 

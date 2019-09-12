@@ -1,5 +1,11 @@
 Changelog
 =========
+2.2.0 (2019-09-12)
+- Built with iOS13 SDK (Update to Xcode 11 to use this version)
+- Added DISABLE_LOCATION_SERVICES property under OPTIONS in Notificare.plist
+- Added clearDeviceLocation
+- Adopted new Core Location API for beacons
+
 2.1.6 (2019-09-09)
 - Hotfix to prevent launchOptions crash
 

@@ -28,6 +28,8 @@
 		<true/>
 		<key>BACKGROUND_COLOR</key>
 		<string>FFFFFF</string>
+		<key>ACTION_BUTTON_TEXT_COLOR</key>
+		<string>FFFFFF</string>
 		<key>TOOLBAR_COLOR</key>
 		<string>FFFFFF</string>
 		<key>ACTIVITY_INDICATOR_COLOR</key>

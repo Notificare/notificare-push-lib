@@ -1,5 +1,12 @@
 Changelog
 =========
+
+2.2.1 (2019-10-17)
+- Built with iOS13.1 SDK
+- Fixed issue with actions of type Response when only Open Camera is checked
+- Fixed issue with Callback toolbar tint style
+- Added OPTIONS property override for the actions button
+
 2.2.0 (2019-09-12)
 - Built with iOS13 SDK (Update to Xcode 11 to use this version)
 - Added DISABLE_LOCATION_SERVICES property under OPTIONS in Notificare.plist

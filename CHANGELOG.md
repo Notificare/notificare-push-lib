@@ -1,6 +1,9 @@
 Changelog
 =========
 
+2.2.2 (2019-10-23)
+- Added static_framework = true in podspec
+
 2.2.1 (2019-10-17)
 - Built with iOS13.1 SDK
 - Fixed issue with actions of type Response when only Open Camera is checked

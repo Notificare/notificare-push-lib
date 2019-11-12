@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NotificareTelephone : NSObject <ActionType>
 
-@property (nonatomic, assign) id<ActionDelegate> delegate;
+@property (nonatomic, strong) id<ActionDelegate> delegate;
 @property (strong, nonatomic) NotificareAction * action;
 @property (strong, nonatomic) NotificareNotification * notification;
 @property (strong, nonatomic) UIViewController * _Nullable rootViewController;

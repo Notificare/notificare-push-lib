@@ -31,7 +31,7 @@
 
 @interface Notificare : NSObject <NotificationDelegate>
 
-@property (nonatomic, assign) id<NotificareDelegate> notificareDelegate;
+@property (nonatomic, strong) id<NotificareDelegate> notificareDelegate;
 @property (strong, nonatomic) id <NotificationType> type;
 @property (strong, nonatomic) NotificareActions * notificareActions;
 @property (assign) BOOL usePassKit;

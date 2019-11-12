@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NotificareQRCodeScanner : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
 
-@property (nonatomic, assign) id<NotificareQRCodeScannerDelegate> notificareQRCodeScannerDelegate;
+@property (nonatomic, strong) id<NotificareQRCodeScannerDelegate> notificareQRCodeScannerDelegate;
 
 
 @end

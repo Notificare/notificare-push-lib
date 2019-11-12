@@ -15,7 +15,7 @@
 
 @interface NotificareCallback : NSObject <ActionType,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITabBarDelegate,UITextViewDelegate,UITextFieldDelegate>
 
-@property (nonatomic, assign) id<ActionDelegate> delegate;
+@property (nonatomic, strong) id<ActionDelegate> delegate;
 @property (strong, nonatomic) NotificareAction * action;
 @property (strong, nonatomic) NotificareNotification * notification;
 @property (strong, nonatomic) UIViewController * rootViewController;

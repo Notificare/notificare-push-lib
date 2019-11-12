@@ -1,5 +1,11 @@
 Changelog
 =========
+2.2.3 (2019-11-08)
+- Fixed issue with handling non-main frame HTML elements in WebPage and HTML notification types
+- Added support for JS alert, confirm and prompt in WebPage and HTML notification types 
+- Hide actions button when notificareOpenAction and notificareOpenActions query params are used in WebPage and HTML notification types 
+- Prevent navigation when known parameters are used in WebPage and HTML notification types
+- Added strong references to Notificare and NotificareActions delegates
 
 2.2.2 (2019-10-23)
 - Added static_framework = true in podspec

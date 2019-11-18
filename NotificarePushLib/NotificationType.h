@@ -17,6 +17,7 @@
 -(void)setNotification:(NotificareNotification *)notification;
 -(void)setNotificareActions:(NotificareActions *)notificareActions;
 -(id)handleNotification;
+-(id)presentNotification;
 
 
 

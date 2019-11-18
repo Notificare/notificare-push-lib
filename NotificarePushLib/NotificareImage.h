@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UIBarButtonItem * actionsButton;
 
 -(id)handleNotification;
+-(id)presentNotification;
 
 @end
 

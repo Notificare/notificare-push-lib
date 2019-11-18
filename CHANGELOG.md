@@ -1,5 +1,11 @@
 Changelog
 =========
+2.2.4 (2019-11-18)
+- Fixed issue for notification types without UI being presented without user interaction while app was in foreground/background
+- Refactored how notification lifecycle events are triggered
+- Fixed issue with sort of images in notification of type Images
+- Refactored Rate notification type to account with review limits
+
 2.2.3 (2019-11-08)
 - Fixed issue with handling non-main frame HTML elements in WebPage and HTML notification types
 - Added support for JS alert, confirm and prompt in WebPage and HTML notification types 

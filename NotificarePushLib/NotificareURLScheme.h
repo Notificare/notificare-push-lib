@@ -21,5 +21,6 @@
 @property (nonatomic, strong) NotificareActions * notificareActions;
 
 -(id)handleNotification;
+-(id)presentNotification;
 
 @end

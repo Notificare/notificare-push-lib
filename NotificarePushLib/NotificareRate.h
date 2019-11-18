@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UIAlertController * alert;
 
 -(id)handleNotification;
+-(id)presentNotification;
 
 @end
 NS_ASSUME_NONNULL_END

@@ -11,7 +11,7 @@
 #ifndef NotificareDefinitions_h
 #define NotificareDefinitions_h
 
-#define kSDKVersion @"2.2.3"
+#define kSDKVersion @"2.2.4"
 #define kCoreDataDB @"inboxStoreV2.2.data"
 #define kCoreDataBundle @"NotificareManagedModels"
 #define kCoreDataEntity @"NotificareManagedDeviceInbox"
@@ -74,6 +74,8 @@
 #define kNotificareErrorStack @"notificareErrorStack"
 
 #define kNotificareMigrationCheck @"notificareMigrationCheckV2"
+
+#define kNotificareStoreReviewVersion @"notificareStoreReviewVersion"
 
 
 #define kNotificareEventAppInstall @"re.notifica.event.application.Install"

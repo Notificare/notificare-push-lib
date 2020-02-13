@@ -1,5 +1,9 @@
 Changelog
 =========
+2.2.5 (2020-02-13)
+- Moved notification open event to viewDidLoad in UIViewController notification types
+- Added increase/restore brightness on web passes view
+
 2.2.4 (2019-11-18)
 - Fixed issue for notification types without UI being presented without user interaction while app was in foreground/background
 - Refactored how notification lifecycle events are triggered

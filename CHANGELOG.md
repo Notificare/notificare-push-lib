@@ -1,5 +1,8 @@
 Changelog
 =========
+2.2.6 (2020-02-19)
+- Removed background tasks from app close event and geo location with polygons
+
 2.2.5 (2020-02-13)
 - Moved notification open event to viewDidLoad in UIViewController notification types
 - Added increase/restore brightness on web passes view

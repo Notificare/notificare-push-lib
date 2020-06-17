@@ -40,6 +40,44 @@
 		<string>000000</string>
 		<key>TEXTFIELD_BACKGROUND_COLOR</key>
 		<string>E5E5EA</string>
+		<key>LIGHT_MODE</key>
+		<dict>
+			<key>IMAGES_SHARING</key>
+			<true/>
+			<key>BACKGROUND_COLOR</key>
+			<string>FFFFFF</string>
+			<key>ACTION_BUTTON_TEXT_COLOR</key>
+			<string>FFFFFF</string>
+			<key>TOOLBAR_COLOR</key>
+			<string>FFFFFF</string>
+			<key>ACTIVITY_INDICATOR_COLOR</key>
+			<string>000000</string>
+			<key>BUTTONS_TEXT_COLOR</key>
+			<string>000000</string>
+			<key>TEXTFIELD_TEXT_COLOR</key>
+			<string>000000</string>
+			<key>TEXTFIELD_BACKGROUND_COLOR</key>
+			<string>E5E5EA</string>
+		</dict>
+		<key>DARK_MODE</key>
+		<dict>
+			<key>IMAGES_SHARING</key>
+			<true/>
+			<key>BACKGROUND_COLOR</key>
+			<string>FFFFFF</string>
+			<key>ACTION_BUTTON_TEXT_COLOR</key>
+			<string>FFFFFF</string>
+			<key>TOOLBAR_COLOR</key>
+			<string>FFFFFF</string>
+			<key>ACTIVITY_INDICATOR_COLOR</key>
+			<string>000000</string>
+			<key>BUTTONS_TEXT_COLOR</key>
+			<string>000000</string>
+			<key>TEXTFIELD_TEXT_COLOR</key>
+			<string>000000</string>
+			<key>TEXTFIELD_BACKGROUND_COLOR</key>
+			<string>E5E5EA</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

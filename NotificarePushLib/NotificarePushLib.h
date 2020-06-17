@@ -304,12 +304,12 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  * @brief Optional. This delegate method will be triggered every time a user authenticates. Use it to update UI.
  * @param info A NSDictionary containing the user data
  */
-- (void)notificarePushLib:(NotificarePushLib *)library didChangeAccountState:(NSDictionary *)info;
+- (void)notificarePushLib:(NotificarePushLib *)library didChangeAccountState:(NSDictionary *)info __attribute__((deprecated("In 2.3.0 and up, this delegate is obsolete")));
 /*!
  * @brief Optional. This delegate method will be triggered every time user logs out. Use it to update UI.
  * @param error A NSError object
  */
-- (void)notificarePushLib:(NotificarePushLib *)library didFailToRenewAccountSessionWithError:(NSError * _Nullable)error;
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToRenewAccountSessionWithError:(NSError * _Nullable)error __attribute__((deprecated("In 2.3.0 and up, this delegate is obsolete")));
 /*!
  * @brief Optional. This delegate method will be triggered in response to a user click in the activation email link.
  * @param token A NSString containing the token for this operation
@@ -486,6 +486,14 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *  Launches the NotificarePushLib with the initialized coniguration. This method should be invoked whenever you want to start using the library. In response to this method the onReady delegate will be triggered.
  */
 - (void)launch;
+
+/*!
+ *  @abstract Destroy Setup
+ *
+ *  @discussion
+ *  Destroys an initialized NotificarePushLib instances. This method should be invoked whenever you want to stop using the library. It will unregister a device, stop location services and reset Notificare to its pre-launch state.
+ */
+- (void)unlaunch;
 
 /*!
  *  @abstract The App

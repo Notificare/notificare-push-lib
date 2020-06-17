@@ -1,19 +1,97 @@
 # Migration
 
+## From 2.x.x to 2.3.0
+
+When migrating from older version of v2 to 2.3.0 there isn't much you need to take into account. This version is built against iOS SDK 13.5 and should be built with Xcode 11.5.
+
+### Initialization
+
+There is now one new method that allows you to opt-out a user and device from Notificare. For those some cases where you want to completly remove all data of a user from Notificare, you can use a new method as follows:
+
+```
+[[NotificarePushLib shared] unlaunch];
+```
+
+This is basically the opposite of  the  ```launch``` method. Once invoked all data will be delete from Notificare and using any other methods from Notificare will fail. After using this method the only way to start using Notificare again is by invoking:
+
+```
+[[NotificarePushLib shared] launch];
+```
+
+### Remote Notifications
+
+There are not relevant changes on this on remote notifications, other than some overhauling in Inbox functionalities. Although implementation remains exactly the same, the inbox functionality in 2.3.0 introduces new features like visibility and expiration which require absolutely no changes in your implementation. Additionally, inbox items will also not include information about the type of notification it was sent. This results in the following new properties added to the NotificareDeviceInbox model:
+
+- type
+- visible
+- expires
+
+It is also worth mentioning that the following delegates:
+
+```
+-(void)notificarePushLib:(NotificarePushLib *)library didLoadInbox:(nonnull NSArray<NotificareDeviceInbox *> *)items{
+
+}
+
+- (void)notificarePushLib:(NotificarePushLib *)library didUpdateBadge:(int)badge{
+  
+}
+```
+
+Will be called on more times in this version, namely everytime the app enter in foreground and after invoking any method in this class. If you rely on these (and you probably are), you should take that into account.
+
+### Authentication
+
+In this version we've deprecated the following method:
+
+```
+[[[NotificarePushLib shared] authManager] logoutAccount];
+```
+
+And you should use its replacement:
+
+```
+[[[NotificarePushLib shared] authManager] logoutAccount:^(id  _Nullable response, NSError * _Nullable error) {
+
+}];
+```
+
+Additionally, the following delegates are also deprecated and should not be used anymore:
+
+```
+- (void)notificarePushLib:(NotificarePushLib *)library didChangeAccountState:(NSDictionary *)info{
+
+}
+
+- (void)notificarePushLib:(NotificarePushLib *)library didFailToRenewAccountSessionWithError:(NSError * _Nullable)error {
+
+}
+```
+
+### Miscelaneous
+
+This version also includes 2 new objects in the Notificare.plist under OPTIONS. We've added the possibility to configure notification's UI for Light/Dark mode. When present, in iOS 13, we will use those instead to apply UI styles. If not present, we will keep using the default properties as in previous versions. 
+
+This version also support the latest frameworks changes in iOS SDK and therefore the MobileCoreServices.framework as been replaced by CoreServices.framework.
+
+
+## From 1.x.x to 2.0.0
+
 If you are migrating from 1.x.x version of our SDK, there are several breaking changes that you will need to take into consideration. A considerable part of the API in version 1 was removed and replaced with a simplified new API that unifies integration of remote notifications, location services, user authentication, contextual content and analytics in iOS 9 and up.
 
 Guides for setup and implementation can be found here:
 
 https://docs.notifica.re/sdk/v2/ios/setup/
 
-## Initialization
+### Initialization
+
 A few changes were introduces when initializing the library, mainly a new method is required to initialize the library (where you can override Notificare.plist app keys). This creates a clear separation between the moment you initialize our SDK and when you actually want to start using it.
 
 You can find more information about initialization here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/ 
 
-## Device Registration
+### Device Registration
 
 When you are migrating from older versions, you will notice that you no longer need to take action whenever a device token is registered, as device registration in SDK 2.0 is totally managed by Notificare. You can still register/unregister a device to/from a userID and userName and Notificare will always keep that information cached in the device. This will make sure that whenever a device token changes everything is correctly handled without the need for your app to handle it. 
 
@@ -25,7 +103,7 @@ Bottom line, for this version you should remove all the device registration dele
 
 https://docs.notifica.re/sdk/v2/ios/implementation/register/ 
 
-## Remote Notifications
+### Remote Notifications
 
 In SDK 2.0, we've unified notification handling to work as one for all versions from iOS 9 and higher. We've also simplified the implementation of this functionality by allowing you to take actions for 2 different situations, when notifications are received in foreground or background. Actionable notification are also totally managed by Notificare and you will not have to take care of anything to handle actions. 
 
@@ -58,7 +136,7 @@ More in-depth guides can be found here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/push/
 
-## Location Services
+### Location Services
 
 In this new version, locations services do not suffer any significant API change. Most of the changes to this functionality are under-the-hood and implementation for previous versions will work in this new versions.
 
@@ -66,7 +144,7 @@ For more information, please read the guides for this functionality located here
 
 https://docs.notifica.re/sdk/v2/ios/implementation/location-services/
 
-## Authentication
+### Authentication
 
 In SDK 2.0, we've moved all the methods for this functionality into a new class, called authManager. Although most methods remain the same, you'll need to change your current implementation to reflect this change.
 
@@ -74,7 +152,7 @@ For more information, please find more in-depth guides here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/oauth2/
 
-## Segmentation
+### Segmentation
 
 As mentioned in the previous section, authManager class is now responsible for handling authenticated operations for segmentation.
 
@@ -82,7 +160,7 @@ You can find more information in our in-depth guides located here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/segmentation/
 
-## Tags
+### Tags
 
 This functionality remains pretty much the same in this new version. We did add two new methods that you might find interesting when implementing tags. 
 
@@ -110,7 +188,7 @@ You can find more information in our guides located here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/tags/
 
-## Monetize
+### Monetize
 
 This functionality did not suffer any change in SDK 2.0 and you will not need to change anything in your current implementation.
 
@@ -118,7 +196,7 @@ More in-depth information can be found in our guides located here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/monetize/implementation/
 
-## Loyalty
+### Loyalty
 
 In SDK 2.0, we do not include the PassKit framework by default. This change will allow apps that do not use this functionality to not be flagged as such in the App Store. On the other hand, if your app uses this functionality, you need to implement the following method in your AppDelegate, in order to support native Wallet passes:
 
@@ -151,7 +229,7 @@ Please find more information about this functionality here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/loyalty/implementation/
 
-## Analytics
+### Analytics
 
 This functionality did not suffer any change in SDK 2.0 and you will not need to change anything in your current implementation.
 
@@ -159,7 +237,7 @@ More in-depth information can be found in our guides located here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/analytics/
 
-## Storage
+### Storage
 
 This functionality did not suffer any change in SDK 2.0 and you will not need to change anything in your current implementation.
 
@@ -167,7 +245,7 @@ More in-depth information can be found in our guides located here:
 
 https://docs.notifica.re/sdk/v2/ios/implementation/storage/
 
-## Scannables
+### Scannables
 
 There a couple of changes to this functionality in this new version of the SDK. Mainly the way you can present content from a Scannable changed. In order to make it easier for you to handle the content from a NFC tag or QR Code, we've added the following method:
 

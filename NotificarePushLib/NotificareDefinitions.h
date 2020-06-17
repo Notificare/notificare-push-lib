@@ -11,8 +11,8 @@
 #ifndef NotificareDefinitions_h
 #define NotificareDefinitions_h
 
-#define kSDKVersion @"2.2.6"
-#define kCoreDataDB @"inboxStoreV2.2.data"
+#define kSDKVersion @"2.3.0"
+#define kCoreDataDB @"inboxStoreV2.3.data"
 #define kCoreDataBundle @"NotificareManagedModels"
 #define kCoreDataEntity @"NotificareManagedDeviceInbox"
 #define kOSVersion [[UIDevice currentDevice] systemVersion]

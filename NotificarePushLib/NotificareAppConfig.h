@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "NotificareApplication.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -24,6 +25,7 @@ typedef void (^ErrorAppInfoBlock)(NSError * response);
 
 +(NotificareAppConfig*)shared;
 -(void)launch;
+-(NSDictionary *)themeForController:(UIViewController *)controller;
 -(void)fetchApplicationInfo:(SuccessAppInfoBlock)successBlock errorHandler:(ErrorAppInfoBlock)errorBlock;
 
 @end

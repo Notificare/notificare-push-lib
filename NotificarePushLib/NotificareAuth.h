@@ -22,8 +22,8 @@ typedef void (^NotificareAuthCompletionBlock)(id _Nullable response , NSError * 
 
 @optional
 
-- (void)notificareAuth:(NotificareAuth *)notificareAuth didChangeAccountNotification:(NSDictionary *)info;
-- (void)notificareAuth:(NotificareAuth *)notificareAuth didFailToRequestAccessNotification:(NSError * _Nullable)error;
+- (void)notificareAuth:(NotificareAuth *)notificareAuth didChangeAccountNotification:(NSDictionary *)info __attribute__((deprecated("In 2.3.0 and up, this delegate is obsolete")));
+- (void)notificareAuth:(NotificareAuth *)notificareAuth didFailToRequestAccessNotification:(NSError * _Nullable)error __attribute__((deprecated("In 2.3.0 and up, this delegate is obsolete")));
 - (void)notificareAuth:(NotificareAuth *)notificareAuth didReceiveActivationToken:(NSString *)token;
 - (void)notificareAuth:(NotificareAuth *)notificareAuth didReceiveResetPasswordToken:(NSString *)token;
 
@@ -95,9 +95,17 @@ typedef void (^NotificareAuthCompletionBlock)(id _Nullable response , NSError * 
  *  @abstract Logout
  *
  *  @discussion
- *  Use this method should be log out any authenticated user. This method should also be used to allow the user to forget a device.
+ *  Use this method to terminate a sessoin for an authenticated user. This method is deprecated. Use logoutAccount:(NotificareAuthCompletionBlock)completionBlock instead.
  */
-- (void)logoutAccount;
+- (void)logoutAccount __attribute__((deprecated("In 2.3.0 and up use logoutAccount:(NotificareAuthCompletionBlock)completionBlock instead")));
+
+/*!
+ *  @abstract Logout
+ *
+ *  @discussion
+ *  Use this method to terminate a sessoin for an authenticated user.
+ */
+- (void)logoutAccount:(NotificareAuthCompletionBlock)completionBlock;
 /*!
  *  @abstract Logout
  *

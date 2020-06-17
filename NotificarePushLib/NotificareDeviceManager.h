@@ -44,6 +44,7 @@ typedef void (^ErrorDeviceDnDBlock)(NSError * response);
 -(void)launch;
 
 -(void)registerTemporaryDevice:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
+-(void)deleteDevice:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
 
 -(void)registerDevice:(NSData *)deviceToken asTemp:(BOOL)temp completionHandler:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
 -(void)registerDevice:(NSData *)deviceToken asTemp:(BOOL)temp withUserID:(NSString*)userID completionHandler:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;

@@ -13,6 +13,7 @@
 @property (strong, nonatomic, nonnull) NSString * inboxId;
 @property (strong, nonatomic, nonnull) NSString * applicationId;
 @property (strong, nonatomic, nonnull) NSString * deviceID;
+@property (strong, nonatomic, nullable) NSString * type;
 @property (strong, nonatomic, nullable) NSDictionary * data;
 @property (strong, nonatomic, nullable) NSString * title;
 @property (strong, nonatomic, nullable) NSString * subtitle;
@@ -22,7 +23,9 @@
 @property (strong, nonatomic, nonnull) NSString * notification;
 @property (strong, nonatomic, nonnull) NSString * time;
 @property (strong, nonatomic, nullable) NSString * userID;
+@property (strong, nonatomic, nullable) NSString * expires;
 @property (assign, nonatomic) BOOL opened;
+@property (assign, nonatomic) BOOL visible;
 
 - (void)setValuesWithDeviceInboxJSON:(NSDictionary * _Nonnull)deviceInboxJSON;
 

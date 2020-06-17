@@ -1,5 +1,17 @@
 Changelog
 =========
+2.3.0 (2020-06-17)
+- Added new unlaunch method
+- Added possibility to send notification not shown in the inbox
+- Added possibility to expire inbox items
+- Added new property type in NotificareDeviceInbox model
+- Added new properties in Notificare.plist under OPTIONS for Light/Dark mode
+- Minor bug fixes and improvements
+- Deprecated didChangeAccountState and didFailToRenewAccountSessionWithError delegates
+- Deprecated [[[NotificarePushLib shared] authManager] logoutAccount]
+- Replaced usage of MobileCoreServices.framework with CoreServices.framework
+- Built against iOS 13.5 SDK
+
 2.2.6 (2020-02-19)
 - Removed background tasks from app close event and geo location with polygons
 

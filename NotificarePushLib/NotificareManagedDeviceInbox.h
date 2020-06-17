@@ -15,6 +15,7 @@
 @property (strong, nonatomic, nonnull) NSString * inboxId;
 @property (strong, nonatomic, nonnull) NSString * applicationId;
 @property (strong, nonatomic, nonnull) NSString * deviceID;
+@property (strong, nonatomic, nullable) NSString * type;
 @property (strong, nonatomic, nullable) NSDictionary * data;
 @property (strong, nonatomic, nonnull) NSString * message;
 @property (strong, nonatomic, nullable) NSString * title;
@@ -24,7 +25,9 @@
 @property (strong, nonatomic, nonnull) NSString * notification;
 @property (strong, nonatomic, nonnull) NSDate * time;
 @property (strong, nonatomic, nullable) NSString * userID;
+@property (strong, nonatomic, nullable) NSDate * expires;
 @property (assign, nonatomic) BOOL opened;
+@property (assign, nonatomic) BOOL visible;
 
 + (NotificareManagedDeviceInbox * _Nullable)ManagedDeviceInbox:(NotificareDeviceInbox * _Nonnull)nonManaged inContext:(NSManagedObjectContext * _Nonnull)managedObjectContext;
 - (NotificareDeviceInbox * _Nullable)toNonManaged;

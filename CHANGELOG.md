@@ -9,7 +9,6 @@ Changelog
 - Minor bug fixes and improvements
 - Deprecated didChangeAccountState and didFailToRenewAccountSessionWithError delegates
 - Deprecated [[[NotificarePushLib shared] authManager] logoutAccount]
-- Replaced usage of MobileCoreServices.framework with CoreServices.framework
 - Built against iOS 13.5 SDK
 
 2.2.6 (2020-02-19)

@@ -1,5 +1,8 @@
 Changelog
 =========
+2.3.1 (2020-06-18)
+- Hot fix that solves a potential crash in unlaunch method 
+
 2.3.0 (2020-06-17)
 - Added new unlaunch method
 - Added possibility to send notification not shown in the inbox

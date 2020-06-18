@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if __has_include(<MobileCoreServices/MobileCoreServices.h>)
 #import <MobileCoreServices/MobileCoreServices.h>
-#else
-#import <CoreServices/CoreServices.h>
-#endif
 #import "ActionType.h"
 #import "ActionDelegate.h"
 #import "NotificareAction.h"

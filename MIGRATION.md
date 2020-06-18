@@ -2,17 +2,17 @@
 
 ## From 2.x.x to 2.3.0
 
-When migrating from older version of v2 to 2.3.0 there isn't much you need to take into account. This version is built against iOS SDK 13.5 and should be built with Xcode 11.5.
+When migrating from older version of v2 to 2.3.0 there isn't much you need to take into account. This version is built against iOS SDK 13.5 and should be used with Xcode 11.5.
 
 ### Initialization
 
-There is now one new method that allows you to opt-out a user and device from Notificare. For those some cases where you want to completly remove all data of a user from Notificare, you can use a new method as follows:
+There is now one new method that allows you to opt-out a device from Notificare. For those cases where you want to completly remove all data of a device from Notificare, you can use this method as follows:
 
 ```
 [[NotificarePushLib shared] unlaunch];
 ```
 
-This is basically the opposite of  the  ```launch``` method. Once invoked all data will be delete from Notificare and using any other methods from Notificare will fail. After using this method the only way to start using Notificare again is by invoking:
+This is basically the opposite of  the  ```launch``` method. Once invoked, all data will be deleted from Notificare and attamept to use any other methods from Notificare will fail. After using this method the only way to start using Notificare again is by invoking:
 
 ```
 [[NotificarePushLib shared] launch];
@@ -20,7 +20,7 @@ This is basically the opposite of  the  ```launch``` method. Once invoked all da
 
 ### Remote Notifications
 
-There are not relevant changes on this on remote notifications, other than some overhauling in Inbox functionalities. Although implementation remains exactly the same, the inbox functionality in 2.3.0 introduces new features like visibility and expiration which require absolutely no changes in your implementation. Additionally, inbox items will also not include information about the type of notification it was sent. This results in the following new properties added to the NotificareDeviceInbox model:
+There are not relevant changes on this on remote notifications, other than some overhauling in Inbox functionalities. Although implementation remains exactly the same, the inbox functionality in 2.3.0 introduces new features like visibility and expiration which require absolutely no changes in your implementation. Additionally, inbox items will also include information about the type of notification it was sent. This results in the following new properties added to the NotificareDeviceInbox model:
 
 - type
 - visible
@@ -38,7 +38,7 @@ It is also worth mentioning that the following delegates:
 }
 ```
 
-Will be called on more times in this version, namely everytime the app enter in foreground and after invoking any method in this class. If you rely on these (and you probably are), you should take that into account.
+Will be called more often in this version, namely everytime the app enters in foreground and after invoking any method in this class. If you rely on these (and you probably are), you should take that into account.
 
 ### Authentication
 

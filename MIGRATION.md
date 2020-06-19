@@ -72,7 +72,7 @@ Additionally, the following delegates are also deprecated and should not be used
 
 This version also includes 2 new objects in the Notificare.plist under OPTIONS. We've added the possibility to configure notification's UI for Light/Dark mode. When present, in iOS 13, we will use those instead to apply UI styles. If not present, we will keep using the default properties as in previous versions. 
 
-This version also support the latest frameworks changes in iOS SDK and therefore the MobileCoreServices.framework as been replaced by CoreServices.framework.
+This version also support the latest frameworks changes in iOS SDK and therefore the MobileCoreServices.framework as been replaced by CoreServices.framework. Additionally, CoreMedia.framework was also added. 
 
 
 ## From 1.x.x to 2.0.0

@@ -1,5 +1,8 @@
 Changelog
 =========
+2.3.2 (2020-06-19)
+- Added CoreMedia framework
+
 2.3.1 (2020-06-18)
 - Hot fix that solves a potential crash in unlaunch method 
 

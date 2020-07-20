@@ -138,6 +138,18 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownNotification:(NSDictionary *)notification;
 
 /*!
+ * @brief Optional. This delegate method will be triggered when a remote or local notification is opened from an unrecognizable source while in background.
+ * @param notification A NSDictionary object containing the notification received
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownNotificationInBackground:(NSDictionary *)notification;
+
+/*!
+ * @brief Optional. This delegate method will be triggered when a remote or local notification is received from an unrecognizable source while in foreground.
+ * @param notification A NSDictionary object containing the notification received
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownNotificationInForeground:(NSDictionary *)notification;
+
+/*!
  * @brief Optional. This delegate method will be triggered when a remote or local action in a notification is received from an unrecognizable source.
  * @param notification A NSDictionary object containing the notification received
  */
@@ -237,10 +249,15 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToStartLocationServiceWithError:(NSError *)error;
 /*!
- * @brief Optional. This delegate method will be triggered as response to a start location updates.
- * @param status A NSDictionary object that contains information about the location services' status
+ * @brief Optional. This delegate method will be triggered as response to any change in authorization state.
+ * @param status A NSDictionary object that contains information about the location services' authorization status
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAuthorizationStatus:(NotificareGeoAuthorizationStatus)status;
+/*!
+ * @brief Optional. This delegate method will be triggered as response to any change in accuracy authorization state in iOS14 and up.
+ * @param status A NSDictionary object that contains information about the location services' accuracy status
+ */
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAccuracyAuthorization:(NotificareGeoAccuracyAuthorization)accuracy;
 /*!
  * @brief Optional. This delegate method will be triggered every time a new location update is received.
  * @param locations A NSArray that contains a list of NotificareLocation objects
@@ -535,6 +552,17 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *
  */
 -(void)handleOpenURL:(NSURL *)url withOptions:(NSDictionary * _Nullable)options;
+
+/*!
+ *  @abstract Handle User Activity
+ *  @property userActivity
+ *  @property restorationHandler
+ *
+ *  @discussion
+ *  Handles additional functionality in response to UIApplication's continueUserActivity:restorationHandler. Should be used in -(BOOL)application:continueUserActivity:restorationHandler:
+ *
+ */
+-(void)continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler;
 
 /*!
  *  @abstract Register For Notifications
@@ -867,6 +895,32 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *  Starts the location manager for geo-targeting, geo-fencing and beacons. It will prompt the user with a permission dialog for location services if the user allows location services, this dialog will never be shown. Since iOS8 the key NSLocationAlwaysUsageDescription in your app's info.plist is required. For app's supporting older versions, use NSLocationUsageDescription key too. These keys should contain a text explaining why your app requires locations updates. After iOS 11 you should also use NSLocationAlwaysAndWhenInUseUsageDescription and NSLocationWhenInUseUsageDescription keys.
  */
 -(void)startLocationUpdates;
+/*!
+ *  @abstract Request Always Authorization for Location Services
+ *
+ *  @discussion
+ *  Use this method to request Always Authorization whenever the user only gave permission to While In Use and your features (Geofencing or Beacon monitoring) require it.
+ */
+
+-(void)requestAlwaysAuthorizationForLocationUpdates;
+
+/*!
+ *  @abstract Request Temporary Full Accuracy for Location Services
+ *
+ *  @discussion
+ *  Use this method to request Temporary Full Accuracy whenever the user only gave permission to Reduced Accuracy and your features (Geofencing or Beacon monitoring) require it.
+ *  In order to use this method you will need to provide one or more Info.plist entries as follows:
+ *  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+ *      <dict>
+ *          <key>ExampleUsageDescription</key>
+ *          <string>This app needs accurate location so it can verify that you're in a supported region.</string>
+ *          <key>AnotherUsageDescription</key>
+ *          <string>This app needs accurate location so it can show you relevant results.</string>
+ *      </dict>
+ */
+
+-(void)requestTemporaryFullAccuracyAuthorizationWithPurposeKey:(nonnull NSString *)key NS_AVAILABLE_IOS(14.0);
+
 /*!
  *  @abstract Check if Location Updates are ON
  *

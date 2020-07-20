@@ -11,7 +11,7 @@
 #ifndef NotificareDefinitions_h
 #define NotificareDefinitions_h
 
-#define kSDKVersion @"2.3.2"
+#define kSDKVersion @"2.4.0"
 #define kCoreDataDB @"inboxStoreV2.3.data"
 #define kCoreDataBundle @"NotificareManagedModels"
 #define kCoreDataEntity @"NotificareManagedDeviceInbox"
@@ -37,6 +37,7 @@
 #define kNotificareDeviceCountryCode @"notificareDeviceCountryCode"
 #define kNotificareAllowedLocationServices @"notificareAllowedLocationServices"
 #define kNotificareLocationServicesAuthStatus @"notificareLocationServicesAuthStatus"
+#define kNotificareLocationServicesAccuracyAuth @"notificareLocationServicesAccuracyAuth"
 #define kNotificareDeviceTimezone @"notificareDeviceTimezone"
 #define kNotificareOSVersion @"notificareOSVersion"
 #define kNotificareSDKVersion @"notificareSDKVersion"
@@ -49,6 +50,7 @@
 #define kNotificareDeviceLatitude @"notificareDeviceLatitude"
 #define kNotificareDeviceLongitude @"notificareDeviceLongitude"
 #define kNotificareDeviceAltitude @"notificareDeviceAltitude"
+#define kNotificareDeviceAccuracy @"notificareDeviceAccuracy"
 #define kNotificareDeviceCourse @"notificareDeviceCourse"
 #define kNotificareDeviceFloor @"notificareDeviceFloor"
 #define kNotificareDeviceSpeed @"notificareDeviceSpeed"

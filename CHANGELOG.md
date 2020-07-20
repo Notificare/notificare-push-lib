@@ -1,5 +1,13 @@
 Changelog
 =========
+2.4-beta1 (2020-07-21)
+- Built with iOS 14 SDK
+- Added new events for unknown notifications in background and foreground
+- Adopted changes for Location Services in iOS 14
+- Small adjustment in app store recommendation to avoid object sorting issue
+- Added markAllAsRead in InboxManager
+- Added helper method for universal links
+
 2.3.2 (2020-06-19)
 - Added CoreMedia framework
 

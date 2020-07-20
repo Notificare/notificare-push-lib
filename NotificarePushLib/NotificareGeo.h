@@ -38,6 +38,11 @@ typedef enum NotificareGeoAuthorizationStatus : NSInteger {
     NotificareGeoAuthorizationStatusAuthorizedWhenInUse = 4
 } NotificareGeoAuthorizationStatus;
 
+typedef enum NotificareGeoAccuracyAuthorization : NSInteger {
+    NotificareGeoAccuracyAuthorizationFull = 0,
+    NotificareGeoGeoAccuracyAuthorizationReduced = 1
+} NotificareGeoAccuracyAuthorization;
+
 @class NotificareGeo;
 
 @protocol NotificareGeoDelegate <NSObject>
@@ -46,6 +51,7 @@ typedef enum NotificareGeoAuthorizationStatus : NSInteger {
 
 - (void)notificareGeo:(NotificareGeo *)notificareGeo didFailToStartLocationServiceWithError:(NSError *)error;
 - (void)notificareGeo:(NotificareGeo *)notificareGeo didReceiveLocationServiceAuthorizationStatus:(NotificareGeoAuthorizationStatus)status;
+- (void)notificareGeo:(NotificareGeo *)notificareGeo didReceiveLocationServiceAccuracyAuthorization:(NotificareGeoAccuracyAuthorization)accuracy;
 - (void)notificareGeo:(NotificareGeo *)notificareGeo didUpdateLocations:(NSArray<NotificareLocation*> *)locations;
 - (void)notificareGeo:(NotificareGeo *)notificareGeo monitoringDidFailForRegion:(id)region withError:(NSError *)error;
 - (void)notificareGeo:(NotificareGeo *)notificareGeo didStartMonitoringForRegion:(id)region;
@@ -70,6 +76,8 @@ typedef enum NotificareGeoAuthorizationStatus : NSInteger {
 -(void)startLocationUpdates;
 -(void)stopLocationUpdates;
 -(BOOL)locationServicesEnabled;
+-(void)requestAlwaysAuthorization;
+-(void)requestTemporaryFullAccuracyAuthorizationWithPurposeKey:(nonnull NSString *)key;
 
 @end
 

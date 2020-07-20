@@ -1,4 +1,92 @@
 # Migration
+## From 2.3.x to 2.4.0
+
+When migrating from to 2.3.0 you should use Xcode 12 with support for iOS 14. There are few changes to take into account but some adjustments are needed to fully support this new version.
+
+### Remote Notifications
+In iOS 14 a new authorization option is available. You can now also include  ```ephemeral``` when setting these authorization options. These will allow apps with App Clips to send notifications to these ephemeral apps.
+
+We've also made some changes in how you can receive data from notifications sent from unknown sources. More specifically, you will now have two new delegates:
+
+```
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownNotificationInBackground:(NSDictionary *)notification;
+
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveUnknownNotificationInForeground:(NSDictionary *)notification;
+```
+These will be triggered accordingly when users receive remote or local notifications from unknown sources.
+
+### Inbox
+A new method is now available to allow you to mark all inbox items as read with a single operation:
+
+```
+[[[NotificarePushLib shared] inboxManager] markAllAsRead:^(id  _Nullable response, NSError * _Nullable error) {
+
+}];
+```
+
+### Location Services
+These are probably the biggest changes you will have to take into account in this version . In 2.4 and up, calling ```startLocationUpdates``` will only request permission for the While in Use mode. This mode will be enough for most apps but will not be enough if you are looking to add support for region or beacon monitoring. When that is the case you can upgrade your app to the Always mode by invoking the following method:
+
+```
+[[NotificarePushLib shared] requestAlwaysAuthorizationForLocationUpdates];
+```
+This will allow you to upgrade your users' authorization state after the first initial request. Additionally, in iOS 14, Apple is introducing one more concept for location privacy, allowing users to provide apps with a full accuracy location or a reduce accuracy location. The first mode, full accuracy, is basically the pre-iOS14 state and will allow you to make use of all functionality without any change. The second mode however will provide your apps with a less accurate location rendering impossible to provide support for things like region and beacon monitoring. To help you tackle this, we are introducing one more delegate that will provide your app with information about the accuracy mode in use:
+
+```
+- (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAccuracyAuthorization:(NotificareGeoAccuracyAuthorization)accuracy{
+    if (accuracy == NotificareGeoAccuracyAuthorizationFull) {
+        // This mode will allow all the functionality
+    } else {
+        // Anything else will render support for region and beacon monitoring not available
+        // When that is the case you should prompt users to device's app settings to manually set those options 
+    }
+}
+```
+This delegate should be use in combination with the old ```didReceiveLocationServiceAuthorizationStatus``` to figure out all the premissions needed for the functionality your app is supporting.
+
+It is also possible for apps to request full accuracy temporarily while the app is being used and set to the reduce accuracy mode. This might be extremelly handy for apps that provide some kind of turn-by-turn navigation while the app is being used and do not want to prompt users to the device's settings. For those apps, we are providing the following method:
+
+```
+[[NotificarePushLib shared] requestTemporaryFullAccuracyAuthorizationWithPurposeKey:@"ExampleUsageDescription"];
+```
+
+Additionally, to use this method you will need to provide one or more Info.plist entries as follows:
+```
+<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+<dict>
+  <key>ExampleUsageDescription</key>
+  <string>This app needs accurate location so it can verify that you're in a supported region.</string>
+  <key>AnotherUsageDescription</key>
+  <string>This app needs accurate location so it can show you relevant results.</string>
+</dict>
+```
+One thing to note about this method is that once the user closes the app the previously reduced accuracy mode will be set again.
+
+### Universal Links
+In this version we will also provide support for universal links. These are links you create in our dashboard that allow you to deep link to certain areas of your app from web pages or email and SMS messages. When using the Proxy Delegate these will be automatically handled for you as long as you add the Associated Domains capability with the following entry:
+
+```
+applinks:YOUR_PREFIX.ntc.re
+```
+
+Then if all dynamic links you create and use will trigger the usual delegate where you handle all the deep links for your app:
+
+```
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    [[NotificarePushLib shared]  handleOpenURL:url withOptions:options];
+    // Handle the deep links 
+    
+    return YES;
+}
+```
+
+If isntead you are not using the Proxy Delegate, you will also need to implement the following delegate and corresponding helper method:
+
+```
+//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+    [[NotificarePushLib shared] continueUserActivity:userActivity restorationHandler:restorationHandler];
+}
+```
 
 ## From 2.x.x to 2.3.0
 

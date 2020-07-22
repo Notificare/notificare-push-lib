@@ -250,12 +250,12 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 - (void)notificarePushLib:(NotificarePushLib *)library didFailToStartLocationServiceWithError:(NSError *)error;
 /*!
  * @brief Optional. This delegate method will be triggered as response to any change in authorization state.
- * @param status A NSDictionary object that contains information about the location services' authorization status
+ * @param status A NotificareGeoAuthorizationStatus enum  that contains information about the location services' authorization status
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAuthorizationStatus:(NotificareGeoAuthorizationStatus)status;
 /*!
  * @brief Optional. This delegate method will be triggered as response to any change in accuracy authorization state in iOS14 and up.
- * @param status A NSDictionary object that contains information about the location services' accuracy status
+ * @param accuracy A NotificareGeoAccuracyAuthorization enum that contains information about the location services' accuracy status
  */
 - (void)notificarePushLib:(NotificarePushLib *)library didReceiveLocationServiceAccuracyAuthorization:(NotificareGeoAccuracyAuthorization)accuracy;
 /*!

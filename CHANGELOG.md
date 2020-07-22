@@ -1,5 +1,11 @@
 Changelog
 =========
+2.4-beta2 (2020-07-24)
+- Make sure you immediatly update device properties after authorization changes 
+- Free up location updates after changing to while in use or reduced accuracy 
+- Added requestTemporaryFullAccuracyAuthorizationWithPurposeKey method 
+- Fixed some comments in interface file
+
 2.4-beta1 (2020-07-21)
 - Built with iOS 14 SDK
 - Added new events for unknown notifications in background and foreground

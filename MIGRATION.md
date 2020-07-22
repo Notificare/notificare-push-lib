@@ -63,13 +63,13 @@ Additionally, to use this method you will need to provide one or more Info.plist
 One thing to note about this method is that once the user closes the app the previously reduced accuracy mode will be set again.
 
 ### Universal Links
-In this version we will also provide support for universal links. These are links you create in our dashboard that allow you to deep link to certain areas of your app from web pages or email and SMS messages. When using the Proxy Delegate these will be automatically handled for you as long as you add the Associated Domains capability with the following entry:
+In this version we will also provide support for universal links. These are links you create in our dashboard that allow you to deep link to certain areas of your app from web pages or email and SMS messages. When using the App Delegate Proxy, these will be automatically handled for you as long as you add the Associated Domains capability with the following entry:
 
 ```
 applinks:YOUR_PREFIX.ntc.re
 ```
 
-Then if all dynamic links you create and use will trigger the usual delegate where you handle all the deep links for your app:
+Then if all Links of type ```dynamic links``` you create will trigger the usual delegate where you handle all the deep links for your app (when clicked from web pages or email and SMS messages):
 
 ```
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
@@ -80,7 +80,7 @@ Then if all dynamic links you create and use will trigger the usual delegate whe
 }
 ```
 
-If isntead you are not using the Proxy Delegate, you will also need to implement the following delegate and corresponding helper method:
+If you are not using the App Delegate Proxy, you will also need to implement the following delegate and corresponding helper method:
 
 ```
 //- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{

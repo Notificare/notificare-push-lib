@@ -34,8 +34,8 @@
 @property (strong, nonatomic, nullable) NSNumber * speed;
 @property (strong, nonatomic, nullable) NSNumber * course;
 @property (strong, nonatomic, nonnull) NSDate * lastRegistered;
-@property (strong, nonatomic, nonnull) NSString * locationServicesAuthStatus;
-@property (strong, nonatomic, nonnull) NSString * locationServicesAccuracyAuth;
+@property (strong, nonatomic, nullable) NSString * locationServicesAuthStatus;
+@property (strong, nonatomic, nullable) NSString * locationServicesAccuracyAuth;
 @property (assign, nonatomic) BOOL registeredForNotifications;
 @property (assign, nonatomic) BOOL allowedLocationServices;
 @property (assign, nonatomic) BOOL allowedUI;

@@ -40,7 +40,7 @@ typedef enum NotificareGeoAuthorizationStatus : NSInteger {
 
 typedef enum NotificareGeoAccuracyAuthorization : NSInteger {
     NotificareGeoAccuracyAuthorizationFull = 0,
-    NotificareGeoGeoAccuracyAuthorizationReduced = 1
+    NotificareGeoAccuracyAuthorizationReduced = 1
 } NotificareGeoAccuracyAuthorization;
 
 @class NotificareGeo;

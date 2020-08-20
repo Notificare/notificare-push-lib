@@ -565,6 +565,16 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 -(void)continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler;
 
 /*!
+ *  @abstract Handle User Activity
+ *  @property userActivity
+ *
+ *  @discussion
+ *  Handles additional functionality in response to UIScene's continueUserActivity. Should be used in -(void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity
+ *
+ */
+-(void)continueUserActivity:(NSUserActivity *)userActivity;
+
+/*!
  *  @abstract Register For Notifications
  *
  *  @discussion

@@ -4,7 +4,7 @@
 When migrating from to 2.3.0 you should use Xcode 12 with support for iOS 14. There are few changes to take into account but some adjustments are needed to fully support this new version.
 
 ### Remote Notifications
-In iOS 14 a new authorization option is available. You can now also include  ```ephemeral``` when setting these authorization options. These will allow apps with App Clips to send notifications to these ephemeral apps.
+In iOS 14,  App Clips are allowed an ephemeral authorization mode to send notifications up to 8 hours after installation.
 
 We've also made some changes in how you can receive data from notifications sent from unknown sources. More specifically, you will now have two new delegates:
 
@@ -83,8 +83,16 @@ Then if all Links of type ```dynamic links``` you create will trigger the usual 
 If you are not using the App Delegate Proxy, you will also need to implement the following delegate and corresponding helper method:
 
 ```
-//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
     [[NotificarePushLib shared] continueUserActivity:userActivity restorationHandler:restorationHandler];
+}
+```
+
+For apps using UIScene or SwiftUI the following method is needed (independently if you use App Delegate Proxy or not) instead:
+
+```
+- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity{
+    [[NotificarePushLib shared] continueUserActivity:userActivity];
 }
 ```
 

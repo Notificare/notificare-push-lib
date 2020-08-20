@@ -1,5 +1,15 @@
 Changelog
 =========
+2.4-beta5 (2020-08-20)
+- Added new method for continueUserActivity for UIScene and SwiftUI based apps
+- Added better error logging for requestTemporaryFullAccuracyAuthorizationWithPurposeKey
+
+2.4-beta4 (2020-08-14)
+- Assigned authorization status and accuracy authorization as soon as possible
+
+2.4-beta3 (2020-08-12)
+- Marked locationServicesAuthStatus and locationServicesAccuracyAuth as nullable
+
 2.4-beta2 (2020-07-24)
 - Make sure you immediatly update device properties after authorization changes 
 - Free up location updates after changing to while in use or reduced accuracy 

@@ -575,6 +575,15 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
 -(void)continueUserActivity:(NSUserActivity *)userActivity;
 
 /*!
+ *  @abstract Fetch a Link
+ *
+ *  @discussion
+ *  Use this method to fetch the underlying iOS URL for a Dynamic Link created in Notificare via the Links feature. Usually in response to -(BOOL)application:continueUserActivity:restorationHandler: or  -(void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity
+ *  @param url  A NSURL representing the URL of the Dynamic Link.
+ *
+ */
+-(void)fetchLink:(NSURL *)url completionHandler:(NotificareCompletionBlock)completionBlock;
+/*!
  *  @abstract Register For Notifications
  *
  *  @discussion

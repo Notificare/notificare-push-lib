@@ -96,6 +96,14 @@ For apps using UIScene or SwiftUI the following method is needed (independently 
 }
 ```
 
+Finally you can also retrieve the underlying iOS URL Scheme added to a Dynamic Link by using the method:
+
+```
+[[NotificarePushLib shared] fetchLink:YOUR_NS_URL completionHandler:^(id  _Nullable response, NSError * _Nullable error) {
+    // Response will be a NSURL containing the iOS URL added to the Dynamic Link
+}];
+```
+
 ## From 2.x.x to 2.3.0
 
 When migrating from older version of v2 to 2.3.0 there isn't much you need to take into account. This version is built against iOS SDK 13.5 and should be used with Xcode 11.5.

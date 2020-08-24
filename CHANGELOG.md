@@ -1,5 +1,9 @@
 Changelog
 =========
+2.4-beta6 (2020-08-25)
+- Added fetchLink to manually retrieve the underlying iOS URL in a Dynamic Link
+- Added support for Notificare's Dynamic Links in notification of type Deep Link
+
 2.4-beta5 (2020-08-20)
 - Added new method for continueUserActivity for UIScene and SwiftUI based apps
 - Added better error logging for requestTemporaryFullAccuracyAuthorizationWithPurposeKey

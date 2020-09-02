@@ -27,6 +27,7 @@
 @property (strong, nonatomic, nullable) NSArray<NotificareAttachment*> * notificationAttachments;
 @property (strong, nonatomic, nullable) NSDictionary * notificationExtra;
 @property (strong, nonatomic, nullable) NSDictionary * notificationInfo;
+@property (strong, nonatomic, nullable) NSString * notificationTargetContentIdentifier;
 
 - (void)setValuesWithNotificationJSON:(NSDictionary * _Nonnull)notificationJSON;
 

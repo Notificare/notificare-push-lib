@@ -1,5 +1,9 @@
 Changelog
 =========
+2.4-beta7 (2020-09-02)
+- Added target content identifier to notification model
+- Use notification title (when present) in UIAlertController or UIViewController instead of app name
+
 2.4-beta6 (2020-08-25)
 - Added fetchLink to manually retrieve the underlying iOS URL in a Dynamic Link
 - Added support for Notificare's Dynamic Links in notification of type Deep Link

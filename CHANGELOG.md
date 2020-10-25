@@ -1,5 +1,10 @@
 Changelog
 =========
+2.5-beta1 (2020-10-25)
+- Added alternative methods for a non-managed UNUserNotificationCenter
+- Added DnD data in device's object
+- Added completion handler when updating a temporary device
+
 2.4.0 (2020-09-16)
 - Built with Xcode 12 GM seed
 

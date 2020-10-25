@@ -1113,6 +1113,31 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  */
 - (void)handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(nonnull NSDictionary *)userInfo withResponseInfo:(nullable NSDictionary *)responseInfo completionHandler:(NotificareCompletionBlock)completionBlock;
 
+/*!
+ * @abstract Handle willPresentNotification method
+ *
+ * @discussion
+ * When the User Notification Center delegate is disabled this method must be implemented in order to handle a notification while the app is in foreground. Must be used in the delegate method userNotificationCenter:willPresentNotification:withCompletionHandler:
+ * @param notification The UNNotification object provided by the app delegate method
+ */
+-(void)willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler;
+/*!
+ * @abstract Handle didReceiveNotificationResponse method
+ *
+ * @discussion
+ * When the User Notification Center delegate is disabled this method must be implemented in order to handle a notification when the user taps in a notification from lock screen or notification center. Must be used in the delegate method userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:
+ * @param response The UNNotificationResponse object provided by the app delegate method
+ */
+-(void)didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler;
+/*!
+ * @abstract Handle openSettingsForNotification method
+ *
+ * @discussion
+ * When the User Notification Center delegate is disabled this method must be implemented in order to handle a user tap in notifications' settings shortcut. Must be used in the delegate method userNotificationCenter:openSettingsForNotification:
+ * @param notification The UNNotification object provided by the app delegate method
+ */
+-(void)openSettingsForNotification:(nullable UNNotification *)notification;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -1,5 +1,10 @@
 Changelog
 =========
+2.5-beta2 (2020-10-06)
+- Added protective checks for notification objects when handling notifications
+- Enforce NSString casting when createing managed model inbox objects
+- Added silent warning when failing to load managed models into persistent store
+
 2.5-beta1 (2020-10-25)
 - Added alternative methods for a non-managed UNUserNotificationCenter
 - Added DnD data in device's object

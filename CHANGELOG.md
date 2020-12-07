@@ -1,5 +1,8 @@
 Changelog
 =========
+2.5-beta3 (2020-12-07)
+- Built with Xcode 12.2 with support for iOS 14.2
+
 2.5-beta2 (2020-10-06)
 - Added protective checks for notification objects when handling notifications
 - Enforce NSString casting when createing managed model inbox objects

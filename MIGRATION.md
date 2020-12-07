@@ -1,4 +1,25 @@
 # Migration
+
+## From 2.4.x to 2.5.0
+
+Few visible changes were introduced in this version. The most important change is the ability to prevent our SDK from becoming the UNUserNotificationCenter delegate class. This will be useful if you want to have total control over this class in your own app. To disable it you must set the property DISABLE_USER_NOTIFICATION_CENTER_DELEGATE under OPTIONS in the Notificare.plist to YES. After that if you want to handle notifications yourself, you will need to implement the UNUserNotificationCenter in your App Delegate and add these 2 new delegate methods:
+
+```
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    [[NotificarePushLib shared] willPresentNotification:notification withCompletionHandler:^(UNNotificationPresentationOptions options) {
+        completionHandler(options);
+    }];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
+    [[NotificarePushLib shared] didReceiveNotificationResponse:response withCompletionHandler:^{
+        completionHandler();
+    }];
+}
+```
+
+These will still allow you to use Notificare to handle notifications while keeping full control over the UNUserNotificationCenter.
+
 ## From 2.3.x to 2.4.0
 
 When migrating from to 2.3.0 you should use Xcode 12 with support for iOS 14. There are few changes to take into account but some adjustments are needed to fully support this new version.

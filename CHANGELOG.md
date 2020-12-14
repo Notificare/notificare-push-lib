@@ -1,5 +1,8 @@
 Changelog
 =========
+2.5-beta4 (2020-12-14)
+- Use UNNotificationPresentationOptionBanner instead of UNNotificationPresentationOptionAlert in iOS14
+
 2.5-beta3 (2020-12-07)
 - Built with Xcode 12.2 with support for iOS 14.2
 

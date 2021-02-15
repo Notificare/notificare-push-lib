@@ -1,5 +1,10 @@
 Changelog
 =========
+2.5.1 (2021-02-15)
+- Fixed issue with reply of type Email not being registered after mail sent
+- Added correct mime type for video uploads
+- Fixed issue with crash reporter that could potentially crash the app
+
 2.5.0 (2020-12-18)
 - Built with Xcode 12.3 with support for iOS 14.3
 

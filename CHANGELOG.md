@@ -1,5 +1,8 @@
 Changelog
 =========
+2.5.2 (2021-03-17)
+- Added protective checks for notification title when used in alert and view controllers 
+
 2.5.1 (2021-02-15)
 - Fixed issue with reply of type Email not being registered after mail sent
 - Added correct mime type for video uploads

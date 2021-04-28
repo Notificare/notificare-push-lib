@@ -72,6 +72,8 @@ typedef void (^ErrorDeviceDnDBlock)(NSError * response);
 -(void)updateDoNotDisturb:(NotificareDeviceDnD *)dnd completionHandler:(SuccessDeviceDnDBlock)successBlock errorHandler:(ErrorDeviceDnDBlock)errorBlock;
 -(void)clearDoNotDisturb:(SuccessDeviceDnDBlock)successBlock errorHandler:(ErrorDeviceDnDBlock)errorBlock;
 
+-(void)registerTestDevice:(NSString *)token completionHandler:(SuccessDeviceBlock)successBlock errorHandler:(ErrorDeviceBlock)errorBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

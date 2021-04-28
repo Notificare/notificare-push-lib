@@ -1,5 +1,10 @@
 Changelog
 =========
+2.6.0 (2021-04-28)
+- Built with iOS 14.5
+- Added test device registration
+- Fixed issue with handling validate and resetpassword from launch URL
+
 2.5.2 (2021-03-17)
 - Added protective checks for notification title when used in alert and view controllers 
 

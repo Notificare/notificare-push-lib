@@ -1,5 +1,8 @@
 Changelog
 =========
+2.6.1 (2021-06-10)
+- Added protective checks for regions and beacons sessions
+
 2.6.0 (2021-04-28)
 - Built with iOS 14.5
 - Added test device registration

@@ -1,5 +1,9 @@
 Changelog
 =========
+2.7-beta1 (2021-07-12)
+- Built with iOS 15
+- Added new method to handle lock screen media, interruption level and relevance score
+
 2.6.1 (2021-06-10)
 - Added protective checks for regions and beacons sessions
 

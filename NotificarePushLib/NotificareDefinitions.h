@@ -11,7 +11,7 @@
 #ifndef NotificareDefinitions_h
 #define NotificareDefinitions_h
 
-#define kSDKVersion @"2.6.1"
+#define kSDKVersion @"2.7.0"
 #define kCoreDataDB @"inboxStoreV2.6.0.data"
 #define kCoreDataBundle @"NotificareManagedModels"
 #define kCoreDataEntity @"NotificareManagedDeviceInbox"
@@ -22,6 +22,8 @@
 #define kUseSSL YES
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 #define ATTACHMENT_KEY @"attachment"
+#define RELEVANCE_SCORE_KEY @"relevanceScore"
+#define INTERRUPTION_LEVEL_KEY @"interruptionLevel"
 #define IS_IPAD ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
 #define kFakeBeaconIdentifier @"NotificareFakeBeacon"
 

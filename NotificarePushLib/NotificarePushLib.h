@@ -549,9 +549,10 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *
  *  @discussion
  *  Handles additional functionality to a URL Schemes interaction. Should be used in -(BOOL)application:openURL:options:
+ *  @return A Boolean indicating if the URL was handled
  *
  */
--(void)handleOpenURL:(NSURL *)url withOptions:(NSDictionary * _Nullable)options;
+-(BOOL)handleOpenURL:(NSURL *)url withOptions:(NSDictionary * _Nullable)options;
 
 /*!
  *  @abstract Handle User Activity
@@ -560,9 +561,10 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *
  *  @discussion
  *  Handles additional functionality in response to UIApplication's continueUserActivity:restorationHandler. Should be used in -(BOOL)application:continueUserActivity:restorationHandler:
+ *  @return A Boolean indicating if the user activity was handled
  *
  */
--(void)continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler;
+-(BOOL)continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler;
 
 /*!
  *  @abstract Handle User Activity
@@ -571,9 +573,10 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *  @discussion
  *  Handles additional functionality in response to UIScene's continueUserActivity. Should be used in -(void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity
  *
+ *  @return A Boolean indicating if the user activity was handled
+ *
  */
--(void)continueUserActivity:(NSUserActivity *)userActivity;
-
+-(BOOL)continueUserActivity:(NSUserActivity *)userActivity;
 /*!
  *  @abstract Fetch a Link
  *
@@ -1017,8 +1020,17 @@ typedef void (^NotificareCompletionBlock)(id _Nullable response , NSError * _Nul
  *  Helper method to retrieve the attachment of a rich content notification
  *  @param notification A NSDictionary holding the APNS payload
  */
-- (void)fetchAttachment:(NSDictionary *)notification completionHandler:(NotificareCompletionBlock)completionBlock;
+- (void)fetchAttachment:(NSDictionary *)notification completionHandler:(NotificareCompletionBlock)completionBlock __attribute__((deprecated("In 2.7.0 and up, use handleNotificationRequest:forContent instead")));
 
+/*!
+ *  @abstract Handle Notification Requests for Notification Service Extensions
+ *
+ *  @discussion
+ *  Helper method to retrieve a UNMutableNotificationContent for a Notification Service Extension
+ *  @param notification A NSDictionary holding the APNS payload
+ *  @param content A UNMutableNotificationContent holding a mutable copy of a UNNotificationContent
+ */
+- (void)handleNotificationRequest:(NSDictionary *)notification forContent:(UNMutableNotificationContent *)content completionHandler:(NotificareCompletionBlock)completionBlock;
 /*!
  *  @abstract Log an event
  *

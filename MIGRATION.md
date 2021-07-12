@@ -1,5 +1,23 @@
 # Migration
 
+## From 2.5.x to 2.7.0
+
+There is only one single visible change in this new version. To fully support iOS 15, we've introduced one new method reserved to be used in a Notification Service Extension. It replaces the current method responsible to handle lock screen media for your apps. 
+
+This means that you should replace the following method:
+
+```
+- (void)fetchAttachment:(NSDictionary *)notification completionHandler:(NotificareCompletionBlock)completionBlock;
+```
+
+In favour of this one:
+
+```
+- (void)handleNotificationRequest:(NSDictionary *)notification forContent:(UNMutableNotificationContent *)content completionHandler:(NotificareCompletionBlock)completionBlock;
+```
+
+This new methods will handle lock screen media, interruption levels and relevance score in one. Please note that this version requires Xcode 13 or higher.
+
 ## From 2.4.x to 2.5.0
 
 Few visible changes were introduced in this version. The most important change is the ability to prevent our SDK from becoming the UNUserNotificationCenter delegate class. This will be useful if you want to have total control over this class in your own app. To disable it you must set the property DISABLE_USER_NOTIFICATION_CENTER_DELEGATE under OPTIONS in the Notificare.plist to YES. After that if you want to handle notifications yourself, you will need to implement the UNUserNotificationCenter in your App Delegate and add these 2 new delegate methods:

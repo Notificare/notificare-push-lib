@@ -1,5 +1,8 @@
 Changelog
 =========
+2.7-beta2 (2021-08-24)
+- Added prefixed method names for global crash reports methods
+
 2.7-beta1 (2021-07-12)
 - Built with iOS 15
 - Added new method to handle lock screen media, interruption level and relevance score

@@ -1,5 +1,8 @@
 Changelog
 =========
+2.7-beta3 (2021-08-30)
+- Fixed issue when handling web passes with custom barcodes
+
 2.7-beta2 (2021-08-24)
 - Added prefixed method names for global crash reports methods
 

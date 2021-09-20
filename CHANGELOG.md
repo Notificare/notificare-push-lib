@@ -1,5 +1,9 @@
 Changelog
 =========
+2.7-beta4 (2021-09-20)
+- Built with Xcode 13 RC
+- Added UNNotificationAction and UNTextInputNotificationAction icons support
+
 2.7-beta3 (2021-08-30)
 - Fixed issue when handling web passes with custom barcodes
 

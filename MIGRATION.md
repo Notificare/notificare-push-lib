@@ -268,8 +268,8 @@ Additionally you've also changed the way notifications should be presented, by a
 
 ```
 -(void)notificarePushLib:(NotificarePushLib *)library didReceiveRemoteNotificationInBackground:(nonnull NotificareNotification *)notification withController:(id _Nullable)controller{
-	UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
-	[[NotificarePushLib shared] presentNotification:notification inNavigationController:navController withController:controller];
+    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+    [[NotificarePushLib shared] presentNotification:notification inNavigationController:navController withController:controller];
 }
 ```
 
@@ -311,9 +311,9 @@ You can now add a single tag using the following method:
 
 ```
 [[NotificarePushLib shared] addTag:@"tag_press" completionHandler:^(id  _Nullable response, NSError * _Nullable error) {
-	if (!error) {
-		//Tag added
-	}
+    if (!error) {
+        //Tag added
+    }
 }];
 ```
 
@@ -321,9 +321,9 @@ And you can remove several tags with one single request by using the method belo
 
 ```
 [[NotificarePushLib shared] removeTags:@[@"tag_press", @"tag_news"] completionHandler:^(id  _Nullable response, NSError * _Nullable error) {
-	if (!error) {
-		//Tags removed
-	}
+    if (!error) {
+        //Tags removed
+    }
 }];
 ```
  
@@ -348,21 +348,21 @@ In SDK 2.0, we do not include the PassKit framework by default. This change will
 
 -(void)notificarePushLib:(NotificarePushLib *)library didReceivePass:(nonnull NSURL *)pass inNotification:(nonnull NotificareNotification *)notification{
 
-	NSData *data = [[NSData alloc] initWithContentsOfURL:pass];
-	NSError *error;
+    NSData *data = [[NSData alloc] initWithContentsOfURL:pass];
+    NSError *error;
 
-	//Init a pass object with the data
-	PKPass * pkPass = [[PKPass alloc] initWithData:data error:&error];
+    //Init a pass object with the data
+    PKPass * pkPass = [[PKPass alloc] initWithData:data error:&error];
 
-	if(!error){
-		//Present PKAddPassesViewController controller in your own navigation controller
-		PKAddPassesViewController * vc = [[PKAddPassesViewController alloc] initWithPass:pkPass];
-		[vc setDelegate:self];
+    if(!error){
+        //Present PKAddPassesViewController controller in your own navigation controller
+        PKAddPassesViewController * vc = [[PKAddPassesViewController alloc] initWithPass:pkPass];
+        [vc setDelegate:self];
 
-		UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
 
-		[[NotificarePushLib shared] presentWalletPass:notification inNavigationController:navController withController:vc];
-	}
+        [[NotificarePushLib shared] presentWalletPass:notification inNavigationController:navController withController:vc];
+    }
 }
 ```
 
@@ -394,10 +394,10 @@ There a couple of changes to this functionality in this new version of the SDK. 
 
 ```
 [[NotificarePushLib shared] openScannable:scannable completionHandler:^(id  _Nullable response, NSError * _Nullable error) {
-	if (!error) {
-		UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
-		[[NotificarePushLib shared] presentScannable:scannable inNavigationController:navController withController:response];
-	}
+    if (!error) {
+        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+        [[NotificarePushLib shared] presentScannable:scannable inNavigationController:navController withController:response];
+    }
 }];
 ```
 

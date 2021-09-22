@@ -1,5 +1,18 @@
 Changelog
 =========
+2.7.0 (2021-09-22)
+- Release 2.7.0
+
+2.7-beta4 (2021-09-20)
+- Built with Xcode 13 RC
+- Added UNNotificationAction and UNTextInputNotificationAction icons support
+
+2.7-beta3 (2021-08-30)
+- Fixed issue when handling web passes with custom barcodes
+
+2.7-beta2 (2021-08-24)
+- Added prefixed method names for global crash reports methods
+
 2.7-beta1 (2021-07-12)
 - Built with iOS 15
 - Added new method to handle lock screen media, interruption level and relevance score

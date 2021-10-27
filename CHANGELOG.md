@@ -1,5 +1,10 @@
 Changelog
 =========
+2.7.1 (2021-10-27)
+- Added protective check for invalid JSON on HTTP body requests
+- Purge region and beacon sessions with invalid data
+- Added check for non-Notificare links in continueUserActivity
+
 2.7.0 (2021-09-22)
 - Release 2.7.0
 

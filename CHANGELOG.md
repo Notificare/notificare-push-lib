@@ -1,5 +1,10 @@
 Changelog
 =========
+2.7.2 (2021-12-16)
+- Fixed issue with users & authentication lib
+- Fixed display issue with notifications of type Images
+- Fixed issue with Vimeo video notification not stopping after leaving view
+
 2.7.1 (2021-10-27)
 - Added protective check for invalid JSON on HTTP body requests
 - Purge region and beacon sessions with invalid data
